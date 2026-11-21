@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowRight, Plus } from "lucide-react";
 import { HeroBoard } from "@/components/landing/hero-board";
 import { Logo } from "@/components/ui/logo";
+import { MascotLauncher } from "@/components/buddy/mascot-launcher";
 import { CategoryIcon } from "@/components/ui/category-icon";
 import { CATEGORY_LABEL } from "@/lib/labels";
 import { JsonLd } from "@/components/seo/json-ld";
@@ -279,6 +280,7 @@ export default function Home() {
           </div>
         </div>
       </footer>
+      <MascotLauncher />
     </div>
   );
 }
