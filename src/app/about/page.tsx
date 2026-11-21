@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { JsonLd } from "@/components/seo/json-ld";
-import { CATEGORIES, ENGINE_RULES, FAQ, MATCH_THRESHOLD_DEFAULT, ROUTES, SITE, STACK, siteUrl } from "@/lib/site";
+import { CATEGORIES, COMING_SOON, ENGINE_RULES, FAQ, MATCH_THRESHOLD_DEFAULT, ROUTES, SITE, STACK, siteUrl } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "About — what it does, how it works, stack",
@@ -61,6 +61,10 @@ export default function AboutPage() {
         <li>An evidence graph links each claim to the report it came from.</li>
       </ol>
       <p><strong>Provenance over verdicts:</strong> it never decides which report is true.</p>
+
+      <h2>Coming soon: {COMING_SOON.name}</h2>
+      <p>{COMING_SOON.summary}</p>
+      <p>{COMING_SOON.detail}</p>
 
       <h2>Incident categories</h2>
       <ul>{CATEGORIES.map((c) => <li key={c.id}>{c.label}</li>)}</ul>

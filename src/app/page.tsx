@@ -7,7 +7,7 @@ import { MascotLauncher } from "@/components/buddy/mascot-launcher";
 import { CategoryIcon } from "@/components/ui/category-icon";
 import { CATEGORY_LABEL } from "@/lib/labels";
 import { JsonLd } from "@/components/seo/json-ld";
-import { SITE, siteUrl } from "@/lib/site";
+import { COMING_SOON, SITE, siteUrl } from "@/lib/site";
 import type { Category } from "@/types/domain";
 import "./landing.css";
 
@@ -98,6 +98,7 @@ export default function Home() {
                 "Rule-based grouping of reports about the same incident",
                 "Possible-conflict detection between sources",
                 "Evidence graph linking every claim to its original report",
+                `Coming soon: ${COMING_SOON.name}, a mascot bot voice assistant for incident questions`,
               ],
             },
           ],

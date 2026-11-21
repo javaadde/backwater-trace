@@ -28,11 +28,23 @@ export const SITE = {
     "crowdsourced verification",
     "Malayalam voice",
     "Sarvam AI",
+    "Backwater Buddy",
+    "voice assistant",
+    "mascot bot",
     "evidence graph",
     "civic tech",
     "hackathon",
   ],
   locale: "en_IN",
+} as const;
+
+/** Announced but not yet released. Keep wording as "coming soon" until the assistant actually ships. */
+export const COMING_SOON = {
+  name: "Backwater Buddy",
+  summary:
+    "Coming soon: Backwater Buddy, a mascot bot voice assistant. Ask out loud (English or Malayalam) about reported incidents near a place and hear a short answer that cites the source reports.",
+  detail:
+    "Backwater Buddy is a draggable mascot on the landing page and incident board. When released, it will answer from Backwater Trace incident data only, label every answer as an unverified community report, cite incident IDs, and never say a road is definitely safe. It will not submit reports on its own; it points people to the report form. Status: not yet available. The mascot currently shows a 'coming soon' message.",
 } as const;
 
 export const STACK = [
@@ -52,6 +64,7 @@ export const ROUTES = [
   { path: "/incidents/{id}", name: "Incident detail", what: "Summary, status, every source report, conflict cards comparing the two accounts side by side, and the evidence graph." },
   { path: "/about", name: "About", what: "Full project description for people and AI agents: problem, approach, engine rules, stack, limits." },
   { path: "/llms.txt", name: "llms.txt", what: "Plain-text project summary for AI agents; /llms-full.txt has the full detail." },
+  { path: "/api/agent/incidents", name: "Buddy incident lookup (coming soon)", what: "Backing endpoint for the upcoming Backwater Buddy voice assistant; returns nearby incident reports with source citations." },
   { path: "/api/incidents", name: "Incidents API", what: "JSON list of incidents with report and conflict counts." },
 ] as const;
 
@@ -93,6 +106,10 @@ export const FAQ = [
   {
     q: "Does it support Malayalam?",
     a: "Yes. Reporters can record a Malayalam voice note; it is transcribed by Sarvam AI (saaras:v4), shown for review and editing, and only then submitted. Malayalam text renders in the Chilanka typeface.",
+  },
+  {
+    q: "What is Backwater Buddy?",
+    a: `${COMING_SOON.summary} It is not released yet: for now the mascot only shows a 'coming soon' message.`,
   },
   {
     q: "Is this a working product or a prototype?",

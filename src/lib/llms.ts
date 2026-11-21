@@ -1,4 +1,4 @@
-import { CATEGORIES, ENGINE_RULES, FAQ, MATCH_THRESHOLD_DEFAULT, ROUTES, SITE, STACK, siteUrl } from "@/lib/site";
+import { CATEGORIES, COMING_SOON, ENGINE_RULES, FAQ, MATCH_THRESHOLD_DEFAULT, ROUTES, SITE, STACK, siteUrl } from "@/lib/site";
 
 export function buildLlmsTxt(): string {
   const base = siteUrl();
@@ -8,6 +8,9 @@ export function buildLlmsTxt(): string {
 
 Built for "${SITE.hackathon}" (hackathon). Source code: ${SITE.repo}
 This is a complete, working product: voice transcription, matching, conflict detection, maps, evidence graph and storage all run for real. Only the pre-loaded sample incidents are synthetic (no real people or incidents). No usage numbers, partners or endorsements are claimed.
+
+## Coming soon
+- ${COMING_SOON.summary}
 
 ## Pages
 ${ROUTES.filter((r) => !r.path.includes("{")).map((r) => `- [${r.name}](${base}${r.path}): ${r.what}`).join("\n")}
@@ -56,6 +59,9 @@ Checked fields: road access, water level, severity, situation status. A field is
 
 ## Pages and routes
 ${ROUTES.map((r) => `- ${r.path} — ${r.name}: ${r.what}`).join("\n")}
+
+## Coming soon: ${COMING_SOON.name} (mascot bot voice assistant)
+${COMING_SOON.detail}
 
 ## Tech stack
 ${STACK.map((s) => `- ${s}`).join("\n")}
