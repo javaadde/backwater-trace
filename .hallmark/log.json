@@ -1,5 +1,33 @@
 [
  {
+  "mode": "build",
+  "scope": "page",
+  "shape": "Evidence Walk",
+  "theme": "brand",
+  "axes": "light/grotesk-sans/chromatic-teal",
+  "hero": "Stage",
+  "nav": "edge-aligned",
+  "footer": "mast",
+  "imagery": "screenshots 4 (puppeteer capture, synthetic demo data)",
+  "photos": [],
+  "entry": "/",
+  "sections": [
+   "Stage hero (incident board)",
+   "Split signature (one road, two accounts)",
+   "Statement band",
+   "Steps with captures",
+   "Rows (field records)",
+   "Close band",
+   "Mast footer"
+  ],
+  "signature": "one road, two accounts set side by side with the cross-hatch between them",
+  "waived": [
+   "77"
+  ],
+  "prompt": "landing page for Backwater Trace, Alappuzha incident reporting with traceable sources",
+  "date": "2026-11-22"
+ },
+ {
   "mode": "redesign",
   "depth": "restyle",
   "scope": "app",
