@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="public/brand/app-icon.png" alt="Backwater Trace icon" width="160" />
+  <img src="public/brand/backwater-trace-icon.png" alt="Backwater Trace icon" width="160" />
 </p>
 
 <h1 align="center">Backwater Trace</h1>

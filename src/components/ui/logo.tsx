@@ -1,12 +1,12 @@
 import Image from "next/image";
 import Link from "next/link";
 
-// Project icon — source artwork lives at public/brand/app-icon.png.
+// Project icon — source artwork lives at public/brand/backwater-trace-icon.png.
 // The earlier "Canal B" mark is archived in docs/brand/.
 export function LogoMark({ className = "size-8" }: { className?: string }) {
   return (
     <Image
-      src="/brand/app-icon.png"
+      src="/brand/backwater-trace-icon.png"
       alt=""
       width={64}
       height={64}
