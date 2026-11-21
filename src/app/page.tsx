@@ -1,154 +1,78 @@
 import Link from "next/link";
-import { FileText, Mic } from "lucide-react";
+import { ArrowDown, ArrowUpRight, Plus } from "lucide-react";
+import { IncidentPrint, type PrintKind } from "@/components/incident-print";
 import { Logo } from "@/components/ui/logo";
-import { buttonClass } from "@/components/ui/button";
+import "./landing.css";
 
-const STEPS = [
+type FieldRecord = { art: PrintKind; place: string; title: string; ml: string; en: string; note: string };
+
+const records: FieldRecord[] = [
   {
-    title: "Report in your language",
-    body: "Speak in Malayalam or type in English. Sarvam AI turns voice into text the reporter corrects before sending.",
+    art: "bus", place: "KSRTC bus stand", title: "Flooding on the bus route",
+    ml: "ഇവിടെ കെഎസ്ആർടിസി ബസ് സ്റ്റാൻഡിന് അടുത്ത് റോഡിൽ മുട്ടോളം വെള്ളമുണ്ട്.",
+    en: "Knee-deep water on the road outside the KSRTC bus stand. Buses are moving very slowly, difficult for two-wheelers.",
+    note: "Both accounts describe knee-deep water near the bus stand.",
   },
   {
-    title: "Related reports stack into one incident",
-    body: "Same category, close by, close in time: the reports become sources of a single incident on the map.",
+    art: "canal", place: "Mullakkal", title: "A canal stops flowing",
+    ml: "വാടക്കനാലിൽ പോളയും പ്ലാസ്റ്റിക്കും നിറഞ്ഞ് ഒഴുക്ക് നിലച്ചു.",
+    en: "Vadai canal near Mullakkal is choked with water hyacinth and plastic. Water is not flowing at all.",
+    note: "The voice and written reports both describe a blockage in Vadai Canal.",
   },
   {
-    title: "Disagreements cross, visibly",
-    body: "Blocked or partially open, knee-deep or waist-deep: both values sit side by side, each linked to its source.",
+    art: "gauge", place: "Pallathuruthy", title: "One road, two accounts",
+    ml: "പള്ളാത്തുരുത്തി ഭാഗത്ത് എസി റോഡിൽ അരയോളം വെള്ളം കയറി, ഗതാഗതം നിലച്ചു.",
+    en: "AC road at Pallathuruthy is flooded at waist level but one lane is partially open for trucks and buses.",
+    note: "Possible conflict: one source says traffic stopped; the other says one lane is open. Both stay on record.",
   },
 ];
 
 export default function Home() {
   return (
-    <main className="flex min-h-dvh flex-col">
-      <header className="mx-auto flex h-16 w-full max-w-[1280px] items-center justify-between px-4 sm:px-6">
+    <main className="field-page">
+      <header className="field-header">
         <Logo />
-        <Link href="/dashboard" className="flex h-9 items-center rounded-md px-3 text-[14px] whitespace-nowrap font-medium text-fg-muted hover:bg-panel-2 hover:text-fg">
-          Incident board
-        </Link>
+        <nav aria-label="Main navigation">
+          <a href="#field-records" className="field-gallery-nav">Field records</a>
+          <Link href="/report" className="field-report"><Plus size={16} aria-hidden /> Report an incident</Link>
+        </nav>
       </header>
-
-      <section className="mx-auto grid w-full max-w-[1280px] flex-1 items-center gap-12 px-4 py-12 sm:px-6 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,1fr)] lg:gap-20 lg:py-20">
-        <div>
-          <h1 className="font-display text-[44px] leading-[1.02] font-semibold text-balance sm:text-[60px] lg:text-[68px]">
-            Every report, traced to its source.
-          </h1>
-          <p className="mt-6 max-w-[52ch] text-[17px] leading-relaxed text-fg-muted text-pretty">
-            Backwater Trace collects flood, canal, waste and road reports from Alappuzha residents in Malayalam and English,
-            groups the ones that describe the same incident, and shows exactly where sources disagree, without deciding who is right.
-          </p>
-          <div className="mt-10 flex flex-wrap gap-3">
-            <Link href="/dashboard" className={buttonClass("primary", "lg")}>
-              Open the incident board
-            </Link>
-            <Link href="/report" className={buttonClass("secondary", "lg")}>
-              <Mic /> Report incident
-            </Link>
-          </div>
+      <section className="field-hero" aria-labelledby="landing-title">
+        <h1 id="landing-title">Alappuzha,<br />on the record.</h1>
+        <div className="field-intro">
+          <p>When a canal clogs or a road floods, the people there see it first. Follow reports in Malayalam and English back to their original sources.</p>
+          <Link href="/dashboard" className="field-primary">Open the incident board <ArrowUpRight size={19} aria-hidden /></Link>
         </div>
-
-        <RecordSheet />
       </section>
-
-      <section className="border-t border-line">
-        <ol className="mx-auto grid max-w-[1280px] gap-10 px-4 py-16 sm:grid-cols-3 sm:px-6">
-          {STEPS.map((s) => (
-            <li key={s.title}>
-              <h2 className="font-display text-[17px] leading-snug font-semibold">{s.title}</h2>
-              <p className="mt-2 max-w-[42ch] text-[15px] leading-relaxed text-fg-muted">{s.body}</p>
-            </li>
+      <section id="field-records" className="field-gallery" aria-labelledby="gallery-title">
+        <div className="field-section-head">
+          <div><h2 id="gallery-title">Field records</h2><p>Three synthetic incidents. Open a record to compare its sources.</p></div>
+          <span lang="ml" className="field-district">ആലപ്പുഴ</span>
+        </div>
+        <div className="field-grid">
+          {records.map(({ art, place, title, ml, en, note }) => (
+            <details className="field-record" key={art}>
+              <summary>
+                <div className="field-print"><IncidentPrint kind={art} /></div>
+                <div className="field-caption">
+                  <div><span className="field-place">{place}</span><h3>{title}</h3></div>
+                  <span className="field-toggle"><ArrowDown size={18} aria-hidden /></span>
+                </div>
+              </summary>
+              <div className="field-sources">
+                <p>Voice · Malayalam excerpt</p><blockquote lang="ml">{ml}</blockquote>
+                <p>Text · English</p><blockquote>{en}</blockquote>
+                <strong>{note}</strong>
+              </div>
+            </details>
           ))}
-        </ol>
+        </div>
       </section>
-
-      <footer className="mx-auto w-full max-w-[1280px] border-t border-line px-4 py-8 text-[13px] leading-relaxed text-fg-faint sm:px-6">
-        Backwater Trace does not decide the truth. It helps coordinators see reports, their sources and their disagreements faster.
-        All incidents and reports shown are synthetic demo data.
+      <footer className="field-footer">
+        <h2>Seen something nearby?</h2>
+        <p>Record a voice note or write a report. You can review the details before you send it.</p>
+        <Link href="/report">Report an incident <ArrowUpRight size={17} aria-hidden /></Link>
       </footer>
     </main>
-  );
-}
-
-/** The product's own record, drawn at life size: two source sheets that disagree on one detail. */
-function RecordSheet() {
-  return (
-    <figure className="mx-auto w-full max-w-[540px]" aria-label="Example incident record with two sources that disagree on road status">
-      <div className="overflow-hidden rounded-xl border border-line bg-panel">
-        <div className="flex items-center justify-between px-5 pt-4 text-[12px] text-fg-faint">
-          <span>Incident record</span>
-          <span>Synthetic example</span>
-        </div>
-        <div className="px-5 pt-2 pb-4">
-          <div className="font-display text-[20px] leading-snug font-semibold">AC Road flooding at Pallathuruthy</div>
-          <dl className="mt-3 grid grid-cols-3 gap-x-4 text-[13px]">
-            <div>
-              <dt className="text-[12px] text-fg-faint">Category</dt>
-              <dd className="mt-0.5">Flooded road</dd>
-            </div>
-            <div>
-              <dt className="text-[12px] text-fg-faint">Sources</dt>
-              <dd className="tabular mt-0.5">02</dd>
-            </div>
-            <div>
-              <dt className="text-[12px] text-fg-faint">Status</dt>
-              <dd className="mt-0.5 text-warn">Needs verification</dd>
-            </div>
-          </dl>
-        </div>
-      <div className="grid grid-cols-2 border-t border-line">
-        <SourceSheet
-          n={1}
-          icon="voice"
-          when="Voice, Malayalam"
-          quote="പള്ളാത്തുരുത്തി ഭാഗത്ത് എസി റോഡിൽ അരയോളം വെള്ളം കയറി, ഗതാഗതം നിലച്ചു."
-          ml
-          value="Blocked"
-        />
-        <SourceSheet
-          n={2}
-          icon="text"
-          when="Written, English"
-          quote="Flooded at waist level, but one lane is partially open for trucks and buses."
-          value="Partially open"
-          className="border-l border-line"
-        />
-      </div>
-      <figcaption className="flex items-center gap-2 border-t border-line px-5 py-3 text-[13px] font-medium text-conflict">
-        <span aria-hidden className="hatch-cross size-3 rounded-[3px] border border-conflict" />
-        Possible conflict on road status, both sources kept
-      </figcaption>
-      </div>
-    </figure>
-  );
-}
-
-function SourceSheet({
-  n,
-  icon,
-  when,
-  quote,
-  ml,
-  value,
-  className = "",
-}: {
-  n: number;
-  icon: "voice" | "text";
-  when: string;
-  quote: string;
-  ml?: boolean;
-  value: string;
-  className?: string;
-}) {
-  return (
-    <div className={`flex flex-col px-5 py-4 ${className}`}>
-      <div className="flex items-center gap-2 text-[13px]">
-        <span className="text-fg-faint [&_svg]:size-3.5">{icon === "voice" ? <Mic /> : <FileText />}</span>
-        <span className="font-semibold">Source {n}</span>
-        <span className="text-fg-faint">{when}</span>
-      </div>
-      <p className={`mt-2 flex-1 text-[13.5px] leading-snug text-fg-muted ${ml ? "font-ml" : ""}`}>{quote}</p>
-      <div className="mt-4 text-[12px] text-fg-faint">Road status</div>
-      <div className="mt-0.5 text-[17px] font-semibold">{value}</div>
-    </div>
   );
 }
