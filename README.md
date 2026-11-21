@@ -1,298 +1,173 @@
-# Backwater Trace
+<p align="center">
+  <img src="public/brand/app-icon.png" alt="Backwater Trace icon" width="160" />
+</p>
 
-**A multilingual, evidence-backed incident reporting and verification platform for Alappuzha.**
+<h1 align="center">Backwater Trace</h1>
 
-Backwater Trace is a hackathon web application designed for the **Place & People — The Alappuzha Challenge** track, with a strong secondary fit for **Voice & Language** through Sarvam AI.
+When people in Alappuzha describe the same flooded road differently, Backwater Trace maps their reports together and lets readers trace each claim to its source.
 
-The product helps people submit local incident reports in text or voice, groups related reports into incidents, shows them on a map, and highlights conflicting information with source-level traceability.
+Built for *Place & People — The Alappuzha Challenge*, with Malayalam voice reporting for people who would rather speak than type.
 
-## Core idea
+- **Report from the scene:** type an observation or record it in Malayalam, review the transcript, place a pin, and optionally attach a photo.
+- **Find related reports:** the incident engine compares category, distance, time, and wording before grouping reports on the map.
+- **Inspect a disagreement:** follow a possible conflict about water depth or road access back to the original reports in the evidence graph. A flag asks for verification; it does not decide which report is true.
 
-Alappuzha can receive multiple reports about the same local issue:
+[Run locally](#run-locally) · [Try the demo](#try-the-ksrtc-flood-report) · [Architecture](#architecture) · [Incident engine](#incident-engine) · [Evidence graph](#evidence-graph) · [Configuration](#optional-services) · [Development](#development)
 
-- flooded roads
-- waterlogging
-- blocked canals
-- waste dumping
-- infrastructure problems
+## Run locally
 
-The difficulty is not just collecting reports. It is understanding:
+Use Node.js 24 LTS and pnpm 11.22.0. From the repository root:
 
-- which reports refer to the same incident,
-- where those reports happened,
-- whether two reports disagree,
-- and what source each claim came from.
+```bash
+pnpm install --frozen-lockfile
+SUPABASE_URL='' SARVAM_MOCK=1 pnpm dev
+```
 
-Backwater Trace turns those reports into a structured, visual incident view.
+Open [the dashboard](http://localhost:3000/dashboard). This command selects local storage and mock transcription even if you already have service keys configured. On first use, the app creates `.data/db.json` with synthetic incidents; you do not need to create an account or run a seed command.
 
-## Hackathon positioning
+## Try the KSRTC flood report
 
-**Primary track:** Place & People — The Alappuzha Challenge  
-**Secondary strength:** Voice & Language — Sarvam AI
+1. On the dashboard, open **Flooded road near Alappuzha KSRTC**. The seeded reports describe knee-deep water near the bus stand.
+2. Open [the report form](http://localhost:3000/report), choose **Waist-deep at KSRTC (EN)**, review the location, and submit. On fresh demo data, the result groups this observation with the earlier reports.
+3. Open the incident and select a source on the conflict card. Compare the original descriptions of water depth and road access rather than relying on the summary alone.
 
-The project focuses on a practical local problem and uses Malayalam voice interaction as a meaningful accessibility feature rather than a decorative AI add-on.
+To inspect the dashboard data without the map, run this in a second terminal while the app is running:
 
-## MVP
-
-The 12-hour MVP includes:
-
-- Alappuzha incident map
-- report submission
-- Malayalam voice recording
-- Sarvam speech-to-text
-- photo upload
-- location selection
-- simple incident matching
-- possible contradiction detection
-- incident detail pages
-- source-linked reports
-- React Flow evidence graph
-- Supabase persistence
-- Vercel deployment
-
-## Not in MVP
-
-To keep the build finishable in 12 hours, Backwater Trace does **not** include:
-
-- separate Rust or Python backend
-- native mobile app
-- Tauri desktop app
-- real-time flood prediction
-- OCR
-- satellite analysis
-- custom ML training
-- graph database
-- autonomous agents
-- advanced computer vision
-- enterprise user roles
-- offline sync
-
-## Stack
-
-| Layer | Technology |
-|---|---|
-| Framework | Next.js |
-| Language | TypeScript |
-| Styling | Tailwind CSS |
-| UI | shadcn/ui |
-| Map | Leaflet + OpenStreetMap |
-| Evidence graph | React Flow |
-| Database | Supabase PostgreSQL |
-| Storage | Supabase Storage |
-| Voice AI | Sarvam AI |
-| Validation | Zod |
-| Hosting | Vercel |
-| AI coding support | Devin |
+```bash
+curl --fail --silent --show-error http://localhost:3000/api/incidents
+```
 
 ## Architecture
 
-```text
-Browser
-   │
-   ▼
-Next.js
-├── React UI
-├── Route Handlers / Server Actions
-├── Internal incident engine
-├── Sarvam integration
-└── Supabase access
-        │
-        ▼
-Supabase
-├── PostgreSQL
-└── Private Storage
+One Next.js app handles intake and serves the map. The browser never needs a Supabase or Sarvam key. The [store adapter](src/lib/store/index.ts) chooses where to keep records and attachments; switching stores does not change the matching rules.
+
+```mermaid
+flowchart TD
+    form["Report form"] --> api["Next.js route handlers"]
+    api -->|voice only| speech["Sarvam transcription or demo transcript"]
+    api --> write["Report service"]
+    write --> engine["Normalization, matching and conflict rules"]
+    write --> store["Store adapter"]
+    pages["Dashboard and incident detail"] --> read["Query service"]
+    read --> store
+    read --> evidence["Build evidence graph for one incident"]
+    store -->|local| disk["JSON records and uploaded files"]
+    store -->|hosted| cloud["Supabase Postgres and private evidence bucket"]
 ```
 
-There is no separate application backend for the hackathon MVP.
+### From observation to report
 
-Next.js serves both the frontend and API/backend responsibilities.
+Text and voice enter the same pipeline **after** the reporter reviews the form. Transcription alone does not create an incident.
 
-The internal incident logic lives in:
-
-```text
-src/lib/engine/
+```mermaid
+sequenceDiagram
+    actor Reporter
+    participant Form as Report form
+    participant API as Next.js API
+    participant Service as Report service
+    alt Malayalam voice
+        Reporter->>Form: Record an observation
+        Form->>API: POST /api/transcribe with audio
+        API-->>Form: Transcript for review
+    else Written report
+        Reporter->>Form: Type an observation
+    end
+    Form->>API: POST /api/analyze with draft text
+    API-->>Form: Suggested fields
+    Reporter->>Form: Review details and confirm the pin
+    Form->>API: POST /api/reports with optional media
+    API->>Service: Pass validated fields and accepted files
+    Service-->>API: Incident, match reasons, conflicts and warnings
+    API-->>Form: Submission result
 ```
 
-This keeps the project simple now while allowing the logic to be moved into a dedicated service later if needed.
+## Incident engine
 
-## Main user flow
+The [report service](src/lib/services/create-report.ts) runs the rules in order. Matching asks **whether two reports describe the same event**. Conflict detection asks **where their accounts differ**. A pair can match on location and category while disagreeing about water depth.
 
-```text
-Submit report
-   ↓
-Voice or text
-   ↓
-Sarvam transcription if needed
-   ↓
-User reviews transcript
-   ↓
-Report is normalized
-   ↓
-Incident matching
-   ↓
-Report is attached to an existing incident
-or a new incident is created
-   ↓
-Contradiction checks run
-   ↓
-Incident appears on map
-   ↓
-User can inspect reports + evidence graph
+```mermaid
+flowchart TD
+    input["Validated report"] --> normalize["Clean text and time; fill missing fields from text"]
+    normalize --> media["Store optional photo or audio if available"]
+    media --> score["Score each unresolved incident"]
+    score --> decision{"Any score at or above threshold?"}
+    decision -->|Yes| attach["Choose highest score; prefer nearer on a tie"]
+    decision -->|No| create["Create an incident"]
+    attach --> save["Save report with incident ID"]
+    create --> save
+    save --> compare["Compare with earlier reports in this incident"]
+    compare --> flag["Record each differing pair of known values"]
+    flag --> refresh["Refresh map position, summary and status"]
 ```
 
-## Suggested project structure
+The [matcher](src/lib/engine/match-incidents.ts) adds the following points. With the default threshold of **7**, the same category within 500 m is sufficient (3 + 4); the same category within three hours is not (3 + 2).
 
-```text
-src/
-├── app/
-│   ├── page.tsx
-│   ├── dashboard/
-│   ├── report/
-│   ├── incidents/
-│   │   └── [id]/
-│   └── api/
-│       ├── reports/
-│       ├── incidents/
-│       ├── transcribe/
-│       └── analyze/
-│
-├── components/
-│   ├── dashboard/
-│   ├── map/
-│   ├── graph/
-│   ├── reports/
-│   └── ui/
-│
-├── lib/
-│   ├── engine/
-│   │   ├── normalize-report.ts
-│   │   ├── match-incidents.ts
-│   │   ├── detect-contradictions.ts
-│   │   ├── extract-details.ts
-│   │   └── build-graph.ts
-│   ├── sarvam/
-│   ├── supabase/
-│   └── validation/
-│
-└── types/
+| Signal | Points |
+| --- | ---: |
+| Same category, or flood paired with waterlogging | 3 |
+| Within 500 m of the incident center or any of its reports | 4 |
+| Within 3 hours of a report, or the incident update time if it has none | 2 |
+| Keyword overlap of at least 0.2 (shared tokens divided by distinct tokens) | 2 |
+
+The [conflict detector](src/lib/engine/detect-contradictions.ts) checks road access, water level, severity, and reported situation status. It skips a field if either value is missing or both agree. Each difference records the two report IDs, field, values, and reason. If observations are at least an hour apart, the reason notes that conditions may have changed.
+
+## Evidence graph
+
+The [storage schema](supabase/schema.sql) keeps observations separate from disagreements. Each contradiction references one incident and both source reports, so a reader can recover the original accounts behind a flag.
+
+```mermaid
+erDiagram
+    INCIDENTS |o--o{ REPORTS : groups
+    INCIDENTS ||--o{ CONTRADICTIONS : tracks
+    REPORTS ||--o{ CONTRADICTIONS : report_a_id
+    REPORTS ||--o{ CONTRADICTIONS : report_b_id
 ```
 
-## Environment variables
+The [incident detail query](src/lib/services/queries.ts) loads those records for one incident. The [graph builder](src/lib/engine/build-graph.ts) turns them into React Flow nodes and edges on demand; there is no graph database. Here is a two-report example from the KSRTC scenario:
 
-Copy `.env.example` to `.env.local`. All variables are server-only; the browser never talks to Supabase or Sarvam directly.
-
-```env
-SUPABASE_URL=                 # blank → local JSON store in .data/ (dev only)
-SUPABASE_SERVICE_ROLE_KEY=
-SARVAM_API_KEY=
-SARVAM_STT_MODEL=saaras:v4
-SARVAM_LANGUAGE_CODE=ml-IN
-SARVAM_MOCK=0                 # 1 = canned Malayalam transcript (rehearsal / backup)
-MATCH_THRESHOLD=7
+```mermaid
+flowchart TD
+    voice["Voice note"] -->|SUPPORTS| first["Report A: knee-deep"]
+    text["Written account"] -->|SUPPORTS| second["Report B: waist-deep"]
+    first -->|REPORTS| flood["Flooded road near Alappuzha KSRTC"]
+    second -->|REPORTS| flood
+    first -->|LOCATED_AT| pin["Bus stand pin"]
+    second -->|LOCATED_AT| pin
+    first -.->|CONFLICTS_WITH| second
 ```
 
-- never expose `SUPABASE_SERVICE_ROLE_KEY` or `SARVAM_API_KEY` in client code,
-- privileged operations run in Next.js route handlers (`src/app/api/*`).
+Nearby reports can share a location node (within 120 m of an existing graph pin). One conflict edge connects each report pair and lists the disputed fields. Neither report replaces the other.
 
-## Local development
+## Optional services
+
+For persistent hosted storage, apply [the Supabase schema](supabase/schema.sql) to a dedicated project and configure the server variables below. For live Malayalam transcription, configure Sarvam and start with `pnpm dev` instead of the mock command. Use synthetic reports for demos: live transcription sends audio to Sarvam, and hosted evidence does not stay on the device.
+
+Use [the environment template](.env.example) as a reference for `.env.local`. Keep keys server-side; none need a `NEXT_PUBLIC_` prefix.
+
+| Variable | When to set it |
+| --- | --- |
+| `SUPABASE_URL` | Set with a server key to use Postgres and the private `evidence` storage bucket. Omit for local development. |
+| `SUPABASE_SECRET_KEY` | Preferred server key for hosted storage. `SUPABASE_SERVICE_ROLE_KEY` is the legacy alternative. |
+| `SUPABASE_DB_URL` | Direct Postgres connection for applying the schema outside the SQL editor; not needed by the app. |
+| `SARVAM_API_KEY` | Required only for live speech-to-text. Text reports do not need a key. |
+| `SARVAM_MOCK` | Set to `1` to return a canned Malayalam transcript instead of sending audio to Sarvam. |
+| `SARVAM_STT_MODEL` / `SARVAM_LANGUAGE_CODE` | Override the transcription defaults, `saaras:v4` and `ml-IN`. |
+| `MATCH_THRESHOLD` | Minimum score for grouping reports; defaults to `7`. |
+
+**Reset warning:** `pnpm seed` replaces the selected store's incidents, reports, and conflict records with synthetic data. It targets Supabase when a URL and server key are configured. Use it only on disposable demo data.
+
+## Development
+
+Run the engine tests, TypeScript checks, and linter from the repository root:
 
 ```bash
-pnpm install
-pnpm dev          # http://localhost:3000
-pnpm test         # engine unit tests (vitest)
+pnpm test
+pnpm typecheck
 pnpm lint
-pnpm build
-pnpm seed         # reset to the synthetic demo dataset (Supabase if configured, else .data/db.json)
 ```
 
-With no Supabase variables set, the app runs immediately on a local JSON store that seeds itself on first request. Delete `.data/` or run `pnpm seed` to reset.
+See the [product requirements](docs/PRD.md), [architecture](docs/architecture.md), and [hackathon plan](backwater-trace-plan.md) for scope and design decisions.
 
-### Supabase setup
+## License
 
-1. Create a project, open the SQL editor, run `supabase/schema.sql` (tables, indexes, RLS on, private `evidence` bucket).
-2. Put `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` in `.env.local` (and in Vercel project settings).
-3. `pnpm seed`. Re-run shortly before the demo: seed timestamps are relative to "now".
-
-### Demo rehearsal
-
-1. `/dashboard`: open **Flooded road near Alappuzha KSRTC** (2 consistent reports: knee-deep, difficult to pass).
-2. `/report`: record in Malayalam, e.g. *"കെഎസ്ആർടിസി ബസ് സ്റ്റാൻഡിന് അടുത്ത് അരയോളം വെള്ളം കയറി, റോഡ് പൂർണ്ണമായും ബ്ലോക്ക് ആണ്."* The landmark is detected and the pin placed automatically.
-   No mic or network? Use the **Waist-deep at KSRTC** sample chip, or set `SARVAM_MOCK=1`.
-3. Submit. The success screen shows it was grouped (match score + reasons) and which details now conflict.
-4. Open the incident: grouped conflict cards → click a report chip → the source card highlights → evidence graph.
-
-## Demo
-
-The demo should use synthetic data.
-
-Example:
-
-**Report A**
-- flooded road
-- near Alappuzha KSRTC
-- Malayalam voice
-- knee-high water
-- road difficult to use
-
-**Report B**
-- same area
-- waist-high water
-- road fully blocked
-
-Expected result:
-
-- reports are grouped under one incident,
-- the app flags a possible conflict,
-- both original sources remain visible,
-- the incident is shown on the map,
-- the evidence graph links the incident and its reports.
-
-## Product language
-
-Use cautious language:
-
-- Possible conflict
-- Needs verification
-- Unverified report
-- Reported by multiple sources
-
-Avoid language such as:
-
-- confirmed false
-- fake report
-- liar
-- guaranteed severity
-- authoritative emergency decision
-
-## Privacy
-
-This is a hosted web application, so do **not** claim that all evidence stays local.
-
-For the hackathon:
-
-- use synthetic reports,
-- keep storage buckets private,
-- avoid personally identifying demo data,
-- keep secret keys server-side,
-- treat AI outputs as suggestions.
-
-## Definition of done
-
-The hackathon MVP is complete when:
-
-- the website is deployed,
-- the map works,
-- reports can be submitted,
-- Malayalam voice can be transcribed,
-- related reports can be grouped,
-- a possible contradiction can be shown,
-- incident details retain their source reports,
-- the evidence graph works,
-- the full demo can run reliably.
-
-See:
-
-- [`plan.md`](../backwater-trace-plan.md)
-- [`PRD.md`](PRD.md)
-- [`architecture.md`](architecture.md)
-- [`AGENTS.md`](AGENTS.md)
+This repository does not specify a license.
