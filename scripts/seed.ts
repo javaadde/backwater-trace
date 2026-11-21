@@ -11,7 +11,7 @@ import { buildSeed } from "../src/lib/seed";
 async function main() {
   const data = buildSeed(new Date());
   const url = process.env.SUPABASE_URL;
-  const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  const key = process.env.SUPABASE_SECRET_KEY || process.env.SUPABASE_SERVICE_ROLE_KEY;
 
   if (!url || !key) {
     const dir = path.join(process.cwd(), ".data");

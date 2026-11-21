@@ -12,7 +12,7 @@ let store: DataStore | null = null;
 export function getStore(): DataStore {
   if (store) return store;
   const url = process.env.SUPABASE_URL;
-  const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  const key = process.env.SUPABASE_SECRET_KEY || process.env.SUPABASE_SERVICE_ROLE_KEY;
   store = url && key ? createSupabaseStore(url, key) : createLocalStore();
   return store;
 }

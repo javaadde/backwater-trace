@@ -50,9 +50,17 @@ const SITUATION_RULES: Rule<SituationStatus>[] = [
   { value: "ongoing", terms: ["rising", "increasing", "still", "continuing", "കൂടുന്നു", "ഉയരുന്നു", "ഇപ്പോഴും"] },
 ];
 
+/**
+ * Malayalam fuses suffixes onto words ("ബ്ലോക്ക്" + "ആണ്" → "ബ്ലോക്കാണ്"), replacing the
+ * final virama. Dropping a trailing virama turns each term into a stem that matches both forms.
+ */
+export function stem(term: string): string {
+  return term.toLowerCase().replace(/\u0D4D$/, "");
+}
+
 function firstMatch<T>(text: string, rules: Rule<T>[]): T | null {
   for (const rule of rules) {
-    if (rule.terms.some((t) => text.includes(t.toLowerCase()))) return rule.value;
+    if (rule.terms.some((t) => text.includes(stem(t)))) return rule.value;
   }
   return null;
 }

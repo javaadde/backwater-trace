@@ -240,7 +240,7 @@ export function ReportForm() {
             <div className="flex items-start justify-between gap-3">
               <div>
                 <h2 className="font-semibold">Where is it?</h2>
-                <p className="text-sm text-fg-muted">Tap the map or drag the pin. Pick a landmark to jump there.</p>
+                <p className="text-sm text-fg-muted">Tap the map or drag the pin inside the dashed Alappuzha border. Pick a landmark to jump there.</p>
               </div>
               <GeoButton
                 onLocate={(p) => {

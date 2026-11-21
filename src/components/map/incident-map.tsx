@@ -8,7 +8,7 @@ import type { IncidentSummary } from "@/types/domain";
 import { CATEGORY_LABEL, STATUS_LABEL } from "@/lib/labels";
 import { ALAPPUZHA_CENTER } from "@/lib/engine/geo";
 import { timeAgo } from "@/lib/utils";
-import { BaseLayers } from "./tiles";
+import { ALAPPUZHA_LATLNG_BOUNDS, ALAPPUZHA_MIN_ZOOM, BaseLayers } from "./tiles";
 
 const CATEGORY_GLYPH: Record<string, string> = {
   flood: "F",
@@ -72,6 +72,9 @@ export default function IncidentMap({
       scrollWheelZoom={interactive}
       dragging={interactive}
       attributionControl
+      maxBounds={ALAPPUZHA_LATLNG_BOUNDS}
+      maxBoundsViscosity={1}
+      minZoom={ALAPPUZHA_MIN_ZOOM}
     >
       <BaseLayers defaultLayer={defaultLayer} />
       {interactive && <FlyTo target={flyTarget} />}

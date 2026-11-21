@@ -6,8 +6,16 @@ import type { DataStore } from "./types";
 export const EVIDENCE_BUCKET = "evidence";
 const SIGNED_URL_TTL_SECONDS = 60 * 60;
 
-function must<T>(res: { data: T; error: { message: string } | null }, what: string): T {
-  if (res.error) throw new Error(`Supabase ${what} failed: ${res.error.message}`);
+/** Thrown when the tables/bucket from supabase/schema.sql are missing. */
+export class DatabaseNotReadyError extends Error {}
+
+function must<T>(res: { data: T; error: { message: string; code?: string } | null }, what: string): T {
+  if (res.error) {
+    if (res.error.code === "PGRST205" || /schema cache|Bucket not found/i.test(res.error.message)) {
+      throw new DatabaseNotReadyError(`Supabase is not set up (${what}): run supabase/schema.sql in the SQL editor.`);
+    }
+    throw new Error(`Supabase ${what} failed: ${res.error.message}`);
+  }
   return res.data;
 }
 

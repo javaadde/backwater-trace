@@ -32,11 +32,12 @@ export function DashboardClient() {
     setLoading(true);
     try {
       const res = await fetch("/api/incidents", { cache: "no-store" });
-      if (!res.ok) throw new Error();
-      setData((await res.json()) as DashboardData);
+      const json = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(json.error);
+      setData(json as DashboardData);
       setError(null);
-    } catch {
-      setError("Could not load incidents. Retrying…");
+    } catch (e) {
+      setError((e as Error).message || "Could not load incidents. Retrying…");
     } finally {
       setLoading(false);
     }
@@ -174,6 +175,12 @@ function Legend() {
         ))}
         <span className="flex items-center gap-1.5 text-warn">
           <span className="size-2.5 rounded-full border-2 border-warn" /> Possible conflict
+        </span>
+        <span className="col-span-2 mt-0.5 flex items-center gap-1.5 border-t border-line pt-1.5 text-accent">
+          <svg width="18" height="4" aria-hidden>
+            <line x1="0" y1="2" x2="18" y2="2" stroke="currentColor" strokeWidth="2" strokeDasharray="5 3" />
+          </svg>
+          Alappuzha district border
         </span>
       </div>
     </div>

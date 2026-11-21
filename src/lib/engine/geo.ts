@@ -1,3 +1,6 @@
+import { ALAPPUZHA_BOUNDARY, ALAPPUZHA_BOUNDARY_BBOX } from "@/lib/geo/alappuzha-boundary";
+import { pointInPolygon } from "@/lib/geo/point-in-polygon";
+
 const EARTH_RADIUS_M = 6_371_000;
 
 /** Great-circle distance in metres between two lat/lng points. */
@@ -14,21 +17,14 @@ export function haversineMeters(
   return 2 * EARTH_RADIUS_M * Math.asin(Math.min(1, Math.sqrt(h)));
 }
 
-/** Rough bounding box for Alappuzha district; reports outside are rejected. */
-export const ALAPPUZHA_BOUNDS = {
-  minLat: 9.05,
-  maxLat: 9.85,
-  minLng: 76.2,
-  maxLng: 76.7,
-} as const;
+/** Bounding box of the official district boundary (used for map limits and as a fast pre-check). */
+export const ALAPPUZHA_BOUNDS = ALAPPUZHA_BOUNDARY_BBOX;
 
 export const ALAPPUZHA_CENTER = { latitude: 9.4981, longitude: 76.3388 } as const;
 
+/** True when the point lies inside Alappuzha district's OSM boundary. */
 export function isWithinAlappuzha(lat: number, lng: number): boolean {
-  return (
-    lat >= ALAPPUZHA_BOUNDS.minLat &&
-    lat <= ALAPPUZHA_BOUNDS.maxLat &&
-    lng >= ALAPPUZHA_BOUNDS.minLng &&
-    lng <= ALAPPUZHA_BOUNDS.maxLng
-  );
+  const b = ALAPPUZHA_BOUNDS;
+  if (lat < b.minLat || lat > b.maxLat || lng < b.minLng || lng > b.maxLng) return false;
+  return pointInPolygon(lat, lng, ALAPPUZHA_BOUNDARY);
 }

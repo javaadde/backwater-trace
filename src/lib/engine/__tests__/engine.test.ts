@@ -6,6 +6,7 @@ import { findMatchingIncident, scoreCandidate, type MatchCandidate } from "../ma
 import { detectContradictions } from "../detect-contradictions";
 import { buildGraph } from "../build-graph";
 import { buildSeed } from "@/lib/seed";
+import { LANDMARKS } from "../landmarks";
 import type { Incident, Report } from "@/types/domain";
 
 const NOW = new Date("2026-11-21T10:00:00Z");
@@ -64,9 +65,16 @@ describe("geo", () => {
     expect(d).toBeGreaterThan(105);
     expect(d).toBeLessThan(117);
   });
-  it("bounds checks Alappuzha", () => {
+  it("checks points against the real district boundary", () => {
     expect(isWithinAlappuzha(KSRTC.latitude, KSRTC.longitude)).toBe(true);
-    expect(isWithinAlappuzha(28.6, 77.2)).toBe(false);
+    expect(isWithinAlappuzha(28.6, 77.2)).toBe(false); // Delhi
+    expect(isWithinAlappuzha(9.9312, 76.2673)).toBe(false); // Kochi: inside the old box, outside the district
+    expect(isWithinAlappuzha(9.5916, 76.5222)).toBe(false); // Kottayam
+    expect(isWithinAlappuzha(9.4907, 76.31)).toBe(false); // Arabian Sea off the beach
+  });
+  it("keeps every landmark and seed report inside the district", () => {
+    for (const l of LANDMARKS) expect(isWithinAlappuzha(l.latitude, l.longitude), l.name).toBe(true);
+    for (const r of buildSeed(NOW).reports) expect(isWithinAlappuzha(r.latitude, r.longitude), r.description).toBe(true);
   });
 });
 
@@ -86,6 +94,12 @@ describe("extractDetails", () => {
     expect(d.severity).toBe("high");
     expect(d.landmark?.id).toBe("ksrtc");
     expect(d.language).toBe("en");
+  });
+  it("matches Malayalam words with fused suffixes (real Sarvam output)", () => {
+    const d = extractDetails("കെ.എസ്.ആർ.ടി.സി ബസ് സ്റ്റാൻഡിന് അടുത്ത അരയോളം വെള്ളം കയറി. റോഡ് പൂർണ്ണമായും ബ്ലോക്കാണ്.");
+    expect(d.roadStatus).toBe("blocked");
+    expect(d.waterLevel).toBe("waist");
+    expect(d.landmark?.id).toBe("ksrtc");
   });
   it("prefers partially open over blocked", () => {
     expect(extractDetails("road partially open, one lane blocked").roadStatus).toBe("partially_open");

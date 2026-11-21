@@ -7,7 +7,7 @@ import type { Landmark } from "@/types/domain";
 export const LANDMARKS: Landmark[] = [
   { id: "ksrtc", name: "Alappuzha KSRTC", nameMl: "കെഎസ്ആർടിസി", aliases: ["ksrtc", "bus stand", "bus station", "കെ.എസ്.ആർ.ടി.സി", "ബസ് സ്റ്റാൻഡ്", "ബസ്സ്റ്റാൻഡ്"], latitude: 9.4937, longitude: 76.3318 },
   { id: "mullakkal", name: "Mullakkal", nameMl: "മുല്ലയ്ക്കൽ", aliases: ["mullakkal", "mullakal", "മുല്ലക്കൽ"], latitude: 9.4986, longitude: 76.3382 },
-  { id: "beach", name: "Alappuzha Beach", nameMl: "ആലപ്പുഴ ബീച്ച്", aliases: ["beach", "ബീച്ച്"], latitude: 9.4907, longitude: 76.3168 },
+  { id: "beach", name: "Alappuzha Beach", nameMl: "ആലപ്പുഴ ബീച്ച്", aliases: ["beach", "ബീച്ച്"], latitude: 9.4909, longitude: 76.319 },
   { id: "vadai-canal", name: "Vadai Canal", nameMl: "വാടക്കനാൽ", aliases: ["vadai", "vada canal", "vadakanal", "വാടക്കനാൽ", "വാടകനാൽ"], latitude: 9.4999, longitude: 76.3342 },
   { id: "commercial-canal", name: "Commercial Canal", nameMl: "കൊമേഴ്സ്യൽ കനാൽ", aliases: ["commercial canal", "കൊമേഴ്സ്യൽ"], latitude: 9.4962, longitude: 76.3356 },
   { id: "punnamada", name: "Punnamada", nameMl: "പുന്നമട", aliases: ["punnamada", "പുന്നമട"], latitude: 9.5108, longitude: 76.3547 },
@@ -26,7 +26,7 @@ export const LANDMARKS: Landmark[] = [
 export function findLandmark(text: string): Landmark | null {
   const haystack = text.toLowerCase();
   for (const lm of LANDMARKS) {
-    const needles = [lm.name.toLowerCase(), lm.nameMl, ...lm.aliases.map((a) => a.toLowerCase())];
+    const needles = [lm.name, lm.nameMl, ...lm.aliases].map((n) => n.toLowerCase().replace(/\u0D4D$/, ""));
     if (needles.some((n) => n && haystack.includes(n))) return lm;
   }
   return null;

@@ -5,7 +5,7 @@ import L from "leaflet";
 import { useEffect } from "react";
 import { MapContainer, Marker, useMap, useMapEvents } from "react-leaflet";
 import { ALAPPUZHA_CENTER } from "@/lib/engine/geo";
-import { BaseLayers } from "./tiles";
+import { ALAPPUZHA_LATLNG_BOUNDS, ALAPPUZHA_MIN_ZOOM, BaseLayers } from "./tiles";
 
 const pinIcon = L.divIcon({
   html: '<div class="bt-pin" style="--pin: var(--accent)" data-selected="true">●</div>',
@@ -32,7 +32,8 @@ function Recenter({ value }: { value: LatLng | null }) {
 
 export default function LocationPicker({ value, onChange }: { value: LatLng | null; onChange: (p: LatLng) => void }) {
   return (
-    <MapContainer center={[ALAPPUZHA_CENTER.latitude, ALAPPUZHA_CENTER.longitude]} zoom={14} className="h-full w-full">
+    <MapContainer center={[ALAPPUZHA_CENTER.latitude, ALAPPUZHA_CENTER.longitude]} zoom={14} className="h-full w-full" maxBounds={ALAPPUZHA_LATLNG_BOUNDS} maxBoundsViscosity={1}
+      minZoom={ALAPPUZHA_MIN_ZOOM}>
       <BaseLayers defaultLayer="streets" />
       <ClickHandler onChange={onChange} />
       <Recenter value={value} />

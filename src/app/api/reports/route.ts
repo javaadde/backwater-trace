@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { DatabaseNotReadyError } from "@/lib/store/supabase";
 import { reportFieldsSchema, validateAudio, validatePhoto, type ValidatedFile } from "@/lib/validation/report";
 import { createReport } from "@/lib/services/create-report";
 
@@ -48,6 +49,9 @@ export async function POST(request: Request) {
     return NextResponse.json({ ...result, warnings: [...warnings, ...result.warnings] }, { status: 201 });
   } catch (e) {
     console.error("Report creation failed", e);
+    if (e instanceof DatabaseNotReadyError) {
+      return NextResponse.json({ error: "The database is not set up yet. Run supabase/schema.sql in Supabase, then try again." }, { status: 503 });
+    }
     return NextResponse.json({ error: "The report could not be saved. Please try again." }, { status: 500 });
   }
 }

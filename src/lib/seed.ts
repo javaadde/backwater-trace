@@ -129,7 +129,7 @@ const SEED: SeedIncident[] = [
         sourceType: "text",
         description: "Large pile of garbage dumped beside the beach road near the old pier. Smell is spreading.",
         latitude: 9.4911,
-        longitude: 76.3176,
+        longitude: 76.3192,
         severity: "moderate",
       },
     ],

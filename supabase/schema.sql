@@ -70,3 +70,10 @@ values (
   array['image/jpeg','image/png','image/webp','audio/wav','audio/x-wav','audio/wave','audio/webm','audio/ogg','audio/mpeg','audio/mp4','audio/x-m4a','audio/aac']
 )
 on conflict (id) do update set public = false;
+
+-- Newer Supabase projects don't auto-grant table access to API roles.
+-- Only the server-side service role may touch these tables; anon/authenticated get nothing.
+grant usage on schema public to service_role;
+grant select, insert, update, delete on public.incidents, public.reports, public.contradictions to service_role;
+revoke all on public.incidents, public.reports, public.contradictions from anon, authenticated;
+notify pgrst, 'reload schema';
