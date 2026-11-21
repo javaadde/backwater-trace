@@ -1,0 +1,35 @@
+{
+  "brand": "Backwater Trace",
+  "tagline": "Every report, traced to its source",
+  "brief": "A multilingual incident reporting and verification platform for Alappuzha. Residents report floods, waterlogging, blocked canals and waste in Malayalam or English; reports are grouped on a map and conflicting claims stay traceable to their sources.",
+  "adjectives": ["local", "trustworthy", "clear", "bold"],
+  "criteria": "Recognisable at 16 px, ties the name to the backwaters, works in one colour and on the app's dark UI.",
+  "mockups": ["app-icon", "website", "favicon-tab", "social", "badge", "tshirt"],
+  "nav": ["Map", "Report", "Incidents"],
+  "brand_color": "#2FC5A8",
+  "tile_color": "#2FC5A8",
+  "greyscale": false,
+  "final": true,
+  "designer": "Backwater Trace team",
+  "round": 3,
+  "concepts": [
+    {
+      "name": "Canal B",
+      "symbol": "../kit/backwater-trace-symbol.svg",
+      "lockup": "../kit/backwater-trace-horizontal.svg",
+      "stacked": "../kit/backwater-trace-stacked.svg",
+      "symbol_on_tile": "../kit/backwater-trace-symbol.svg",
+      "symbol_on_dark": "../kit/backwater-trace-symbol-teal.svg",
+      "lockup_on_dark": "../kit/backwater-trace-horizontal-reversed.svg",
+      "stacked_on_dark": "../kit/backwater-trace-stacked-reversed.svg",
+      "idea": "A bold B split by a canal: the name and the backwaters in one letter.",
+      "rationale": [
+        "The canal cut makes a plain initial ownable and local",
+        "Solid, chunky geometry stays legible at 16 px",
+        "Teal from the product UI; deep-canal ink for contrast"
+      ]
+    }
+  ],
+  "recommendation": "Canal B: ownable, local, and strongest at small sizes.",
+  "next_steps": ["Use the kit files in docs/brand/kit", "Run a trademark search before public launch"]
+}

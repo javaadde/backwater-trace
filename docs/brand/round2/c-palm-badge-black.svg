@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256"><title>palm-badge</title><circle cx="128" cy="128" r="116" fill="#000"/>
+<path d="M118 178 C120 150 128 120 136 92" fill="none" stroke="#fff" stroke-width="14" stroke-linecap="round"/>
+<path fill="#fff" transform="translate(136 92) rotate(-145)" d="M0 0 C22 -30 22 -64 0 -84 C-8 -56 -10 -26 0 0 Z"/><path fill="#fff" transform="translate(136 92) rotate(-100)" d="M0 0 C22 -30 22 -64 0 -84 C-8 -56 -10 -26 0 0 Z"/><path fill="#fff" transform="translate(136 92) rotate(-55)" d="M0 0 C22 -30 22 -64 0 -84 C-8 -56 -10 -26 0 0 Z"/><path fill="#fff" transform="translate(136 92) rotate(-10)" d="M0 0 C22 -30 22 -64 0 -84 C-8 -56 -10 -26 0 0 Z"/><path fill="#fff" transform="translate(136 92) rotate(35)" d="M0 0 C22 -30 22 -64 0 -84 C-8 -56 -10 -26 0 0 Z"/>
+<path fill="#fff" d="M12 182 q19 -12 38 0 t38 0 t38 0 t38 0 t38 0 t38 0 t38 0 V 260 H12 Z"/>
+<path d="M24 212 q15 -10 30 0 t30 0 t30 0 t30 0 t30 0 t30 0 t30 0" fill="none" stroke="#000" stroke-width="12" stroke-linecap="round"/>
+<circle cx="128" cy="128" r="116" fill="none" stroke="#fff" stroke-width="0"/></svg>

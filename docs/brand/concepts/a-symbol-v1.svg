@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" width="256" height="256" role="img"><title>Backwater Trace — A Converging ripples</title>
+<circle cx="128" cy="60" r="16" fill="#000"/>
+<ellipse cx="100" cy="148" rx="72" ry="40" fill="none" stroke="#000" stroke-width="14"/>
+<ellipse cx="156" cy="148" rx="72" ry="40" fill="none" stroke="#000" stroke-width="14"/>
+<path fill="#000" d="M128 111.15 A72 40 0 0 0 128 184.85 A72 40 0 0 0 128 111.15 Z"/>
+</svg>

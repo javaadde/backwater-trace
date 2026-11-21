@@ -1,19 +1,20 @@
 import { Construction, Droplets, Trash, WavesHorizontal, Ban, CircleQuestionMark } from "lucide-react";
+import type { LucideProps } from "lucide-react";
 import type { Category } from "@/types/domain";
 
-export function CategoryIcon({ category, className }: { category: Category; className?: string }) {
+export function CategoryIcon({ category, ...props }: { category: Category } & LucideProps) {
   switch (category) {
     case "flood":
-      return <WavesHorizontal className={className} />;
+      return <WavesHorizontal {...props} />;
     case "waterlogging":
-      return <Droplets className={className} />;
+      return <Droplets {...props} />;
     case "blocked_canal":
-      return <Ban className={className} />;
+      return <Ban {...props} />;
     case "waste_dumping":
-      return <Trash className={className} />;
+      return <Trash {...props} />;
     case "damaged_infrastructure":
-      return <Construction className={className} />;
+      return <Construction {...props} />;
     default:
-      return <CircleQuestionMark className={className} />;
+      return <CircleQuestionMark {...props} />;
   }
 }

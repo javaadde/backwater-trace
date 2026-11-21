@@ -3,25 +3,23 @@
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import { useEffect, useMemo } from "react";
+import { renderToStaticMarkup } from "react-dom/server";
 import { MapContainer, Marker, Popup, useMap } from "react-leaflet";
 import type { IncidentSummary } from "@/types/domain";
 import { CATEGORY_LABEL, STATUS_LABEL } from "@/lib/labels";
+import { CategoryIcon } from "@/components/ui/category-icon";
 import { ALAPPUZHA_CENTER } from "@/lib/engine/geo";
 import { timeAgo } from "@/lib/utils";
 import { ALAPPUZHA_LATLNG_BOUNDS, ALAPPUZHA_MIN_ZOOM, BaseLayers } from "./tiles";
 
-const CATEGORY_GLYPH: Record<string, string> = {
-  flood: "F",
-  waterlogging: "W",
-  blocked_canal: "C",
-  waste_dumping: "D",
-  damaged_infrastructure: "R",
-  other: "?",
-};
+/** Pin diameter on a fixed ramp by number of independent sources. */
+const SIZE_RAMP = [22, 22, 28, 34, 40];
 
-function markerIcon(i: IncidentSummary, selected: boolean) {
-  const html = `<div class="bt-pin" style="--pin: var(--cat-${i.category})" data-selected="${selected}" data-resolved="${i.status === "resolved"}" data-conflict="${i.contradiction_count > 0 && i.status !== "resolved"}">${CATEGORY_GLYPH[i.category] ?? "?"}${i.report_count > 1 ? `<span class="bt-count">${i.report_count}</span>` : ""}</div>`;
-  return L.divIcon({ html, className: "bt-marker", iconSize: [30, 30], iconAnchor: [15, 15], popupAnchor: [0, -16] });
+function markerIcon(i: IncidentSummary, selected: boolean, dim: boolean) {
+  const size = SIZE_RAMP[Math.min(i.report_count, SIZE_RAMP.length - 1)];
+  const label = `${CATEGORY_LABEL[i.category]}: ${i.title}, ${i.report_count} source${i.report_count > 1 ? "s" : ""}${i.contradiction_count > 0 ? ", possible conflict" : ""}`;
+  const html = `<div class="bt-pin" role="img" aria-label="${label.replace(/"/g, "&quot;")}" style="--pin: var(--cat-${i.category}); --s: ${size}px" data-selected="${selected}" data-dim="${dim}" data-resolved="${i.status === "resolved"}" data-conflict="${i.contradiction_count > 0 && i.status !== "resolved"}">${renderToStaticMarkup(<CategoryIcon category={i.category} size={Math.round(size * 0.52)} strokeWidth={2.25} aria-hidden />)}${i.report_count > 1 ? `<span class="bt-count">${i.report_count}</span>` : ""}</div>`;
+  return L.divIcon({ html, className: "bt-marker", iconSize: [size, size], iconAnchor: [size / 2, size / 2], popupAnchor: [0, -size / 2 - 2] });
 }
 
 function FlyTo({ target }: { target: { latitude: number; longitude: number } | null }) {
@@ -41,7 +39,7 @@ export interface IncidentMapProps {
   center?: { latitude: number; longitude: number };
   interactive?: boolean;
   showPopups?: boolean;
-  defaultLayer?: "dark" | "streets" | "satellite";
+  defaultLayer?: "zone" | "streets" | "satellite";
 }
 
 export default function IncidentMap({
@@ -53,7 +51,7 @@ export default function IncidentMap({
   center = ALAPPUZHA_CENTER,
   interactive = true,
   showPopups = true,
-  defaultLayer = "dark",
+  defaultLayer = "zone",
 }: IncidentMapProps) {
   const selected = useMemo(() => incidents.find((i) => i.id === selectedId) ?? null, [incidents, selectedId]);
   const flyTarget = useMemo(
@@ -82,14 +80,14 @@ export default function IncidentMap({
         <Marker
           key={i.id}
           position={[i.latitude, i.longitude]}
-          icon={markerIcon(i, i.id === selectedId)}
+          icon={markerIcon(i, i.id === selectedId, !!selectedId && i.id !== selectedId)}
           zIndexOffset={i.id === selectedId ? 1000 : i.status === "resolved" ? -100 : 0}
           eventHandlers={{ click: () => onSelect?.(i.id) }}
         >
           {showPopups && (
             <Popup>
               <div className="min-w-52">
-                <div className="text-[11px] font-medium uppercase tracking-wider text-fg-faint">
+                <div className="legend !text-[10.5px] text-fg-muted">
                   {CATEGORY_LABEL[i.category]} · {STATUS_LABEL[i.status]}
                 </div>
                 <div className="mt-0.5 text-sm font-semibold text-fg">{i.title}</div>
@@ -97,14 +95,15 @@ export default function IncidentMap({
                   {i.report_count} report{i.report_count > 1 ? "s" : ""} · last {timeAgo(i.last_reported_at)}
                 </div>
                 {i.contradiction_count > 0 && (
-                  <div className="mt-1 text-xs font-medium text-warn">
+                  <div className="mt-1 flex items-center gap-1.5 text-xs font-medium text-conflict">
+                    <span className="hatch-cross inline-block size-3 border border-conflict" />
                     {i.contradiction_count} possible conflict{i.contradiction_count > 1 ? "s" : ""}
                   </div>
                 )}
                 {onOpen && (
                   <button
                     onClick={() => onOpen(i.id)}
-                    className="mt-2.5 w-full rounded-md bg-accent px-2 py-1.5 text-xs font-semibold text-accent-ink hover:brightness-110"
+                    className="mt-2.5 w-full rounded-sm border border-deep-canal bg-accent px-2 py-1.5 text-xs font-semibold text-accent-ink hover:bg-[#45d3b8]"
                   >
                     Open incident
                   </button>

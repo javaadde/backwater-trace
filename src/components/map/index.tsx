@@ -4,7 +4,7 @@ import dynamic from "next/dynamic";
 
 function MapSkeleton() {
   return (
-    <div className="grid h-full w-full place-items-center bg-[#0d131a] text-xs text-fg-faint">
+    <div className="grid h-full w-full place-items-center bg-panel-3 text-xs text-fg-faint">
       <span className="animate-pulse">Loading Alappuzha map…</span>
     </div>
   );
