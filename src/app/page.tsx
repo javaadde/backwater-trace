@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Plus } from "lucide-react";
+import { HeroBoard } from "@/components/landing/hero-board";
 import { Logo } from "@/components/ui/logo";
 import { CategoryIcon } from "@/components/ui/category-icon";
 import { CATEGORY_LABEL } from "@/lib/labels";
@@ -55,13 +56,6 @@ function Fleuron() {
     </svg>
   );
 }
-
-const PLATE_KEY = [
-  { n: 1, label: "Guide words: the first and last entry in view", x: 50, y: 44.4 },
-  { n: 2, label: "A pin ringed in cross-hatch: possible conflict", x: 82.5, y: 32.6 },
-  { n: 3, label: "An entry, its kind and its place", x: 52.5, y: 66.4 },
-  { n: 4, label: "Its count of possible conflicts", x: 76.5, y: 72.9 },
-];
 
 function Kind({ category }: { category: Category }) {
   return (
@@ -121,27 +115,10 @@ export default function Home() {
 
             <figure className="lx-plate lx-plate--hero">
               <div className="lx-plate__frame" data-slot="hero" data-kind="product">
-                <Image
-                  src="/landing/plate-i-board.png"
-                  width={1240}
-                  height={1860}
-                  preload
-                  sizes="(min-width: 64rem) 34vw, 100vw"
-                  alt="The incident board: the map of Alappuzha drawn as a plate with hatched conflict pins, above entries headed by guide words."
-                />
-                {PLATE_KEY.map((k) => (
-                  <span key={k.n} data-keep className="lx-callout" style={{ left: `${k.x}%`, top: `${k.y}%` }} aria-hidden>
-                    {k.n}
-                  </span>
-                ))}
+                <HeroBoard />
               </div>
               <figcaption>
-                <span className="lx-plate__no">Plate I.</span> The incident board, showing synthetic demo data.
-                <ol className="lx-plate__key">
-                  {PLATE_KEY.map((k) => (
-                    <li key={k.n}>{k.label}</li>
-                  ))}
-                </ol>
+                <span className="lx-plate__no">Plate I.</span> The incident board, live: pan the map, pick a pin or an entry. Synthetic demo data.
               </figcaption>
             </figure>
           </div>
