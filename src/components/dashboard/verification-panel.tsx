@@ -32,7 +32,7 @@ export function VerificationPanel({
 
   return (
     <div className="flex h-full flex-col">
-      <section className="border-b border-z0 px-4 pt-3 pb-2">
+      <section className="border-b border-line px-4 pt-4 pb-3">
         <div className="flex items-baseline justify-between">
           <h2 className="legend text-fg">Record</h2>
           <span className="text-[11px] text-fg-muted">Synthetic demo data</span>
@@ -44,18 +44,18 @@ export function VerificationPanel({
                 {r.hatch && <ConflictSwatch className="size-3" />}
                 {r.label}
               </dt>
-              <dd className={cn("tabular font-mono text-[15px] font-semibold", r.tone ?? "text-fg")}>{String(r.value).padStart(2, "0")}</dd>
+              <dd className={cn("tabular text-[14px] font-semibold", r.tone ?? "text-fg")}>{String(r.value).padStart(2, "0")}</dd>
             </div>
           ))}
         </dl>
       </section>
 
-      <section className="border-b border-z0 p-4">
+      <section className="border-b border-line p-4">
         <div className="flex items-center justify-between">
-          <h2 className="legend flex items-center gap-2 text-conflict">
+          <h2 className="legend flex items-center gap-2 text-fg">
             <ConflictSwatch /> Possible conflicts
           </h2>
-          <span className="tabular font-mono text-[11px] text-fg-faint">{conflicts.length}</span>
+          <span className="tabular text-[11px] text-fg-faint">{conflicts.length}</span>
         </div>
         <p className="mt-1.5 text-[12px] leading-relaxed text-fg-muted">
           Sources that disagree on a detail. A prompt to check, not proof that anyone is wrong.
@@ -68,15 +68,15 @@ export function VerificationPanel({
                 onClick={() => onSelect(i.id)}
                 aria-pressed={selectedId === i.id}
                 className={cn(
-                  "grid w-full grid-cols-[14px_minmax(0,1fr)] gap-2.5 border px-3 py-2 text-left transition-colors",
-                  selectedId === i.id ? "border-z0 bg-z0 text-z10" : "border-line-strong bg-panel hover:border-z0",
+                  "grid w-full grid-cols-[14px_minmax(0,1fr)] gap-2.5 rounded-lg border px-3 py-2 text-left transition-colors",
+                  selectedId === i.id ? "border-line-strong bg-panel-3" : "border-line bg-panel hover:bg-panel-2",
                 )}
               >
                 <ConflictSwatch className="mt-0.5" />
                 <span className="min-w-0">
                   <span className="block text-[13px] font-medium leading-snug">{i.title}</span>
-                  <span className={cn("mt-0.5 block font-mono text-[11px]", selectedId === i.id ? "text-z7" : "text-fg-muted")}>
-                    {i.contradiction_count} {i.contradiction_count > 1 ? "details differ" : "detail differs"} · {i.report_count} sources
+                  <span className={cn("mt-0.5 block text-[11px]", "text-fg-muted")}>
+                    {i.contradiction_count} {i.contradiction_count > 1 ? "details differ" : "detail differs"}, {i.report_count} sources
                   </span>
                 </span>
               </button>
@@ -93,7 +93,7 @@ export function VerificationPanel({
               {a.kind === "conflict" ? (
                 <ConflictSwatch className="mt-0.5 size-4" />
               ) : (
-                <span className="mt-0.5 grid size-4 place-items-center border border-line-strong text-fg-muted [&_svg]:size-2.5">
+                <span className="mt-0.5 grid size-4 place-items-center text-fg-faint [&_svg]:size-3.5">
                   <FileText />
                 </span>
               )}
@@ -102,7 +102,7 @@ export function VerificationPanel({
                   {a.incident_title}
                 </Link>
                 <div className="text-[12px] text-fg-muted">
-                  {a.text} · <span className="tabular font-mono text-[11px]">{timeAgo(a.at)}</span>
+                  {a.text} <span className="tabular ml-1.5 text-fg-faint">{timeAgo(a.at)}</span>
                 </div>
               </div>
             </li>

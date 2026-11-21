@@ -118,7 +118,7 @@ export function VoiceRecorder({
 
   const recording = state === "recording";
   return (
-    <div className="border border-z0 bg-panel p-4">
+    <div className="rounded-lg bg-panel-2 p-4">
       <div className="flex items-center gap-4">
         <button
           type="button"
@@ -127,7 +127,7 @@ export function VoiceRecorder({
           aria-label={recording ? "Stop recording" : "Start recording"}
           className={cn(
             "relative grid size-16 shrink-0 place-items-center rounded-full border transition-colors disabled:opacity-60",
-            recording ? "border-danger bg-danger text-white" : "border-deep-canal bg-accent text-accent-ink hover:bg-[#45d3b8]",
+            recording ? "border-danger bg-danger text-white" : "border-transparent bg-accent text-accent-ink hover:bg-accent-hover active:bg-accent-press",
           )}
         >
           {recording && <span className="absolute inset-0 animate-ping rounded-full bg-danger/40 motion-reduce:animate-none" />}
@@ -144,14 +144,14 @@ export function VoiceRecorder({
             {state === "idle" && "Speak your report in Malayalam"}
             {recording && "Listening…"}
             {state === "transcribing" && "Transcribing with Sarvam AI…"}
-            {state === "done" && "Transcript ready — check it below"}
+            {state === "done" && "Transcript ready, check it below"}
             {state === "error" && "Voice input unavailable"}
           </div>
           <div className="mt-0.5 font-ml text-[13px] text-fg-muted">
             {state === "idle" && "മലയാളത്തിൽ പറയൂ — എവിടെ, എന്ത് സംഭവിച്ചു"}
             {recording && (
               <span className="tabular font-sans">
-                {String(Math.floor(seconds / 60)).padStart(1, "0")}:{String(seconds % 60).padStart(2, "0")} / 0:{MAX_SECONDS} · tap to stop
+                {String(Math.floor(seconds / 60)).padStart(1, "0")}:{String(seconds % 60).padStart(2, "0")} / 0:{MAX_SECONDS}, tap to stop
               </span>
             )}
             {state === "transcribing" && <span className="font-sans">This usually takes a few seconds.</span>}

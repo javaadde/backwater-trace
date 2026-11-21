@@ -1,44 +1,57 @@
+/* Hallmark · shape: app screen · genre: modern-minimal · theme: brand · redesign: restyle
+ * paper: oklch(100% 0 0) · accent: oklch(74% 0.13 175) · display: Geist · body: Geist
+ * nav: kept (top bar, now paper with a hairline) · signature: kept (the incident ledger and the cross-hatched conflict mark) · states: loading, empty, error, full
+ * axes: light/grotesk-sans/chromatic-teal · posture: settled · contrast: pass · v2.0.0 */
+/* Hallmark · pre-emit critique: P4 H4 E4 S4 R3 V4 · weakest: R, the conflict mark stays cross-hatched so it reads without colour */
+/* Hallmark · waive 48 · district-boundary.tsx pathOptions · Leaflet writes SVG attributes, which take no CSS variables */
 @import "tailwindcss";
+@import "./tokens.css";
+@import "./base.css" layer(base);
 
 /*
- * Exposure Record world.
- * Tones come from one eleven-step zone ramp (z0 ink → z10 white, tinted a
- * touch toward Deep Canal). Canal Teal is the single glowing accent: primary
- * action and live state. Safelight red marks a possible conflict and is always
- * paired with the 90° cross-hatch, so it never relies on colour alone.
+ * Quiet ledger. One near-white paper, hairline rules, one family (Geist).
+ * Canal Teal marks the primary action, live state and the current selection.
+ * Safelight red marks a possible conflict and always travels with the
+ * cross-hatch, so it never relies on colour alone.
  */
 :root {
-  --z0: #0c1110;
+  --z0: var(--color-ink);
   --z1: #1a201f;
   --z2: #29302e;
-  --z3: #3b4341;
+  --z3: var(--color-ink-2);
   --z4: #4f5856;
   --z5: #666f6c;
   --z6: #848c89;
   --z7: #a4aba8;
   --z8: #c3c9c6;
-  --z9: #dde2df;
-  --z10: #f5f7f6;
+  --z9: var(--color-paper-3);
+  --z10: var(--color-paper);
 
-  --bg: #e7ebe9;
-  --panel: var(--z10);
-  --panel-2: #eef1ef;
-  --panel-3: var(--z9);
-  --line: var(--z8);
-  --line-strong: var(--z6);
-  --fg: var(--z0);
+  --bg: var(--color-paper);
+  --panel: var(--color-paper);
+  --panel-2: var(--color-paper-2);
+  --panel-3: var(--color-paper-3);
+  --line: var(--color-rule);
+  --line-strong: #cfd5d2;
+  --field: var(--z6);
+  --fg: var(--color-ink);
   --fg-muted: var(--z4);
-  --fg-faint: #5d6663;
+  --fg-faint: var(--color-muted);
 
-  --accent: #2fc5a8;
-  --accent-ink: #0b3b35;
-  --accent-text: #0b7563;
-  --deep-canal: #0b3b35;
+  --accent: var(--color-accent);
+  --accent-hover: #45d3b8;
+  --accent-press: #27b096;
+  --accent-tint: #e3f6f1;
+  --accent-text: var(--color-focus);
+  --deep-canal: var(--color-accent-ink);
 
   --conflict: #c0392b;
   --danger: #b4231a;
+  --danger-tint: #f9e6e3;
   --warn: #8f5508;
+  --warn-tint: #f8eedd;
   --ok: #1d7a4c;
+  --ok-tint: #e4f1e8;
   --info: #285f93;
 
   --cat-flood: #285f93;
@@ -48,7 +61,9 @@
   --cat-damaged_infrastructure: #6a4f8c;
   --cat-other: #5d6663;
 
-  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --shade: rgb(12 17 16 / 0.1);
+  --shade-strong: rgb(12 17 16 / 0.16);
+  --paper-veil: rgb(255 255 255 / 0.85);
 }
 
 @theme inline {
@@ -58,17 +73,22 @@
   --color-panel-3: var(--panel-3);
   --color-line: var(--line);
   --color-line-strong: var(--line-strong);
+  --color-field: var(--field);
   --color-fg: var(--fg);
   --color-fg-muted: var(--fg-muted);
   --color-fg-faint: var(--fg-faint);
-  --color-accent: var(--accent);
-  --color-accent-ink: var(--accent-ink);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-press: var(--accent-press);
+  --color-accent-tint: var(--accent-tint);
   --color-accent-text: var(--accent-text);
   --color-deep-canal: var(--deep-canal);
   --color-conflict: var(--conflict);
   --color-danger: var(--danger);
+  --color-danger-tint: var(--danger-tint);
   --color-warn: var(--warn);
+  --color-warn-tint: var(--warn-tint);
   --color-ok: var(--ok);
+  --color-ok-tint: var(--ok-tint);
   --color-info: var(--info);
   --color-z0: var(--z0);
   --color-z1: var(--z1);
@@ -78,15 +98,14 @@
   --color-z7: var(--z7);
   --color-z9: var(--z9);
   --color-z10: var(--z10);
-  --font-sans: var(--font-geist-sans), var(--font-malayalam), ui-sans-serif, system-ui, sans-serif;
-  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
-  --font-display: var(--font-antonio), var(--font-geist-sans), sans-serif;
+  --font-sans: var(--font-body);
   --font-ml: var(--font-malayalam), var(--font-geist-sans), sans-serif;
-  --radius-sm: 2px;
-  --radius-md: 3px;
-  --radius-lg: 4px;
-  --radius-xl: 4px;
-  --radius-2xl: 6px;
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --shadow-overlay: 0 4px 16px var(--shade);
+  --shadow-highlight: 0 0 0 3px var(--accent-tint), 0 0 0 4px var(--accent);
 }
 
 html {
@@ -97,17 +116,13 @@ body {
   background: var(--bg);
   color: var(--fg);
   font-family: var(--font-sans);
+  font-size: 15px;
   font-feature-settings: "ss01", "cv11";
   caret-color: var(--accent-text);
 }
 
-::selection {
-  background: var(--z0);
-  color: var(--z10);
-}
-
 :focus-visible {
-  outline: 2px solid var(--z0);
+  outline: 2px solid var(--color-focus);
   outline-offset: 2px;
 }
 
@@ -117,125 +132,116 @@ a {
 
 .scroll-thin {
   scrollbar-width: thin;
-  scrollbar-color: var(--z7) transparent;
+  scrollbar-color: var(--z8) transparent;
 }
 
 .tabular {
   font-variant-numeric: tabular-nums;
 }
 
-/* Condensed, tracked legend caps: the record's labelling voice. */
+/* Section and field names: the body face, a step smaller, sentence case. */
 .legend {
-  font-family: var(--font-display);
-  font-weight: 500;
-  font-size: 12px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  line-height: 1.2;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 1.3;
 }
 
-/* ---------- Hatch layer ---------- */
-.hatch {
-  background-image: repeating-linear-gradient(45deg, currentColor 0 1px, transparent 1px 5px);
-}
-.hatch-dense {
-  background-image: repeating-linear-gradient(45deg, currentColor 0 1px, transparent 1px 3px);
-}
-/* Two hatches at ninety degrees: a possible conflict. */
+/* ---------- Conflict mark: two hatches at ninety degrees ---------- */
 .hatch-cross {
   background-image:
-    repeating-linear-gradient(45deg, currentColor 0 1px, transparent 1px 5px),
-    repeating-linear-gradient(-45deg, currentColor 0 1px, transparent 1px 5px);
+    repeating-linear-gradient(45deg, currentColor 0 1px, transparent 1px 4px),
+    repeating-linear-gradient(-45deg, currentColor 0 1px, transparent 1px 4px);
 }
 
-/* Source-count ramp: one cell per independent source, like stop increments. */
+/* Source count: one dot per independent source, five drawn. */
 .stops {
   display: inline-flex;
-  gap: 2px;
+  gap: var(--space-2xs);
 }
 .stops > i {
   display: block;
-  width: 5px;
-  height: 12px;
-  border: 1px solid var(--z3);
+  width: 6px;
+  height: 6px;
+  border-radius: 9999px;
+  background: var(--line-strong);
 }
 .stops > i[data-on="true"] {
-  background: var(--z1);
-  border-color: var(--z1);
-}
-.stops[data-inverted="true"] > i {
-  border-color: var(--z5);
-}
-.stops[data-inverted="true"] > i[data-on="true"] {
-  background: var(--z10);
-  border-color: var(--z10);
+  background: var(--z4);
 }
 
-/* Native selects, themed from the ramp. */
+/* Native selects. */
 .select {
   appearance: none;
-  border-radius: 2px;
-  border: 1px solid var(--z0);
-  background-color: var(--z10);
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%230c1110' stroke-width='1.5'/%3E%3C/svg%3E");
+  border-radius: 6px;
+  border: 1px solid var(--field);
+  background-color: var(--panel);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%234f5856' stroke-width='1.5'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
   background-position: right 10px center;
-  padding-left: 8px;
+  padding-left: var(--space-sm);
   padding-right: 28px;
-  color: var(--z0);
+  color: var(--fg);
+  transition: border-color 120ms var(--ease-out);
 }
 .select:hover {
-  background-color: var(--z9);
+  border-color: var(--z4);
+}
+.select:active {
+  background-color: var(--panel-2);
 }
 
-/* ---------- Leaflet skin: monochrome print of the map ---------- */
+/* ---------- Leaflet skin: a quiet monochrome map ---------- */
 .bt-zone-tiles {
-  filter: grayscale(1) contrast(0.92) brightness(1.04);
+  filter: grayscale(1) contrast(0.88) brightness(1.06);
 }
 .leaflet-container {
-  background: var(--z9);
+  background: var(--panel-3);
   font-family: var(--font-sans);
 }
 .leaflet-control-zoom a,
 .leaflet-control-layers {
-  background: var(--z10) !important;
-  color: var(--z0) !important;
-  border-color: var(--z0) !important;
+  background: var(--panel) !important;
+  color: var(--fg) !important;
+  border-color: var(--line) !important;
 }
 .leaflet-control-zoom a:hover {
-  background: var(--z9) !important;
+  background: var(--panel-2) !important;
+}
+.leaflet-control-zoom a:active {
+  background: var(--panel-3) !important;
 }
 .leaflet-bar,
 .leaflet-control-layers {
-  border: 1px solid var(--z0) !important;
-  border-radius: 2px !important;
+  border: 1px solid var(--line) !important;
+  border-radius: 8px !important;
   overflow: hidden;
-  box-shadow: 0 2px 6px rgb(12 17 16 / 0.12) !important;
+  box-shadow: 0 4px 16px var(--shade) !important;
 }
 .leaflet-control-layers-expanded {
-  padding: 8px 12px !important;
+  padding: var(--space-xs) var(--space-sm) !important;
   font-size: 13px;
 }
 .leaflet-control-attribution {
-  background: rgb(245 247 246 / 0.85) !important;
+  background: var(--paper-veil) !important;
   color: var(--fg-faint) !important;
-  font-size: 10px !important;
+  font-size: 11px !important;
 }
 .leaflet-control-attribution a {
   color: var(--fg-muted) !important;
 }
 .leaflet-popup-content-wrapper,
 .leaflet-popup-tip {
-  background: var(--z10);
-  color: var(--z0);
-  border: 1px solid var(--z0);
-  box-shadow: 0 8px 20px rgb(12 17 16 / 0.18);
+  background: var(--panel);
+  color: var(--fg);
+  box-shadow: 0 8px 24px var(--shade-strong);
 }
 .leaflet-popup-content-wrapper {
-  border-radius: 3px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
 }
 .leaflet-popup-content {
-  margin: 12px 14px;
+  margin: var(--space-sm) var(--space-md);
   font-size: 13px;
   line-height: 1.45;
 }
@@ -247,7 +253,7 @@ a {
   background: transparent;
   border: 0;
 }
-/* Pin size follows the source ramp (--s set inline), category fills the core. */
+/* Pin size follows the source count (--s set inline), category fills the core. */
 .bt-pin {
   --s: 26px;
   position: relative;
@@ -257,34 +263,34 @@ a {
   height: var(--s);
   border-radius: 9999px;
   background: var(--pin);
-  color: #fff;
-  font: 600 11px/1 var(--font-geist-sans);
-  box-shadow: 0 0 0 2px var(--z10), 0 0 0 3px var(--z0), 0 3px 8px rgb(12 17 16 / 0.3);
+  color: var(--panel);
+  font: 600 11px/1 var(--font-sans);
+  box-shadow: 0 0 0 2px var(--panel), 0 2px 6px var(--shade-strong);
   transition: transform 220ms var(--ease-out), opacity 220ms var(--ease-out);
 }
 .bt-pin[data-selected="true"] {
   transform: scale(1.18);
-  box-shadow: 0 0 0 2px var(--z10), 0 0 0 5px var(--z0), 0 4px 12px rgb(12 17 16 / 0.35);
+  box-shadow: 0 0 0 2px var(--panel), 0 0 0 4px var(--fg), 0 4px 12px var(--shade-strong);
 }
 .bt-pin[data-dim="true"] {
   opacity: 0.45;
 }
 .bt-pin[data-resolved="true"] {
-  background: var(--z10);
-  color: var(--z4);
+  background: var(--panel);
+  color: var(--fg-muted);
 }
 /* Crossed hatch ring: possible conflict. */
 .bt-pin[data-conflict="true"]::before {
   content: "";
   position: absolute;
-  inset: -9px;
+  inset: -8px;
   z-index: -1;
   border-radius: 9999px;
   color: var(--conflict);
   background-image:
     repeating-linear-gradient(45deg, currentColor 0 1.2px, transparent 1.2px 4px),
     repeating-linear-gradient(-45deg, currentColor 0 1.2px, transparent 1.2px 4px);
-  mask: radial-gradient(circle, transparent 55%, #000 56%);
+  mask: radial-gradient(circle, transparent 55%, var(--fg) 56%);
 }
 .bt-pin .bt-count {
   position: absolute;
@@ -292,19 +298,25 @@ a {
   right: -9px;
   min-width: 17px;
   height: 17px;
-  padding: 0 4px;
-  border-radius: 2px;
-  background: var(--z0);
-  color: var(--z10);
-  font: 600 10px/17px var(--font-geist-mono);
+  padding: 0 var(--space-2xs);
+  border-radius: 9999px;
+  background: var(--fg);
+  color: var(--panel);
+  font: 600 10px/17px var(--font-sans);
+  font-variant-numeric: tabular-nums;
   text-align: center;
 }
 
 /* ---------- React Flow skin ---------- */
+.react-flow__controls {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px var(--shade) !important;
+}
 .react-flow__controls-button {
-  background: var(--z10) !important;
-  border-color: var(--z8) !important;
-  fill: var(--z0) !important;
+  background: var(--panel) !important;
+  border-color: var(--line) !important;
+  fill: var(--fg-muted) !important;
 }
 .react-flow__attribution {
   background: transparent !important;
@@ -313,26 +325,10 @@ a {
   color: var(--fg-faint) !important;
 }
 .react-flow__edge-textbg {
-  fill: var(--z10) !important;
+  fill: var(--panel) !important;
 }
 
-/* ---------- Motion: sheets settle into place ---------- */
-@keyframes bt-settle {
-  /* Content is visible from the first frame; sheets only slide into place. */
-  from {
-    transform: translateY(8px) rotate(var(--tilt, 0deg));
-  }
-  to {
-    transform: translateY(0) rotate(var(--tilt, 0deg));
-  }
-}
-.settle {
-  animation: bt-settle 520ms var(--ease-out) both;
-}
 @media (prefers-reduced-motion: reduce) {
-  .settle {
-    animation: none;
-  }
   .bt-pin {
     transition: none;
   }

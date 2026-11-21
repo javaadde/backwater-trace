@@ -1,0 +1,16 @@
+[
+ {
+  "mode": "redesign",
+  "depth": "restyle",
+  "scope": "app",
+  "shape": "app screen",
+  "theme": "brand",
+  "axes": "light/grotesk-sans/chromatic-teal",
+  "signature": "incident ledger and cross-hatched conflict mark",
+  "waived": [
+   "48"
+  ],
+  "prompt": "make the Backwater Trace site more minimal",
+  "date": "2026-11-21"
+ }
+]

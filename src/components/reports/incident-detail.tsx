@@ -91,7 +91,7 @@ export function IncidentDetailView({ id }: { id: string }) {
   const { incident, reports, contradictions, graph } = data;
 
   return (
-    <div className="mx-auto w-full max-w-[1400px] px-4 py-6">
+    <div className="mx-auto w-full max-w-[1400px] px-4 py-8 sm:px-6">
       <Link href="/dashboard" className="legend inline-flex items-center gap-1 text-fg-muted hover:text-fg">
         <ArrowLeft className="size-3.5" /> Incident board
       </Link>
@@ -99,15 +99,15 @@ export function IncidentDetailView({ id }: { id: string }) {
       {/* Header */}
       <div className="mt-3 flex flex-wrap items-start gap-4">
         <div className="min-w-0 basis-full sm:basis-0 sm:flex-1">
-          <h1 className="font-display text-[40px] leading-[1.02] font-semibold tracking-[0.01em] text-balance uppercase sm:text-[48px]">{incident.title}</h1>
+          <h1 className="max-w-[36ch] font-display text-[28px] leading-tight font-semibold text-balance sm:text-[34px]">{incident.title}</h1>
           <div className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-2 text-[12.5px] text-fg-muted">
             <CategoryChip category={incident.category} />
             <StatusBadge status={incident.status} />
             <ConflictBadge count={incident.contradiction_count} />
             <SourceStops count={incident.report_count} />
-            <span className="tabular font-mono text-[12px]">First {formatTime(incident.created_at)}</span>
-            <span className="tabular font-mono text-[12px]">Updated {timeAgo(incident.last_reported_at)}</span>
-            <span className="border border-line-strong px-1.5 py-0.5 text-[11px] text-fg-muted">Synthetic demo data</span>
+            <span className="tabular text-[12px]">First {formatTime(incident.created_at)}</span>
+            <span className="tabular text-[12px]">Updated {timeAgo(incident.last_reported_at)}</span>
+            <span className="rounded-full bg-panel-3 px-2 py-0.5 text-[12px] text-fg-muted">Synthetic demo data</span>
           </div>
         </div>
         <div className="flex items-center gap-2">
@@ -129,16 +129,16 @@ export function IncidentDetailView({ id }: { id: string }) {
         </div>
       </div>
 
-      <div className="mt-6 grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)]">
+      <div className="mt-8 grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)]">
         {/* Left: summary, conflicts, sources */}
-        <div className="space-y-6">
-          <section className="border border-z0 bg-panel p-4">
+        <div className="space-y-8">
+          <section className="rounded-xl border border-line bg-panel p-5">
             <h2 className="legend text-fg">Summary</h2>
             <p className="mt-2 max-w-[68ch] text-[15px] leading-relaxed text-fg">{incident.summary}</p>
             <p className="mt-2 text-[12px] text-fg-muted">
               Generated from the source reports below. Treat as a starting point, not a verified account.
             </p>
-            <div className="mt-4 h-52 overflow-hidden border border-line-strong">
+            <div className="mt-4 h-52 overflow-hidden rounded-lg border border-line">
               <IncidentMap
                 incidents={[incident]}
                 selectedId={incident.id}
@@ -149,8 +149,8 @@ export function IncidentDetailView({ id }: { id: string }) {
               />
             </div>
             <div className="mt-2 flex items-center gap-1 text-[12px] text-fg-muted">
-              <MapPin className="size-3" /> {incident.location_text ?? "Pinned area"} ·{" "}
-              <span className="tabular font-mono">
+              <MapPin className="size-3" /> {incident.location_text ?? "Pinned area"}{" "}
+              <span className="tabular text-fg-faint">
                 {incident.latitude.toFixed(4)}, {incident.longitude.toFixed(4)}
               </span>
             </div>
@@ -183,8 +183,8 @@ export function IncidentDetailView({ id }: { id: string }) {
 
         {/* Right: evidence graph */}
         <section className="lg:sticky lg:top-20 lg:self-start">
-          <div className="overflow-hidden border border-z0 bg-panel">
-            <div className="flex items-center justify-between border-b border-z0 px-4 py-2.5">
+          <div className="overflow-hidden rounded-xl border border-line bg-panel">
+            <div className="flex items-center justify-between border-b border-line px-4 py-2.5">
               <h2 className="legend flex items-center gap-2 text-fg">
                 <Network className="size-4" /> Evidence graph
               </h2>

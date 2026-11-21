@@ -5,17 +5,17 @@ import { CategoryIcon } from "./category-icon";
 
 /** Status reads by its tag shape and text, never by colour alone. */
 const STATUS_STYLE: Record<IncidentStatus, string> = {
-  new: "border-z0 bg-panel text-fg",
-  needs_verification: "border-warn bg-[#f6ead6] text-warn",
-  verified: "border-ok bg-[#e1efe6] text-ok",
-  resolved: "border-line-strong bg-panel-3 text-fg-muted",
+  new: "bg-panel-3 text-fg",
+  needs_verification: "bg-warn-tint text-warn",
+  verified: "bg-ok-tint text-ok",
+  resolved: "bg-panel-2 text-fg-faint",
 };
 
 export function StatusBadge({ status, className }: { status: IncidentStatus; className?: string }) {
   return (
     <span
       className={cn(
-        "legend inline-flex h-[20px] items-center rounded-sm border px-1.5 !text-[11px] !tracking-[0.08em]",
+        "inline-flex h-[22px] items-center rounded-full px-2 text-[12px] font-medium",
         STATUS_STYLE[status],
         className,
       )}
@@ -33,7 +33,7 @@ export function CategoryChip({ category, className }: { category: Category; clas
   return (
     <span className={cn("inline-flex items-center gap-1.5 text-xs font-medium text-fg-muted", className)}>
       <span
-        className="grid size-5 place-items-center rounded-sm text-white [&_svg]:size-3"
+        className="grid size-5 place-items-center rounded-md text-white [&_svg]:size-3"
         style={{ background: categoryColor(category) }}
       >
         <CategoryIcon category={category} />
@@ -45,7 +45,7 @@ export function CategoryChip({ category, className }: { category: Category; clas
 
 /** A small swatch of the 90° cross-hatch: the mark of a possible conflict. */
 export function ConflictSwatch({ className }: { className?: string }) {
-  return <span aria-hidden className={cn("hatch-cross inline-block size-3.5 shrink-0 border border-conflict text-conflict", className)} />;
+  return <span aria-hidden className={cn("hatch-cross inline-block size-3 shrink-0 rounded-[3px] border border-conflict text-conflict", className)} />;
 }
 
 export function ConflictBadge({ count, className }: { count: number; className?: string }) {
@@ -68,7 +68,7 @@ export function SourceStops({ count, className, inverted }: { count: number; cla
           <i key={i} data-on={i < count} />
         ))}
       </span>
-      <span className={cn("tabular font-mono text-[11px]", inverted ? "text-z7" : "text-fg-muted")}>
+      <span className={cn("tabular text-[11px]", inverted ? "text-fg-muted" : "text-fg-muted")}>
         {count} source{count === 1 ? "" : "s"}
       </span>
     </span>

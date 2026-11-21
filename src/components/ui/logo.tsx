@@ -24,7 +24,7 @@ export function Logo() {
       <LogoMark />
       <span className="leading-tight">
         <span className="block text-[15px] font-semibold tracking-tight">Backwater Trace</span>
-        <span className="legend block !text-[10px] text-z7">Alappuzha · Incident record</span>
+        <span className="block text-[12px] text-fg-faint">Alappuzha incident record</span>
       </span>
     </Link>
   );
