@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 256" width="1000" height="256">
+<g><rect x="60" y="28" width="26" height="200" rx="13" fill="#000"/>
+<circle cx="140" cy="164" r="51" fill="none" stroke="#000" stroke-width="26"/>
+<circle cx="140" cy="164" r="15" fill="#000"/></g>
+<text x="284" y="156" font-family="sans-serif" font-weight="700" font-size="80" letter-spacing="-2" fill="#000">Backwater Trace</text>
+</svg>

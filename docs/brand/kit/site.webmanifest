@@ -1,0 +1,25 @@
+{
+  "name": "Backwater Trace",
+  "short_name": "Backwater",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "/maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "theme_color": "#2FC5A8",
+  "background_color": "#2FC5A8",
+  "display": "standalone"
+}
