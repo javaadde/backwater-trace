@@ -4,6 +4,7 @@ import { ArrowRight } from "lucide-react";
 import type { IncidentSummary } from "@/types/domain";
 import { CATEGORY_LABEL } from "@/lib/labels";
 import { ConflictSwatch, SourceStops, StatusBadge, categoryColor } from "@/components/ui/badges";
+import { buttonClass } from "@/components/ui/button";
 import { CategoryIcon } from "@/components/ui/category-icon";
 import { cn, timeAgo } from "@/lib/utils";
 
@@ -33,7 +34,7 @@ export function IncidentList({
         const dim = (selectedId !== null && !active) || i.status === "resolved";
         const conflicted = i.contradiction_count > 0 && i.status !== "resolved";
         return (
-          <li key={i.id}>
+          <li key={i.id} data-entry={i.title}>
             <div
               role="button"
               tabIndex={0}
@@ -48,12 +49,12 @@ export function IncidentList({
                 }
               }}
               className={cn(
-                "group relative grid cursor-pointer grid-cols-[20px_minmax(0,1fr)] gap-x-3 px-4 py-3.5 transition-[background-color,opacity] duration-200 focus-visible:-outline-offset-2",
-                active ? "bg-panel-3 shadow-[inset_2px_0_0_var(--accent)]" : dim ? "opacity-70 hover:bg-panel-2 hover:opacity-100" : "hover:bg-panel-2",
+                "group relative grid cursor-pointer grid-cols-[20px_minmax(0,1fr)] gap-x-3 px-4 py-4 transition-[background-color,opacity] duration-200 focus-visible:-outline-offset-2",
+                active ? "bg-panel-2 shadow-[inset_0_0_0_1px_var(--fg)]" : dim ? "opacity-70 hover:bg-panel-2 hover:opacity-100" : "hover:bg-panel-2",
               )}
             >
               <span
-                className="mt-0.5 grid size-5 place-items-center rounded-sm text-white [&_svg]:size-3"
+                className="mt-1 grid size-5 place-items-center text-white [&_svg]:size-3"
                 style={{ background: categoryColor(i.category) }}
                 title={CATEGORY_LABEL[i.category]}
               >
@@ -61,13 +62,13 @@ export function IncidentList({
               </span>
               <div className="min-w-0">
                 <div className="flex items-baseline justify-between gap-3">
-                  <div className={cn("text-[14px] font-semibold leading-snug", "text-fg")}>{i.title}</div>
+                  <div className="entry-head text-[19px] leading-tight text-fg">{i.title}</div>
                   <span className={cn("tabular shrink-0 text-[11px]", "text-fg-faint")}>
                     {timeAgo(i.last_reported_at)}
                   </span>
                 </div>
-                <div className="mt-0.5 text-xs text-fg-muted">
-                  {CATEGORY_LABEL[i.category]}
+                <div className="mt-1 text-[13px] text-fg-muted">
+                  <span className="entry-head text-[15px] italic">{CATEGORY_LABEL[i.category].toLowerCase()}</span>
                   {i.location_text ? `, ${i.location_text}` : ""}
                 </div>
                 <div className="mt-2.5 flex flex-wrap items-center gap-x-3 gap-y-1.5">
@@ -86,7 +87,7 @@ export function IncidentList({
                       e.stopPropagation();
                       onOpen(i.id);
                     }}
-                    className="mt-3 flex h-8 w-full items-center justify-between rounded-md bg-accent px-3 text-[13px] font-semibold whitespace-nowrap text-accent-ink hover:bg-accent-hover active:bg-accent-press"
+                    className={buttonClass("primary", "sm", "mt-3 w-full justify-between")}
                   >
                     Open sources and evidence <ArrowRight className="size-4" />
                   </button>

@@ -1,16 +1,17 @@
 import Image from "next/image";
 import Link from "next/link";
 
-// Project icon — source artwork lives at public/brand/backwater-trace-icon.png.
-// The earlier "Canal B" mark is archived in docs/brand/.
+// Brand logo: a water drop with a location pin over a winding canal.
+// Ultramarine tile at public/brand/backwater-trace-mark.png; 1024px master in
+// docs/brand/final/backwater-trace-logo.png (earlier tiles in docs/brand/final/archive/).
 export function LogoMark({ className = "size-8" }: { className?: string }) {
   return (
     <Image
-      src="/brand/backwater-trace-icon.png"
+      src="/brand/backwater-trace-mark.png"
       alt=""
       width={64}
       height={64}
-      priority
+      preload
       className={`${className} shrink-0`}
     />
   );
@@ -19,10 +20,10 @@ export function LogoMark({ className = "size-8" }: { className?: string }) {
 export function Logo() {
   return (
     <Link href="/" className="flex items-center gap-2.5">
-      <LogoMark />
+      <LogoMark className="size-9" />
       <span className="leading-tight">
-        <span className="block text-[15px] font-semibold tracking-tight">Backwater Trace</span>
-        <span className="block text-[12px] text-fg-faint">Alappuzha incident record</span>
+        <span className="entry-head block text-[22px] leading-none">Backwater Trace</span>
+        <span className="mt-0.5 block text-[12px] text-fg-faint">Alappuzha incident record</span>
       </span>
     </Link>
   );

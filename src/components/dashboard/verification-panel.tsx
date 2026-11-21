@@ -32,9 +32,9 @@ export function VerificationPanel({
 
   return (
     <div className="flex h-full flex-col">
-      <section className="border-b border-line px-4 pt-4 pb-3">
+      <section className="border-b-[3px] border-double border-fg px-4 pt-4 pb-3">
         <div className="flex items-baseline justify-between">
-          <h2 className="legend text-fg">Record</h2>
+          <h2 className="entry-head text-[22px] leading-none text-fg">The record</h2>
           <span className="text-[11px] text-fg-muted">Synthetic demo data</span>
         </div>
         <dl className="mt-2 divide-y divide-line">
@@ -52,7 +52,7 @@ export function VerificationPanel({
 
       <section className="border-b border-line p-4">
         <div className="flex items-center justify-between">
-          <h2 className="legend flex items-center gap-2 text-fg">
+          <h2 className="entry-head flex items-center gap-2 text-[22px] leading-none text-fg">
             <ConflictSwatch /> Possible conflicts
           </h2>
           <span className="tabular text-[11px] text-fg-faint">{conflicts.length}</span>
@@ -68,13 +68,13 @@ export function VerificationPanel({
                 onClick={() => onSelect(i.id)}
                 aria-pressed={selectedId === i.id}
                 className={cn(
-                  "grid w-full grid-cols-[14px_minmax(0,1fr)] gap-2.5 rounded-lg border px-3 py-2 text-left transition-colors",
-                  selectedId === i.id ? "border-line-strong bg-panel-3" : "border-line bg-panel hover:bg-panel-2",
+                  "grid w-full grid-cols-[14px_minmax(0,1fr)] gap-2.5 border px-3 py-2.5 text-left transition-colors",
+                  selectedId === i.id ? "border-fg bg-panel-2" : "border-line-strong bg-panel hover:bg-panel-2",
                 )}
               >
                 <ConflictSwatch className="mt-0.5" />
                 <span className="min-w-0">
-                  <span className="block text-[13px] font-medium leading-snug">{i.title}</span>
+                  <span className="entry-head block text-[17px] leading-tight">{i.title}</span>
                   <span className={cn("mt-0.5 block text-[11px]", "text-fg-muted")}>
                     {i.contradiction_count} {i.contradiction_count > 1 ? "details differ" : "detail differs"}, {i.report_count} sources
                   </span>
@@ -86,7 +86,7 @@ export function VerificationPanel({
       </section>
 
       <section className="flex min-h-0 flex-1 flex-col p-4">
-        <h2 className="legend text-fg">Recent activity</h2>
+        <h2 className="entry-head text-[22px] leading-none text-fg">Recent activity</h2>
         <ul className="scroll-thin mt-3 min-h-0 flex-1 space-y-3 overflow-y-auto pr-1">
           {activity.map((a) => (
             <li key={a.id} className="grid grid-cols-[20px_minmax(0,1fr)] gap-2.5">

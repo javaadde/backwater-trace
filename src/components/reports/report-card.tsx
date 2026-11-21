@@ -40,7 +40,7 @@ export const ReportCard = forwardRef<
             {r.reporter_name ? `, ${r.reporter_name}` : ", anonymous"}
           </div>
         </div>
-        <span className="ml-auto rounded-full bg-panel-3 px-2 py-0.5 text-[12px] text-fg-muted">Unverified source</span>
+        <span className="ml-auto border border-line-strong px-1.5 py-0.5 text-[12px] text-fg-muted">Unverified source</span>
       </header>
 
       <blockquote className={cn("px-4 pt-3.5 text-[15px] leading-relaxed text-fg", r.original_language !== "en" && "font-ml text-[16px]")}>

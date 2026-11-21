@@ -5,17 +5,17 @@ import { CategoryIcon } from "./category-icon";
 
 /** Status reads by its tag shape and text, never by colour alone. */
 const STATUS_STYLE: Record<IncidentStatus, string> = {
-  new: "bg-panel-3 text-fg",
-  needs_verification: "bg-warn-tint text-warn",
-  verified: "bg-ok-tint text-ok",
-  resolved: "bg-panel-2 text-fg-faint",
+  new: "border-fg bg-panel text-fg",
+  needs_verification: "border-warn bg-warn-tint text-warn",
+  verified: "border-ok bg-ok-tint text-ok",
+  resolved: "border-line-strong bg-panel-2 text-fg-faint",
 };
 
 export function StatusBadge({ status, className }: { status: IncidentStatus; className?: string }) {
   return (
     <span
       className={cn(
-        "inline-flex h-[22px] items-center rounded-full px-2 text-[12px] font-medium",
+        "inline-flex h-[22px] items-center border px-1.5 text-[12px] font-medium",
         STATUS_STYLE[status],
         className,
       )}
@@ -31,21 +31,21 @@ export function categoryColor(c: Category): string {
 
 export function CategoryChip({ category, className }: { category: Category; className?: string }) {
   return (
-    <span className={cn("inline-flex items-center gap-1.5 text-xs font-medium text-fg-muted", className)}>
+    <span className={cn("inline-flex items-center gap-1.5 text-xs text-fg-muted", className)}>
       <span
-        className="grid size-5 place-items-center rounded-md text-white [&_svg]:size-3"
+        className="grid size-5 place-items-center text-white [&_svg]:size-3"
         style={{ background: categoryColor(category) }}
       >
         <CategoryIcon category={category} />
       </span>
-      {CATEGORY_LABEL[category]}
+      <span className="entry-head text-[14px] italic">{CATEGORY_LABEL[category].toLowerCase()}</span>
     </span>
   );
 }
 
 /** A small swatch of the 90° cross-hatch: the mark of a possible conflict. */
 export function ConflictSwatch({ className }: { className?: string }) {
-  return <span aria-hidden className={cn("hatch-cross inline-block size-3 shrink-0 rounded-[3px] border border-conflict text-conflict", className)} />;
+  return <span aria-hidden className={cn("hatch-cross inline-block size-3 shrink-0 border border-conflict text-conflict", className)} />;
 }
 
 export function ConflictBadge({ count, className }: { count: number; className?: string }) {

@@ -1,5 +1,22 @@
 # Backwater Trace — Logo Guidelines
 
+## Final logo
+
+A stone-coloured water drop with a location pin over a winding canal, on an ultramarine rounded tile, matching the site's Lexicon and Plate look. This replaces the Canal B mark below, which is kept for reference only.
+
+| Use | File |
+|---|---|
+| Master (1024 px) | [`final/backwater-trace-logo.png`](final/backwater-trace-logo.png) |
+| App header, README (512 px) | `public/brand/backwater-trace-mark.png` |
+| Earlier tiles (black-on-white, blue-on-navy), retired | [`final/archive/`](final/archive/) |
+| Favicon, app icon, Apple touch icon | `src/app/favicon.ico` · `src/app/icon.png` · `src/app/apple-icon.png` |
+
+The tile works on light and dark grounds alike. Don't recolour, redraw or crop it.
+
+---
+
+## Archived: Canal B
+
 ![Logo in use](board/slides/slide-04.png)
 
 ## 1. The logo

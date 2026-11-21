@@ -5,23 +5,23 @@ primary_target: "src/app/dashboard/page.tsx"
 related_targets: ["src/app/page.tsx","src/app/report/page.tsx","src/app/incidents/[id]/page.tsx"]
 ---
 
-# Surface brief: Backwater Trace web app (dashboard, incident detail, report flow, landing)
+# Surface brief: Backwater Trace web app (landing, dashboard, incident record, report flow)
 
-Scope: /dashboard (Operate, primary), /incidents/[id] (Operate), /report (Operate, phone-first), / (Persuade). One visual world across all four.
-Audience/job: coordinator triaging grouped incident reports and possible conflicts; reporter submitting on a phone; judge grasping value in 90s.
-Constraints: Canal B logo untouched; brand colours Canal Teal #2FC5A8 / Deep Canal #0B3B35; "possible conflict", never a verdict; synthetic data labelled; status/category never colour-only.
-Chosen: Exposure Record (catalog operate-b-exposure-record-zone-sheets), chosen by the user over the roll. Translation: the dichroic magenta accent becomes Canal Teal (brand commitment); darkroom safelight red marks conflict, always paired with the 90° cross-hatch.
+Scope: / (Persuade), /dashboard (Operate, primary), /incidents/[id] (Operate), /report (Operate, phone-first). One visual world across all four.
+Audience/job: coordinator triaging grouped incident reports and possible conflicts; reporter submitting on a phone outdoors; judge grasping value in 90s.
+Constraints: drop-and-canal logo untouched (docs/brand/final/); Instrument Serif for big headings (user pin); "possible conflict", never a verdict; synthetic data labelled; status and category never colour-only; must not read as vibe-coded.
+Chosen: Lexicon and Plate (catalog rw-lexicon-shoulder-and-plate), adopted by the user over the roll (the roll assigned the snake-boat heat sheet). Accent left to the direction: ultramarine, echoing the logo's blue drop. New look and layout allowed; every route, field and handler stays.
 
 ## Direction contract
 
-THESIS: The incident board is a printer's exposure record: every incident is a stack of source sheets, and where two sheets disagree their hatches cross at ninety degrees. Refuses the dark neon ops dashboard (the old look) and the grey SaaS board.
+THESIS: Backwater Trace is a lexicon of Alappuzha's incidents: each incident is an entry, its source reports are numbered citations, and a disagreement is a variant reading set side by side in engraver's cross-hatch. Refuses the grey SaaS board, the dark ops screen and the previous Exposure Record darkroom.
 
-OWN-WORLD: Cool backlit neutral ground on an eleven-step zone ramp (zone 0 ink to zone X white), hairline ink rules, square corners. Condensed tracked caps (Antonio) for legends and headings, Geist for body, Geist Mono tabular for times, counts, coordinates. One glowing accent, Canal Teal, for the primary action and live state only. Safelight red plus cross-hatch for possible conflicts. Selected = deepest zone (inverted row).
+OWN-WORLD: Engraving black on uncoated stock, hairline and double rules, square corners. Colour only inside bordered plates: the map, product screens, category inks (ultramarine, viridian, emerald, chrome ochre, violet, sepia). Ultramarine is the one action colour; vermilion plus cross-hatch means possible conflict and nothing else. Instrument Serif for heads, entry titles and guide words; Geist for working text; Chilanka; tabular figures for readings. Controls framed with a double rule.
 
-STORY: Coordinator sees open incidents and which carry crossed hatches, selects one, reads both source values side by side, opens the sources and the evidence graph; reporter speaks Malayalam, corrects transcript, pins location, submits and learns how it was grouped.
+STORY: The coordinator reads open entries, sees which carry variant readings, opens one, compares cited sources, then the evidence graph; the reporter files an entry in Malayalam or English and sees which entry it joined; the judge reads one entry on the landing page and understands provenance.
 
-FIRST VIEWPORT: Dashboard: ink top bar with logo, nav, teal "Report incident". Left 360px record: status tabs, category filter, incident rows (stop-delta style source count, hatch swatch for conflict, inverted when selected). Map fills centre in a monochrome zone-ramp tile skin with hatch-ringed pins. Right 320px: overview counts, possible conflicts, recent activity.
+FIRST VIEWPORT: Landing: thin masthead (logo, guide words "first entry / last entry", links, ultramarine Report button); left shoulder index of incident kinds; centre "Alappuzha, on the record." at display scale over a double rule, one line, two actions; right Plate I, the incident board screen in a bordered plate with numbered captions. Dashboard: same masthead; left entry list headed by live guide words; map as a framed plate; right record column.
 
-FORM: Exposure Record challenger, adopted by the user (not on my grounded list; the roll assigned list item 4, coir). seed:2877d3f57f24c3b6
+FORM: Lexicon and Plate, a catalog challenger the user adopted (not on my grounded list; the roll assigned list item 3, the snake-boat heat sheet). seed:a367c26e13500fb4. Signature move: guide words at the head of the entry list recomputed from the first and last entry in view as it scrolls.
 
 FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance

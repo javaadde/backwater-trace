@@ -156,10 +156,10 @@ export function ReportForm() {
 
   return (
     <div className="mx-auto w-full max-w-3xl px-4 py-8">
-      <Link href="/dashboard" className="legend inline-flex items-center gap-1 text-fg-muted hover:text-fg">
+      <Link href="/dashboard" className="inline-flex items-center gap-1 text-[13px] font-medium text-fg-muted hover:text-fg hover:underline">
         <ArrowLeft className="size-3.5" /> Incident board
       </Link>
-      <h1 className="mt-4 font-display text-[32px] leading-tight font-semibold">Report an incident</h1>
+      <h1 className="mt-4 font-heading text-[48px] leading-none font-normal tracking-[-0.01em]">Report an incident</h1>
       <p className="mt-2 max-w-[60ch] text-[15px] leading-relaxed text-fg-muted">
         Flooded roads, waterlogging, blocked canals, waste dumping or damaged infrastructure in Alappuzha. Speak in Malayalam or type in any language.
       </p>
@@ -178,14 +178,14 @@ export function ReportForm() {
                                 i === step ? "border-accent text-fg" : i < step ? "border-fg-faint text-fg-muted hover:text-fg" : "border-line text-fg-faint",
               )}
             >
-              <span className="tabular">{i + 1}</span>
+              <span className="entry-head text-[18px] leading-none">{["I", "II", "III", "IV"][i]}</span>
               <span>{s}</span>
             </button>
           </li>
         ))}
       </ol>
 
-      <div className="mt-4 rounded-xl border border-line bg-panel p-6">
+      <div className="mt-4 border border-fg bg-panel p-6 shadow-[inset_0_0_0_3px_var(--panel),inset_0_0_0_4px_var(--line-strong)]">
         {step === 0 && (
           <div className="space-y-4">
             <VoiceRecorder
@@ -225,7 +225,7 @@ export function ReportForm() {
                       key={s.label}
                       type="button"
                       onClick={() => setDescription(s.text)}
-                      className="h-8 rounded-full border border-line bg-panel px-3 text-fg-muted hover:border-z7 hover:text-fg active:bg-panel-3"
+                      className="h-9 border border-line-strong bg-panel px-3 text-fg-muted hover:border-z7 hover:text-fg active:bg-panel-3"
                     >
                       {s.label}
                     </button>
@@ -241,7 +241,7 @@ export function ReportForm() {
           <div className="space-y-4">
             <div className="flex items-start justify-between gap-3">
               <div>
-                <h2 className="font-semibold">Where is it?</h2>
+                <h2 className="entry-head text-[26px] leading-none">Where is it?</h2>
                 <p className="text-sm text-fg-muted">Tap the map or drag the pin inside the dashed Alappuzha border. Pick a landmark to jump there.</p>
               </div>
               <GeoButton
@@ -267,7 +267,7 @@ export function ReportForm() {
                     setLocationText(l.name);
                   }}
                   className={cn(
-                    "rounded-full border px-3 py-1 text-[13px] transition-colors",
+                    "border px-3 py-1.5 text-[13px] transition-colors",
                     locationText === l.name ? "border-accent-text bg-accent-tint text-fg" : "border-line bg-panel text-fg-muted hover:border-z7 hover:text-fg",
                   )}
                 >
@@ -305,7 +305,7 @@ export function ReportForm() {
         {step === 2 && (
           <div className="space-y-5">
             <div>
-              <h2 className="font-semibold">Add a photo (optional)</h2>
+              <h2 className="entry-head text-[26px] leading-none">Add a photo (optional)</h2>
               <p className="text-sm text-fg-muted">Photos are stored privately and only shown through short-lived links. Avoid faces and number plates.</p>
               {photoUrl ? (
                 <div className="relative mt-3 overflow-hidden rounded-lg border border-line">
@@ -363,7 +363,7 @@ export function ReportForm() {
         {step === 3 && (
           <div className="space-y-5">
             <div>
-              <h2 className="font-semibold">Review</h2>
+              <h2 className="entry-head text-[26px] leading-none">Review</h2>
               <p className="text-sm text-fg-muted">
                 These details were suggested from your words. Change anything that&apos;s wrong; they help group your report with others.
               </p>
@@ -461,7 +461,7 @@ function Suggestions({ analysis, analyzing, fields }: { analysis: ExtractedDetai
       </span>
       {chips.length === 0 && !analyzing && <span className="text-fg-faint">nothing yet: add where and what you see</span>}
       {chips.map((c) => (
-        <span key={c} className="rounded-full bg-panel-3 px-2 py-0.5 text-fg">
+        <span key={c} className="border border-line-strong px-2 py-0.5 text-fg">
           {c}
         </span>
       ))}
@@ -546,7 +546,7 @@ function SubmitSuccess({ result, onAnother }: { result: SubmitResult; onAnother:
             <Check className="size-5" />
           </span>
           <div>
-            <h1 className="font-display text-[24px] leading-tight font-semibold">Report submitted</h1>
+            <h1 className="font-heading text-[34px] leading-none font-normal tracking-[-0.01em]">Report submitted</h1>
             <p className="text-sm text-fg-muted">Thank you. It is now visible on the incident board as an unverified report.</p>
           </div>
         </div>
@@ -556,7 +556,7 @@ function SubmitSuccess({ result, onAnother }: { result: SubmitResult; onAnother:
             {match ? "Grouped with an existing incident" : "New incident created"}
           </div>
           <div className="mt-1 flex flex-wrap items-center gap-2">
-            <span className="text-[15px] font-semibold">{incident.title}</span>
+            <span className="entry-head text-[20px] leading-tight">{incident.title}</span>
             <StatusBadge status={incident.status} />
           </div>
           {match && (
@@ -574,7 +574,7 @@ function SubmitSuccess({ result, onAnother }: { result: SubmitResult; onAnother:
         {newContradictions.length > 0 && (
           <div className="mt-3 rounded-lg border border-conflict/40 bg-panel p-4">
             <div className="flex items-center gap-2 text-sm font-semibold text-conflict">
-              <span aria-hidden className="hatch-cross size-3.5 rounded-[3px] border border-conflict" /> Your report differs from earlier reports
+              <span aria-hidden className="hatch-cross size-3.5 border border-conflict" /> Your report differs from earlier reports
             </div>
             <ul className="mt-2 space-y-1 text-sm text-fg-muted">
               {[...new Map(newContradictions.map((c) => [`${c.field}:${c.value_a}`, c])).values()].map((c) => (

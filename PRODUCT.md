@@ -36,8 +36,8 @@ It does not decide truth. It shows provenance and disagreement: each incident is
 
 ## Brand Commitments
 
-- Name: **Backwater Trace**. Logo: "Canal B" (a bold B split by a wavy canal). Masters in `docs/brand/kit/`; guidelines in `docs/brand/README.md` (clear space, minimum sizes, no recolouring outside palette, no logo on busy map tiles without a solid container).
-- Brand colours: Canal Teal `#2FC5A8`, Deep Canal `#0B3B35`. Wordmark set in Red Hat Display ExtraBold (outlined; don't retype).
+- Name: **Backwater Trace**. Logo: a stone-coloured water drop with a location pin over a winding canal, on an ultramarine rounded tile. Masters in `docs/brand/final/`; web files in `public/brand/`. The earlier "Canal B" kit in `docs/brand/kit/` is retired. Don't recolour or redraw the logo, and don't place it on busy map tiles without a solid container.
+- Brand colours: the Lexicon and Plate world in DESIGN.md: engraving black `#1A1712` on stock paper `#F7F3EA`, ultramarine `#24428F` as the single action colour (the logo tile's colour), vermilion with cross-hatch for possible conflicts only. Canal Teal and Deep Canal are retired. In the interface the name is set in Instrument Serif beside the logo tile.
 - Voice: neutral and careful. Say "possible conflict" or "needs verification"; never accuse a reporter or call a report false.
 
 ## Evidence on Hand
@@ -55,5 +55,5 @@ It does not decide truth. It shows provenance and disagreement: each incident is
 
 ## Accessibility & Inclusion
 
-- Bilingual text (Malayalam + English) must render well; Noto Sans Malayalam is in use.
+- Bilingual text (Malayalam + English) must render well; Chilanka is in use.
 - Status and category must not rely on colour alone (field use in sun/rain, colour-blind coordinators).
