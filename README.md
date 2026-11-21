@@ -12,6 +12,35 @@ Built for *Place & People — The Alappuzha Challenge*, with Malayalam voice rep
 - **Find related reports:** the incident engine compares category, distance, time, and wording before grouping reports on the map.
 - **Inspect a disagreement:** follow a possible conflict about water depth or road access back to the original reports in the evidence graph. A flag asks for verification; it does not decide which report is true.
 
+## Screenshots
+
+<p align="center">
+  <img src="public/landing/readme-hero.png" alt="Backwater Trace introduction: it shows where sources disagree" width="100%" />
+  <br />
+  <sub><b>Evidence-first principle</b> — The product surfaces disagreement without deciding which source is right.</sub>
+</p>
+
+<table>
+  <tr>
+    <td width="50%" align="center">
+      <img src="public/landing/readme-incident-board.png" alt="Backwater Trace incident board with a map, incident list, and possible conflicts" width="100%" />
+      <br />
+      <sub><b>Incident board</b><br />Browse reports, map locations, and source conflicts in one view.</sub>
+    </td>
+    <td width="50%" align="center">
+      <img src="public/landing/readme-report-flow.png" alt="Backwater Trace report flow showing how an entry is made" width="100%" />
+      <br />
+      <sub><b>Report flow</b><br />Submit a Malayalam voice or written report, locate it, and review it before sharing.</sub>
+    </td>
+  </tr>
+</table>
+
+<p align="center">
+  <img src="public/landing/readme-cta.png" alt="Backwater Trace call to action for reporting a nearby incident" width="100%" />
+  <br />
+  <sub><b>Report from the scene</b> — A simple entry point for reporting something nearby.</sub>
+</p>
+
 [Run locally](#run-locally) · [Try the demo](#try-the-ksrtc-flood-report) · [Architecture](#architecture) · [Incident engine](#incident-engine) · [Evidence graph](#evidence-graph) · [Configuration](#optional-services) · [Development](#development)
 
 ## Run locally
