@@ -42,10 +42,10 @@ export function ConflictCards({
         const example = contradictions.find((c) => c.field === field);
         const entries = [...values.entries()];
         return (
-          <div key={field} className="overflow-hidden rounded-lg border border-conflict/40 bg-panel">
+          <div key={field} className="overflow-hidden border border-conflict bg-panel">
             <div className="flex items-center gap-2 border-b border-line px-4 py-2.5">
               <ConflictSwatch />
-              <span className="legend text-conflict">Possible conflict</span>
+              <span className="text-[13px] font-semibold text-conflict">Possible conflict</span>
               <span className="text-[13px] text-fg-muted">on {FIELD_LABEL[field].toLowerCase()}</span>
             </div>
             <div className={cn("grid", entries.length === 2 ? "sm:grid-cols-[minmax(0,1fr)_1px_minmax(0,1fr)]" : "sm:grid-cols-2")}>
@@ -95,7 +95,7 @@ function ValueSheet({
   return (
     <>
       <div className="p-4">
-        <div className="text-[20px] font-semibold leading-tight text-fg">{value}</div>
+        <div className="entry-head text-[30px] leading-none text-conflict">{value}</div>
         <div className="mt-3 flex flex-wrap gap-1.5">
           {sources.map((id) => {
             const r = reports.find((x) => x.id === id);
@@ -103,7 +103,7 @@ function ValueSheet({
               <button
                 key={id}
                 onClick={() => onOpenReport(id)}
-                className="rounded-md border border-line bg-panel px-2 py-1 text-[12px] font-medium text-fg hover:border-z7 hover:bg-panel-2 active:bg-panel-3"
+                className="border border-line-strong bg-panel px-2 py-1 text-[12px] font-medium text-fg hover:border-z7 hover:bg-panel-2 active:bg-panel-3"
               >
                 Source {(index.get(id) ?? 0) + 1}
                 {r ? <span className="ml-1 text-[11px] font-normal text-fg-muted">{r.source_type === "voice" ? "voice" : "text"}, {timeAgo(r.reported_at)}</span> : null}

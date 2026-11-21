@@ -96,7 +96,7 @@ export default function IncidentMap({
                 </div>
                 {i.contradiction_count > 0 && (
                   <div className="mt-1 flex items-center gap-1.5 text-xs font-medium text-conflict">
-                    <span className="hatch-cross inline-block size-3 rounded-[3px] border border-conflict" />
+                    <span className="hatch-cross inline-block size-3 border border-conflict" />
                     {i.contradiction_count} possible conflict{i.contradiction_count > 1 ? "s" : ""}
                   </div>
                 )}

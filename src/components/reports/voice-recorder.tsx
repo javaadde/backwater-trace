@@ -118,7 +118,7 @@ export function VoiceRecorder({
 
   const recording = state === "recording";
   return (
-    <div className="rounded-lg bg-panel-2 p-4">
+    <div className="border border-line-strong bg-panel-2 p-4">
       <div className="flex items-center gap-4">
         <button
           type="button"
@@ -126,11 +126,11 @@ export function VoiceRecorder({
           disabled={state === "transcribing"}
           aria-label={recording ? "Stop recording" : "Start recording"}
           className={cn(
-            "relative grid size-16 shrink-0 place-items-center rounded-full border transition-colors disabled:opacity-60",
-            recording ? "border-danger bg-danger text-white" : "border-transparent bg-accent text-accent-ink hover:bg-accent-hover active:bg-accent-press",
+            "relative grid size-16 shrink-0 place-items-center border transition-colors disabled:opacity-60",
+            recording ? "border-danger bg-danger text-white shadow-[inset_0_0_0_3px_var(--danger),inset_0_0_0_4px_var(--panel)]" : "border-accent-press bg-accent text-accent-ink shadow-[inset_0_0_0_3px_var(--accent),inset_0_0_0_4px_var(--accent-ink)] hover:bg-accent-hover hover:shadow-[inset_0_0_0_3px_var(--accent-hover),inset_0_0_0_4px_var(--accent-ink)] active:bg-accent-press",
           )}
         >
-          {recording && <span className="absolute inset-0 animate-ping rounded-full bg-danger/40 motion-reduce:animate-none" />}
+          {recording && <span className="absolute inset-0 animate-ping bg-danger/40 motion-reduce:animate-none" />}
           {state === "transcribing" ? (
             <LoaderCircle className="size-6 animate-spin" />
           ) : recording ? (
@@ -140,7 +140,7 @@ export function VoiceRecorder({
           )}
         </button>
         <div className="min-w-0 flex-1">
-          <div className="text-[15px] font-semibold">
+          <div className="entry-head text-[22px] leading-tight">
             {state === "idle" && "Speak your report in Malayalam"}
             {recording && "Listening…"}
             {state === "transcribing" && "Transcribing with Sarvam AI…"}

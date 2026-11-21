@@ -1,594 +1,475 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-11-21T16:46:19+00:00",
+  "generatedAt": "2026-11-21T20:27:57+00:00",
   "title": "Design System: Backwater Trace",
   "extensions": {
     "colorMeta": {
-      "zone-0-ink": {
+      "stock-paper": {
         "role": "neutral",
-        "displayName": "Zone 0 Ink",
+        "displayName": "Stock Paper",
         "tonalRamp": [
-          "#0c1110",
-          "#1a201f",
-          "#3b4341",
-          "#4f5856",
-          "#848c89",
-          "#a4aba8",
-          "#dde2df",
-          "#f5f7f6"
+          "#0c0b08",
+          "#272521",
+          "#44423c",
+          "#64615a",
+          "#85827b",
+          "#a8a59e",
+          "#cbc9c3",
+          "#f0eeea"
         ]
       },
-      "zone-1": {
+      "stock-paper-2": {
         "role": "neutral",
-        "displayName": "Zone 1",
+        "displayName": "Stock Paper 2",
         "tonalRamp": [
-          "#0c1110",
-          "#1a201f",
-          "#3b4341",
-          "#4f5856",
-          "#848c89",
-          "#a4aba8",
-          "#dde2df",
-          "#f5f7f6"
+          "#0d0b07",
+          "#28251f",
+          "#454239",
+          "#656156",
+          "#878277",
+          "#a9a59b",
+          "#ccc9c1",
+          "#f1eee8"
         ]
       },
-      "zone-2": {
+      "stock-paper-3": {
         "role": "neutral",
-        "displayName": "Zone 2",
+        "displayName": "Stock Paper 3",
         "tonalRamp": [
-          "#0c1110",
-          "#1a201f",
-          "#3b4341",
-          "#4f5856",
-          "#848c89",
-          "#a4aba8",
-          "#dde2df",
-          "#f5f7f6"
+          "#0d0b06",
+          "#28251d",
+          "#464137",
+          "#676054",
+          "#888274",
+          "#aaa499",
+          "#cec9bf",
+          "#f2eee6"
         ]
       },
-      "zone-3": {
+      "engraving-black": {
         "role": "neutral",
-        "displayName": "Zone 3",
+        "displayName": "Engraving Black",
         "tonalRamp": [
-          "#0c1110",
-          "#1a201f",
-          "#3b4341",
-          "#4f5856",
-          "#848c89",
-          "#a4aba8",
-          "#dde2df",
-          "#f5f7f6"
+          "#0c0b09",
+          "#272521",
+          "#44423d",
+          "#64615b",
+          "#85827c",
+          "#a8a59f",
+          "#cbc9c4",
+          "#f0eeeb"
         ]
       },
-      "zone-4-muted-ink": {
+      "ink-2": {
         "role": "neutral",
-        "displayName": "Zone 4 Muted Ink",
+        "displayName": "Ink 2",
         "tonalRamp": [
-          "#0c1110",
-          "#1a201f",
-          "#3b4341",
-          "#4f5856",
-          "#848c89",
-          "#a4aba8",
-          "#dde2df",
-          "#f5f7f6"
+          "#0d0b07",
+          "#28251f",
+          "#464139",
+          "#666056",
+          "#888177",
+          "#aaa49b",
+          "#cdc8c1",
+          "#f2eee8"
         ]
       },
-      "zone-5": {
+      "ink-muted": {
         "role": "neutral",
-        "displayName": "Zone 5",
+        "displayName": "Ink Muted",
         "tonalRamp": [
-          "#0c1110",
-          "#1a201f",
-          "#3b4341",
-          "#4f5856",
-          "#848c89",
-          "#a4aba8",
-          "#dde2df",
-          "#f5f7f6"
+          "#0e0b06",
+          "#29241d",
+          "#474137",
+          "#686053",
+          "#898174",
+          "#aba498",
+          "#cec8be",
+          "#f2eee6"
         ]
       },
-      "zone-6-strong-rule": {
+      "hairline": {
         "role": "neutral",
-        "displayName": "Zone 6 Strong Rule",
+        "displayName": "Hairline",
         "tonalRamp": [
-          "#0c1110",
-          "#1a201f",
-          "#3b4341",
-          "#4f5856",
-          "#848c89",
-          "#a4aba8",
-          "#dde2df",
-          "#f5f7f6"
+          "#0e0b05",
+          "#29251b",
+          "#474135",
+          "#686051",
+          "#898271",
+          "#aba496",
+          "#cec9bd",
+          "#f3eee4"
         ]
       },
-      "zone-7": {
+      "rule-strong": {
         "role": "neutral",
-        "displayName": "Zone 7",
+        "displayName": "Rule Strong",
         "tonalRamp": [
-          "#0c1110",
-          "#1a201f",
-          "#3b4341",
-          "#4f5856",
-          "#848c89",
-          "#a4aba8",
-          "#dde2df",
-          "#f5f7f6"
+          "#0e0b04",
+          "#292419",
+          "#484133",
+          "#69604e",
+          "#8a816e",
+          "#aca493",
+          "#cfc9ba",
+          "#f3eee3"
         ]
       },
-      "zone-8-hairline": {
-        "role": "neutral",
-        "displayName": "Zone 8 Hairline",
-        "tonalRamp": [
-          "#0c1110",
-          "#1a201f",
-          "#3b4341",
-          "#4f5856",
-          "#848c89",
-          "#a4aba8",
-          "#dde2df",
-          "#f5f7f6"
-        ]
-      },
-      "zone-9-sunk-paper": {
-        "role": "neutral",
-        "displayName": "Zone 9 Sunk Paper",
-        "tonalRamp": [
-          "#0c1110",
-          "#1a201f",
-          "#3b4341",
-          "#4f5856",
-          "#848c89",
-          "#a4aba8",
-          "#dde2df",
-          "#f5f7f6"
-        ]
-      },
-      "zone-10-paper": {
-        "role": "neutral",
-        "displayName": "Zone 10 Paper",
-        "tonalRamp": [
-          "#0c1110",
-          "#1a201f",
-          "#3b4341",
-          "#4f5856",
-          "#848c89",
-          "#a4aba8",
-          "#dde2df",
-          "#f5f7f6"
-        ]
-      },
-      "backlit-ground": {
-        "role": "neutral",
-        "displayName": "Backlit Ground",
-        "tonalRamp": [
-          "#0c1110",
-          "#1a201f",
-          "#3b4341",
-          "#4f5856",
-          "#848c89",
-          "#a4aba8",
-          "#dde2df",
-          "#f5f7f6"
-        ],
-        "canonical": "oklch(93.6% 0.005 165)"
-      },
-      "paper-2": {
-        "role": "neutral",
-        "displayName": "Paper 2",
-        "tonalRamp": [
-          "#0c1110",
-          "#1a201f",
-          "#3b4341",
-          "#4f5856",
-          "#848c89",
-          "#a4aba8",
-          "#dde2df",
-          "#f5f7f6"
-        ],
-        "canonical": "oklch(95.5% 0.004 157)"
-      },
-      "faint-ink": {
-        "role": "neutral",
-        "displayName": "Faint Ink",
-        "tonalRamp": [
-          "#0c1110",
-          "#1a201f",
-          "#3b4341",
-          "#4f5856",
-          "#848c89",
-          "#a4aba8",
-          "#dde2df",
-          "#f5f7f6"
-        ],
-        "canonical": "oklch(50.2% 0.012 174)"
-      },
-      "canal-teal": {
+      "ultramarine": {
         "role": "primary",
-        "displayName": "Canal Teal",
+        "displayName": "Ultramarine",
         "tonalRamp": [
-          "#00110a",
-          "#003325",
-          "#005743",
-          "#007c63",
-          "#00a186",
-          "#56c4ab",
-          "#98e3cf",
-          "#cefaed"
-        ],
-        "canonical": "oklch(74.1% 0.128 176)"
-      },
-      "canal-teal-hover": {
-        "role": "primary",
-        "displayName": "Canal Teal (hover)",
-        "tonalRamp": [
-          "#00110a",
-          "#003325",
-          "#005743",
-          "#007c63",
-          "#00a186",
-          "#56c4ab",
-          "#98e3cf",
-          "#cefaed"
+          "#020726",
+          "#10214d",
+          "#263e79",
+          "#3e5da7",
+          "#5e7fcc",
+          "#85a4e7",
+          "#aec9ff",
+          "#d9efff"
         ]
       },
-      "canal-teal-press": {
+      "ultramarine-hover": {
         "role": "primary",
-        "displayName": "Canal Teal (press)",
+        "displayName": "Ultramarine Hover",
         "tonalRamp": [
-          "#00110a",
-          "#003325",
-          "#005743",
-          "#007c63",
-          "#00a186",
-          "#56c4ab",
-          "#98e3cf",
-          "#cefaed"
+          "#010728",
+          "#0d2151",
+          "#223e7d",
+          "#395dad",
+          "#587fd2",
+          "#81a4ec",
+          "#abc9ff",
+          "#d6efff"
         ]
       },
-      "deep-canal": {
+      "ultramarine-press": {
         "role": "primary",
-        "displayName": "Deep Canal",
+        "displayName": "Ultramarine Press",
         "tonalRamp": [
-          "#030e0c",
-          "#102c28",
-          "#264d47",
-          "#447069",
-          "#67938c",
-          "#91b7b0",
-          "#bbd8d3",
-          "#e2f3ef"
-        ],
-        "canonical": "oklch(31.9% 0.051 183)"
+          "#020823",
+          "#132248",
+          "#2a3f72",
+          "#435e9e",
+          "#6380c3",
+          "#8aa4df",
+          "#b2c9fa",
+          "#dcefff"
+        ]
       },
-      "canal-text": {
+      "ultramarine-tint": {
         "role": "primary",
-        "displayName": "Canal Text",
+        "displayName": "Ultramarine Tint",
         "tonalRamp": [
-          "#00100b",
-          "#003026",
-          "#005344",
-          "#117765",
-          "#449b88",
-          "#77bead",
-          "#aaded0",
-          "#d8f6ee"
-        ],
-        "canonical": "oklch(50.4% 0.091 177)"
+          "#0a0b0d",
+          "#242529",
+          "#404247",
+          "#5f6167",
+          "#808289",
+          "#a3a5ab",
+          "#c8c9ce",
+          "#edeef2"
+        ]
       },
-      "safelight": {
+      "vermilion": {
         "role": "secondary",
-        "displayName": "Safelight",
+        "displayName": "Vermilion (possible conflict)",
         "tonalRamp": [
-          "#200000",
-          "#520000",
-          "#850601",
-          "#b42e21",
-          "#dd5847",
-          "#fd8776",
-          "#ffb6a7",
-          "#ffdfd6"
-        ],
-        "canonical": "oklch(54.3% 0.174 30)"
+          "#250000",
+          "#4d0100",
+          "#791907",
+          "#a8321d",
+          "#d05740",
+          "#ec836e",
+          "#ffaf9c",
+          "#ffdbcb"
+        ]
       },
-      "safelight-on-ink": {
-        "role": "secondary",
-        "displayName": "Safelight on Ink",
-        "tonalRamp": [
-          "#1d0201",
-          "#4c0705",
-          "#7c1e16",
-          "#a93d32",
-          "#d16355",
-          "#f18f81",
-          "#ffbbaf",
-          "#ffe2da"
-        ],
-        "canonical": "oklch(75.8% 0.145 29)"
-      },
-      "fault-red": {
+      "danger": {
         "role": "tertiary",
-        "displayName": "Fault Red",
+        "displayName": "Danger",
         "tonalRamp": [
-          "#200000",
-          "#540000",
-          "#870000",
-          "#b7281e",
-          "#e05445",
-          "#ff8474",
-          "#ffb5a6",
-          "#ffded5"
-        ],
-        "canonical": "oklch(50.0% 0.182 29)"
+          "#220000",
+          "#490809",
+          "#74211e",
+          "#a13934",
+          "#c85c54",
+          "#e5877e",
+          "#ffb1a8",
+          "#ffdcd5"
+        ]
       },
-      "amber-check": {
+      "danger-tint": {
         "role": "tertiary",
-        "displayName": "Amber Check",
+        "displayName": "Danger Tint",
         "tonalRamp": [
-          "#160700",
-          "#3f1c00",
-          "#683700",
-          "#90570d",
-          "#b67a3c",
-          "#d7a26e",
-          "#f1c8a2",
-          "#ffead3"
-        ],
-        "canonical": "oklch(50.5% 0.110 65)"
+          "#0f0a08",
+          "#2c2320",
+          "#4b3f3b",
+          "#6c5d58",
+          "#8e7e79",
+          "#b0a29c",
+          "#d2c6c2",
+          "#f6ece9"
+        ]
       },
-      "amber-check-tint": {
+      "check-ochre": {
         "role": "tertiary",
-        "displayName": "Amber Check Tint",
+        "displayName": "Check Ochre",
         "tonalRamp": [
-          "#160700",
-          "#3f1c00",
-          "#683700",
-          "#90570d",
-          "#b67a3c",
-          "#d7a26e",
-          "#f1c8a2",
-          "#ffead3"
+          "#170700",
+          "#381f00",
+          "#5b3a02",
+          "#815818",
+          "#a5793d",
+          "#c49d6c",
+          "#e4c39b",
+          "#ffeaca"
+        ]
+      },
+      "check-ochre-tint": {
+        "role": "tertiary",
+        "displayName": "Check Ochre Tint",
+        "tonalRamp": [
+          "#0f0a02",
+          "#2b2413",
+          "#4b412a",
+          "#6c6043",
+          "#8e8163",
+          "#afa48a",
+          "#d2c8b3",
+          "#f5eedd"
         ]
       },
       "verified-green": {
         "role": "tertiary",
         "displayName": "Verified Green",
         "tonalRamp": [
-          "#001005",
-          "#003116",
-          "#00542e",
-          "#1c784b",
-          "#499d6e",
-          "#7ac096",
-          "#acdfbf",
-          "#d9f7e3"
-        ],
-        "canonical": "oklch(51.5% 0.112 157)"
+          "#001104",
+          "#012e19",
+          "#174e32",
+          "#2e704d",
+          "#51936d",
+          "#7db492",
+          "#a9d6ba",
+          "#d6f9e2"
+        ]
       },
       "verified-green-tint": {
         "role": "tertiary",
         "displayName": "Verified Green Tint",
         "tonalRamp": [
-          "#001005",
-          "#003116",
-          "#00542e",
-          "#1c784b",
-          "#499d6e",
-          "#7ac096",
-          "#acdfbf",
-          "#d9f7e3"
+          "#090c07",
+          "#22271e",
+          "#3e4539",
+          "#5c6456",
+          "#7d8677",
+          "#a0a89b",
+          "#c5ccc1",
+          "#ebf0e8"
         ]
       },
-      "survey-blue": {
+      "ink-flood": {
         "role": "tertiary",
-        "displayName": "Survey Blue",
+        "displayName": "Flood Ink (ultramarine)",
         "tonalRamp": [
-          "#010c1a",
-          "#042847",
-          "#164774",
-          "#33699e",
-          "#588dc3",
-          "#84b3e3",
-          "#b2d5fa",
-          "#dcf1ff"
-        ],
-        "canonical": "oklch(47.5% 0.102 250)"
-      },
-      "cat-flood": {
-        "role": "tertiary",
-        "displayName": "Category: Flood",
-        "tonalRamp": [
-          "#010c1a",
-          "#042847",
-          "#164774",
-          "#33699e",
-          "#588dc3",
-          "#84b3e3",
-          "#b2d5fa",
-          "#dcf1ff"
+          "#010923",
+          "#102349",
+          "#264072",
+          "#3e609e",
+          "#5e82c3",
+          "#85a5df",
+          "#afcafa",
+          "#daf0ff"
         ]
       },
-      "cat-waterlogging": {
+      "ink-waterlogging": {
         "role": "tertiary",
-        "displayName": "Category: Waterlogging",
+        "displayName": "Waterlogging Ink (viridian)",
         "tonalRamp": [
-          "#000f11",
-          "#002e32",
-          "#005056",
-          "#1c737a",
-          "#49979e",
-          "#7abbc1",
-          "#acdbdf",
-          "#d9f5f7"
-        ],
-        "canonical": "oklch(55.0% 0.079 203)"
+          "#00100e",
+          "#002c2a",
+          "#134c48",
+          "#2a6e69",
+          "#4e908a",
+          "#7bb1ac",
+          "#a7d3cf",
+          "#d4f7f3"
+        ]
       },
-      "cat-blocked-canal": {
+      "ink-blocked-canal": {
         "role": "tertiary",
-        "displayName": "Category: Blocked canal",
+        "displayName": "Blocked Canal Ink (emerald)",
         "tonalRamp": [
-          "#040f01",
-          "#142e05",
-          "#2c5017",
-          "#4a7334",
-          "#6d9758",
-          "#95bb83",
-          "#bedbb1",
-          "#e3f5db"
-        ],
-        "canonical": "oklch(51.2% 0.105 136)"
+          "#001002",
+          "#0e2c13",
+          "#254c2a",
+          "#3e6e43",
+          "#5f9063",
+          "#87b28a",
+          "#b1d4b3",
+          "#dcf7dd"
+        ]
       },
-      "cat-waste-dumping": {
+      "ink-waste-dumping": {
         "role": "tertiary",
-        "displayName": "Category: Waste dumping",
+        "displayName": "Waste Dumping Ink (chrome ochre)",
         "tonalRamp": [
-          "#150800",
-          "#3b1f00",
-          "#633b00",
-          "#8a5b00",
-          "#ae7f36",
-          "#d0a66a",
-          "#ebcba0",
-          "#ffebd1"
-        ],
-        "canonical": "oklch(54.3% 0.110 75)"
+          "#180600",
+          "#381e00",
+          "#5c3904",
+          "#83571a",
+          "#a6783f",
+          "#c59d6e",
+          "#e5c29c",
+          "#ffe9cb"
+        ]
       },
-      "cat-damaged-infrastructure": {
+      "ink-damaged-infrastructure": {
         "role": "tertiary",
-        "displayName": "Category: Damaged infrastructure",
+        "displayName": "Damaged Infrastructure Ink (violet)",
         "tonalRamp": [
-          "#0e0718",
-          "#2e1d41",
-          "#4f386c",
-          "#725794",
-          "#957ab9",
-          "#b9a1da",
-          "#d9c8f3",
-          "#f3e9ff"
-        ],
-        "canonical": "oklch(48.2% 0.099 303)"
+          "#10051c",
+          "#2c1b3f",
+          "#4c3665",
+          "#6e528e",
+          "#8f73b2",
+          "#b098d0",
+          "#d2bfed",
+          "#f6e7ff"
+        ]
       },
-      "cat-other": {
+      "ink-other": {
         "role": "tertiary",
-        "displayName": "Category: Other",
+        "displayName": "Other Ink (sepia)",
         "tonalRamp": [
-          "#090c0b",
-          "#222826",
-          "#3f4744",
-          "#5f6865",
-          "#828c88",
-          "#a8b0ad",
-          "#ccd3d0",
-          "#ecefee"
+          "#100a03",
+          "#2c2317",
+          "#4c402f",
+          "#6e5f49",
+          "#908069",
+          "#b1a38f",
+          "#d3c7b7",
+          "#f6ede0"
         ]
       }
     },
     "typographyMeta": {
       "display": {
         "displayName": "Display",
-        "purpose": "Landing statement only; 56px / 84px / 96px by breakpoint, uppercase."
+        "purpose": "Landing headline only, one line over a double rule."
+      },
+      "statement": {
+        "displayName": "Statement",
+        "purpose": "Centred landing statement between double rules."
       },
       "headline": {
         "displayName": "Headline",
-        "purpose": "Page titles (incident title, report form), 40px to 48px, uppercase."
+        "purpose": "Landing section heads and upper-roman step numerals."
+      },
+      "page-title": {
+        "displayName": "Page title",
+        "purpose": "The app h1 per screen; 32px board, 48px report form, 36-52px incident title."
       },
       "title": {
         "displayName": "Title",
-        "purpose": "Sheet titles and disputed values, 22px to 28px, uppercase."
+        "purpose": "Landing h3s and specimen entry heads."
+      },
+      "section-head": {
+        "displayName": "Section head",
+        "purpose": "Record column heads and the wordmark line."
+      },
+      "entry-head": {
+        "displayName": "Entry head",
+        "purpose": "Incident titles in the entry list (17px in the record column)."
+      },
+      "guide-word": {
+        "displayName": "Guide word",
+        "purpose": "First and last entry in view at the head of the entry list."
+      },
+      "part-of-speech": {
+        "displayName": "Part of speech",
+        "purpose": "Italic lowercase category name after its ink square."
+      },
+      "lead": {
+        "displayName": "Lead",
+        "purpose": "Landing introduction, max 36ch."
       },
       "body": {
         "displayName": "Body",
-        "purpose": "Summaries and source quotes, 60 to 68ch."
+        "purpose": "Working text; 16px on the landing page."
       },
-      "body-dense": {
-        "displayName": "Body dense",
-        "purpose": "Row titles, list items, chips."
-      },
-      "label": {
+      "legend": {
         "displayName": "Legend",
-        "purpose": "Section headings, field names, nav, stepper; drops to 10.5px to 11px for tags and field names."
+        "purpose": "Field and group names, sentence case."
       },
-      "data": {
-        "displayName": "Data",
-        "purpose": "Times, counts, coordinates, scores; tabular figures."
+      "reading": {
+        "displayName": "Reading",
+        "purpose": "Counts, times, source totals; tabular figures."
       },
       "malayalam": {
         "displayName": "Malayalam",
-        "purpose": "Malayalam source quotes, one step larger than English body."
+        "purpose": "Malayalam report text and bilingual lines."
       }
     },
     "shadows": [
       {
-        "name": "sheet-lift",
-        "value": "0 10px 30px rgb(12 17 16 / 0.12)",
-        "purpose": "Lead record sheet on the landing page."
+        "name": "inner-frame-app",
+        "value": "inset 0 0 0 2px <fill>, inset 0 0 0 3px <paper or rule-strong>",
+        "purpose": "Inner double-rule frame on app buttons; not elevation."
       },
       {
-        "name": "source-sheet-lift",
-        "value": "0 6px 18px rgb(12 17 16 / 0.14)",
-        "purpose": "Tilted source sheets stacked under the record."
+        "name": "inner-frame-landing",
+        "value": "inset 0 0 0 3px <fill>, inset 0 0 0 4px <paper or rule-strong>",
+        "purpose": "Inner double-rule frame on landing buttons."
       },
       {
-        "name": "map-overlay",
-        "value": "0 2px 6px rgb(12 17 16 / 0.12)",
-        "purpose": "Map controls and legend floating over tiles."
+        "name": "selected-rule",
+        "value": "inset 0 0 0 1px #1a1712",
+        "purpose": "Selected entry row."
       },
       {
-        "name": "map-popup",
-        "value": "0 8px 20px rgb(12 17 16 / 0.18)",
-        "purpose": "Leaflet popups."
-      },
-      {
-        "name": "graph-root",
-        "value": "0 4px 12px rgb(12 17 16 / 0.25)",
-        "purpose": "Inked incident node in the evidence graph."
-      },
-      {
-        "name": "pin-ring",
-        "value": "0 0 0 2px #f5f7f6, 0 0 0 3px #0c1110, 0 3px 8px rgb(12 17 16 / 0.3)",
-        "purpose": "Paper and ink ring on map pins."
-      },
-      {
-        "name": "pin-ring-selected",
-        "value": "0 0 0 2px #f5f7f6, 0 0 0 5px #0c1110, 0 4px 12px rgb(12 17 16 / 0.35)",
-        "purpose": "Selected map pin."
-      },
-      {
-        "name": "highlight-ring",
-        "value": "0 0 0 3px #2fc5a8",
-        "purpose": "Source card jumped to from the evidence graph."
+        "name": "pin-halo",
+        "value": "0 0 0 2px #f7f3ea",
+        "purpose": "Paper halo separating map pins from tiles."
       }
     ],
     "motion": [
       {
         "name": "ease-out",
         "value": "cubic-bezier(0.16, 1, 0.3, 1)",
-        "purpose": "The single easing curve for settles and pins."
+        "purpose": "State transitions and the double-rule draw."
       },
       {
-        "name": "settle",
-        "value": "520ms translateY(8px) to 0, keeps --tilt rotation, staggered animation-delay",
-        "purpose": "Sheets settle into place; content visible from the first frame. Removed under reduced motion."
+        "name": "ease-in",
+        "value": "cubic-bezier(0.7, 0, 0.84, 0)",
+        "purpose": "Exits."
       },
       {
-        "name": "pin",
-        "value": "220ms transform and opacity",
-        "purpose": "Pin scale on selection and dimming. Removed under reduced motion."
+        "name": "ease-in-out",
+        "value": "cubic-bezier(0.65, 0, 0.35, 1)",
+        "purpose": "Symmetric moves."
       },
       {
-        "name": "control",
-        "value": "150ms background-color, color",
-        "purpose": "Buttons, tabs, links."
+        "name": "dur-micro",
+        "value": "120ms",
+        "purpose": "Link colour, press nudge."
       },
       {
-        "name": "row",
-        "value": "200ms background-color, opacity",
-        "purpose": "Incident row selection and dimming."
+        "name": "dur-short",
+        "value": "220ms",
+        "purpose": "Button fill, pin scale."
       },
       {
-        "name": "highlight",
-        "value": "300ms border-color, box-shadow",
-        "purpose": "Source card highlight ring."
+        "name": "dur-long",
+        "value": "420ms",
+        "purpose": "Larger reveals."
+      },
+      {
+        "name": "rule-draw",
+        "value": "scaleX 0 to 1, 900ms ease-out, from left",
+        "purpose": "Landing double rule under the headline draws once; removed under reduced motion."
       }
     ],
     "breakpoints": [
@@ -597,33 +478,24 @@
         "value": "640px"
       },
       {
-        "name": "md",
-        "value": "768px"
-      },
-      {
         "name": "lg",
         "value": "1024px"
       },
       {
         "name": "xl",
         "value": "1280px"
-      }
-    ],
-    "hatches": [
-      {
-        "name": "hatch",
-        "value": "repeating-linear-gradient(45deg, currentColor 0 1px, transparent 1px 5px)",
-        "purpose": "One source; completed steps; empty states."
       },
       {
-        "name": "hatch-dense",
-        "value": "repeating-linear-gradient(45deg, currentColor 0 1px, transparent 1px 3px)",
-        "purpose": "Stacked reports."
+        "name": "landing-narrow",
+        "value": "30rem"
       },
       {
-        "name": "hatch-cross",
-        "value": "45deg and -45deg hatches layered, 1px line, 5px pitch",
-        "purpose": "Possible conflict; always paired with safelight red."
+        "name": "landing-stack",
+        "value": "64rem"
+      },
+      {
+        "name": "landing-shoulder",
+        "value": "80rem"
       }
     ]
   },
@@ -632,134 +504,142 @@
       "name": "Primary Button",
       "kind": "button",
       "refersTo": "button-primary",
-      "description": "The one forward action per view: Canal Teal with Deep Canal ink.",
-      "html": "<button class=\"ds-btn-primary\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" aria-hidden=\"true\"><path d=\"M12 5v14M5 12h14\"/></svg> Report incident</button>",
-      "css": ".ds-btn-primary { display: inline-flex; align-items: center; gap: 8px; height: 36px; padding: 0 14px; font-family: var(--font-geist-sans, Geist), sans-serif; font-size: 14px; border-radius: 2px; cursor: pointer; transition: background-color 150ms, color 150ms; background: var(--accent, #2fc5a8); color: var(--accent-ink, #0b3b35); border: 1px solid var(--deep-canal, #0b3b35); font-weight: 600; } .ds-btn-primary:hover { background: #45d3b8; } .ds-btn-primary:active { background: #27b096; } .ds-btn-primary:focus-visible { outline: 2px solid var(--z0, #0c1110); outline-offset: 2px; }"
+      "description": "The one action colour, framed with an inner double rule; app size.",
+      "html": "<button class=\"ds-btn-primary\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\"><path d=\"M12 5v14M5 12h14\"/></svg>Report incident</button>",
+      "css": ".ds-btn-primary{display:inline-flex;align-items:center;gap:6px;height:36px;padding:0 14px;font-family:var(--font-body);font-size:13px;font-weight:600;color:#f7f3ea;background:#24428f;border:1px solid #1b3374;border-radius:0;box-shadow:inset 0 0 0 2px #24428f,inset 0 0 0 3px #f7f3ea;cursor:pointer;transition:background-color 150ms,box-shadow 150ms}.ds-btn-primary:hover{background:#2d52a8;box-shadow:inset 0 0 0 2px #2d52a8,inset 0 0 0 3px #f7f3ea}.ds-btn-primary:active{background:#1b3374;box-shadow:inset 0 0 0 2px #1b3374,inset 0 0 0 3px #f7f3ea}.ds-btn-primary:focus-visible{outline:2px solid #24428f;outline-offset:2px}"
     },
     {
-      "name": "Secondary Button",
+      "name": "Primary Button (landing)",
       "kind": "button",
-      "refersTo": "button-secondary",
-      "description": "Paper with a 1px ink rule; the default button.",
-      "html": "<button class=\"ds-btn-secondary\">Report incident</button>",
-      "css": ".ds-btn-secondary { display: inline-flex; align-items: center; gap: 8px; height: 36px; padding: 0 14px; font-family: var(--font-geist-sans, Geist), sans-serif; font-size: 14px; border-radius: 2px; cursor: pointer; transition: background-color 150ms, color 150ms; background: var(--z10, #f5f7f6); color: var(--z0, #0c1110); border: 1px solid var(--z0, #0c1110); font-weight: 500; } .ds-btn-secondary:hover { background: var(--z9, #dde2df); } .ds-btn-secondary:focus-visible { outline: 2px solid var(--z0, #0c1110); outline-offset: 2px; }"
+      "refersTo": "button-primary-landing",
+      "description": "Landing-size primary with a 3px ring and 1px paper rule; sinks 1px on press.",
+      "html": "<button class=\"ds-btn-lx\">Report an incident</button>",
+      "css": ".ds-btn-lx{display:inline-flex;align-items:center;min-height:52px;padding:0 24px 0 16px;font-family:var(--font-body);font-size:16px;font-weight:600;line-height:1;color:#f7f3ea;background:#24428f;border:1px solid #1b3374;border-radius:0;box-shadow:inset 0 0 0 3px #24428f,inset 0 0 0 4px #f7f3ea;cursor:pointer;transition:background-color 220ms cubic-bezier(0.16,1,0.3,1),box-shadow 220ms cubic-bezier(0.16,1,0.3,1),transform 120ms}.ds-btn-lx:hover{background:#2d52a8;box-shadow:inset 0 0 0 3px #2d52a8,inset 0 0 0 4px #f7f3ea}.ds-btn-lx:active{background:#1b3374;box-shadow:inset 0 0 0 3px #1b3374,inset 0 0 0 4px #f7f3ea;transform:translateY(1px)}.ds-btn-lx:focus-visible{outline:2px solid #24428f;outline-offset:3px}"
     },
     {
-      "name": "Ink Button",
+      "name": "Quiet Button",
       "kind": "button",
-      "refersTo": "button-ink",
-      "description": "Inverted zone 0 button for strong secondary actions.",
-      "html": "<button class=\"ds-btn-ink\">Open record</button>",
-      "css": ".ds-btn-ink { display: inline-flex; align-items: center; gap: 8px; height: 36px; padding: 0 14px; font-family: var(--font-geist-sans, Geist), sans-serif; font-size: 14px; border-radius: 2px; cursor: pointer; transition: background-color 150ms, color 150ms; background: var(--z0, #0c1110); color: var(--z10, #f5f7f6); border: 1px solid var(--z0, #0c1110); font-weight: 500; } .ds-btn-ink:hover { background: var(--z2, #29302e); } .ds-btn-ink:focus-visible { outline: 2px solid var(--z0, #0c1110); outline-offset: 2px; }"
-    },
-    {
-      "name": "Text Field",
-      "kind": "input",
-      "refersTo": "input",
-      "description": "Paper field with an ink rule and a 2px corner.",
-      "html": "<input class=\"ds-input\" placeholder=\"Search incidents, places…\" />",
-      "css": ".ds-input { height: 40px; width: 260px; padding: 0 12px; background: var(--z10, #f5f7f6); color: var(--z0, #0c1110); border: 1px solid var(--z0, #0c1110); border-radius: 2px; font-size: 14px; caret-color: var(--accent-text, #0b7563); } .ds-input::placeholder { color: var(--fg-faint, #5d6663); } .ds-input:focus-visible { outline: 2px solid var(--z0, #0c1110); outline-offset: 2px; }"
-    },
-    {
-      "name": "Top Bar",
-      "kind": "nav",
-      "refersTo": "top-bar",
-      "description": "56px ink bar: logo, legend-caps nav with an inset active cell, mono clock, teal action.",
-      "html": "<header class=\"ds-topbar\"><span class=\"ds-topbar-mark\"></span><strong class=\"ds-topbar-name\">Backwater Trace</strong><nav class=\"ds-topbar-nav\"><a class=\"ds-topbar-link is-active\" href=\"#\">Incident board</a></nav><span class=\"ds-topbar-clock\">14:32:08 IST</span><button class=\"ds-topbar-cta\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" aria-hidden=\"true\"><path d=\"M12 5v14M5 12h14\"/></svg> Report incident</button></header>",
-      "css": ".ds-topbar { display: flex; align-items: stretch; gap: 16px; height: 56px; padding: 0 16px; background: var(--z0, #0c1110); color: var(--z10, #f5f7f6); } .ds-topbar-mark { align-self: center; width: 32px; height: 32px; border-radius: 7px; background: #2fc5a8; } .ds-topbar-name { align-self: center; font-size: 15px; font-weight: 600; } .ds-topbar-nav { display: flex; margin-left: 16px; } .ds-topbar-link { font-family: var(--font-antonio, Antonio), sans-serif; font-weight: 500; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; line-height: 1.2; display: flex; align-items: center; padding: 0 14px; color: var(--z7, #a4aba8); text-decoration: none; border-left: 1px solid transparent; border-right: 1px solid transparent; } .ds-topbar-link:hover { color: var(--z10, #f5f7f6); } .ds-topbar-link.is-active { background: var(--z1, #1a201f); color: var(--z10, #f5f7f6); border-color: var(--z3, #3b4341); } .ds-topbar-clock { align-self: center; margin-left: auto; font-family: var(--font-geist-mono, 'Geist Mono'), monospace; font-variant-numeric: tabular-nums; font-size: 12px; color: var(--z7, #a4aba8); } .ds-topbar-cta { align-self: center; display: inline-flex; align-items: center; gap: 6px; height: 32px; padding: 0 12px; font-size: 13px; font-weight: 600; background: #2fc5a8; color: #0b3b35; border: 1px solid #0b3b35; border-radius: 2px; cursor: pointer; } .ds-topbar-cta:hover { background: #45d3b8; }"
+      "refersTo": "button-quiet",
+      "description": "Paper button with a black border and inner Rule Strong frame.",
+      "html": "<button class=\"ds-btn-quiet\">Open evidence graph</button>",
+      "css": ".ds-btn-quiet{display:inline-flex;align-items:center;height:36px;padding:0 14px;font-family:var(--font-body);font-size:14px;font-weight:500;color:#1a1712;background:#f7f3ea;border:1px solid #1a1712;border-radius:0;box-shadow:inset 0 0 0 2px #f7f3ea,inset 0 0 0 3px #b3a993;cursor:pointer;transition:background-color 150ms,box-shadow 150ms}.ds-btn-quiet:hover{background:#efe9dc;box-shadow:inset 0 0 0 2px #efe9dc,inset 0 0 0 3px #b3a993}.ds-btn-quiet:active{background:#e6dece}.ds-btn-quiet:focus-visible{outline:2px solid #24428f;outline-offset:2px}"
     },
     {
       "name": "Status Tags",
       "kind": "chip",
-      "refersTo": "status-tag-needs-verification",
-      "description": "Legend-caps tags; status reads by its words, with color as a second cue.",
-      "html": "<span class=\"ds-tag ds-tag-new\">New</span> <span class=\"ds-tag ds-tag-warn\">Needs verification</span> <span class=\"ds-tag ds-tag-ok\">Verified</span> <span class=\"ds-tag ds-tag-done\">Resolved</span>",
-      "css": ".ds-tag { font-family: var(--font-antonio, Antonio), sans-serif; font-weight: 500; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; line-height: 1.2; display: inline-flex; align-items: center; height: 20px; padding: 0 6px; font-size: 11px; letter-spacing: 0.08em; border: 1px solid; border-radius: 2px; } .ds-tag-new { border-color: #0c1110; background: #f5f7f6; color: #0c1110; } .ds-tag-warn { border-color: #8f5508; background: #f6ead6; color: #8f5508; } .ds-tag-ok { border-color: #1d7a4c; background: #e1efe6; color: #1d7a4c; } .ds-tag-done { border-color: #848c89; background: #dde2df; color: #4f5856; }"
+      "refersTo": "status-needs-verification",
+      "description": "Square status tags; text always carries the meaning.",
+      "html": "<span class=\"ds-tag ds-tag--new\">New</span> <span class=\"ds-tag ds-tag--check\">Needs verification</span> <span class=\"ds-tag ds-tag--ok\">Verified</span>",
+      "css": ".ds-tag{display:inline-flex;align-items:center;height:22px;padding:0 6px;border:1px solid;font-family:var(--font-body);font-size:12px;font-weight:500;border-radius:0}.ds-tag--new{border-color:#1a1712;background:#f7f3ea;color:#1a1712}.ds-tag--check{border-color:#7f5200;background:#f1e2bf;color:#7f5200}.ds-tag--ok{border-color:#1f6b45;background:#dde8d6;color:#1f6b45}"
     },
     {
-      "name": "Incident Row",
+      "name": "Category Mark and Conflict Mark",
       "kind": "custom",
-      "refersTo": "incident-row-selected",
-      "description": "Ruled ledger row with category tile, source stops and the cross-hatch conflict mark; selection inverts to zone 0.",
-      "html": "<ul class=\"ds-rows\"><li class=\"ds-row\"><span class=\"ds-cat\" style=\"background:#285f93\"></span><div><div class=\"ds-row-head\"><b>AC Road flooding at Pallathuruthy</b><time>12m ago</time></div><div class=\"ds-row-sub\">Flood · Pallathuruthy</div><div class=\"ds-row-meta\"><span class=\"ds-stops\"><i class=\"on\"></i><i class=\"on\"></i><i></i><i></i><i></i></span><span class=\"ds-mono\">2 sources</span><span class=\"ds-conf\"><span class=\"ds-xh\"></span>1 possible conflict</span></div></div></li><li class=\"ds-row is-selected\"><span class=\"ds-cat\" style=\"background:#4a7434\"></span><div><div class=\"ds-row-head\"><b>Canal blocked near Kainakary</b><time>40m ago</time></div><div class=\"ds-row-sub\">Blocked canal · Kainakary</div><div class=\"ds-row-meta\"><span class=\"ds-stops\"><i class=\"on\"></i><i class=\"on\"></i><i class=\"on\"></i><i></i><i></i></span><span class=\"ds-mono\">3 sources</span><span class=\"ds-conf\"><span class=\"ds-xh\"></span>2 possible conflicts</span></div><button class=\"ds-row-open\">Open sources and evidence →</button></div></li></ul>",
-      "css": ".ds-rows { list-style: none; margin: 0; padding: 0; width: 360px; background: #f5f7f6; border: 1px solid #0c1110; font-family: var(--font-geist-sans, Geist), sans-serif; } .ds-row { display: grid; grid-template-columns: 20px 1fr; gap: 0 12px; padding: 14px 16px; border-top: 1px solid #c3c9c6; cursor: pointer; transition: background-color 200ms; } .ds-row:first-child { border-top: 0; } .ds-row:hover { background: #dde2df; } .ds-cat { width: 20px; height: 20px; border-radius: 2px; margin-top: 2px; } .ds-row-head { display: flex; justify-content: space-between; gap: 12px; font-size: 14px; } .ds-row-head time, .ds-mono { font-family: var(--font-geist-mono, 'Geist Mono'), monospace; font-variant-numeric: tabular-nums; font-size: 11px; color: #5d6663; } .ds-row-sub { margin-top: 2px; font-size: 12px; color: #4f5856; } .ds-row-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; margin-top: 10px; } .ds-stops { display: inline-flex; gap: 2px; } .ds-stops i { width: 5px; height: 12px; border: 1px solid #3b4341; box-sizing: border-box; } .ds-stops i.on { background: #1a201f; border-color: #1a201f; } .ds-conf { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 500; color: #c0392b; } .ds-xh { width: 14px; height: 14px; border: 1px solid currentColor; box-sizing: border-box; background-image: repeating-linear-gradient(45deg, currentColor 0 1px, transparent 1px 5px), repeating-linear-gradient(-45deg, currentColor 0 1px, transparent 1px 5px); } .ds-row.is-selected { background: #0c1110; color: #f5f7f6; } .ds-row.is-selected .ds-row-sub, .ds-row.is-selected time, .ds-row.is-selected .ds-mono { color: #a4aba8; } .ds-row.is-selected .ds-stops i { border-color: #666f6c; } .ds-row.is-selected .ds-stops i.on { background: #f5f7f6; border-color: #f5f7f6; } .ds-row.is-selected .ds-conf { color: #ff8a7a; } .ds-row-open { display: flex; justify-content: space-between; align-items: center; width: 100%; height: 32px; margin-top: 12px; padding: 0 12px; border: 0; border-radius: 2px; background: #2fc5a8; color: #0b3b35; font-size: 13px; font-weight: 600; cursor: pointer; } .ds-row-open:hover { background: #45d3b8; }"
+      "refersTo": "category-ink",
+      "description": "Ink square with italic lowercase category name; vermilion cross-hatch swatch for possible conflict.",
+      "html": "<span class=\"ds-kind\"><span class=\"ds-kind__ink\"><svg width=\"12\" height=\"12\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\"><path d=\"M2 6c3-2 5 2 8 0s5-2 8 0 4 0 4 0M2 12c3-2 5 2 8 0s5-2 8 0 4 0 4 0M2 18c3-2 5 2 8 0s5-2 8 0 4 0 4 0\"/></svg></span><i>flood</i></span> <span class=\"ds-conflict\"><span class=\"ds-hatch\"></span>2 possible conflicts</span>",
+      "css": ".ds-kind{display:inline-flex;align-items:center;gap:6px;color:#4f483c}.ds-kind__ink{display:inline-grid;place-items:center;width:20px;height:20px;background:#2a4d8f;color:#fff}.ds-kind i{font-family:var(--font-heading,\"Instrument Serif\",Georgia,serif);font-size:15px;font-weight:400}.ds-conflict{display:inline-flex;align-items:center;gap:6px;margin-left:16px;font-family:var(--font-body);font-size:12px;font-weight:600;color:#b8361f}.ds-hatch{display:inline-block;width:12px;height:12px;border:1px solid #b8361f;color:#b8361f;background-image:repeating-linear-gradient(45deg,currentColor 0 1px,transparent 1px 4px),repeating-linear-gradient(-45deg,currentColor 0 1px,transparent 1px 4px)}"
     },
     {
-      "name": "Conflict Card",
+      "name": "Guide Words",
+      "kind": "custom",
+      "refersTo": "entry-row",
+      "description": "Signature: first and last entry in view head the entry list, recomputed on scroll.",
+      "html": "<div class=\"ds-guide\"><p>Canal blocked near Kainakary</p><span>14 shown</span><p>Waterlogging at Mullakkal</p></div>",
+      "css": ".ds-guide{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:baseline;gap:12px;padding:12px 16px 10px;background:#f7f3ea;border-bottom:3px double #1a1712}.ds-guide p{margin:0;font-family:var(--font-heading,\"Instrument Serif\",Georgia,serif);font-weight:400;font-size:18px;line-height:1.25;color:#1a1712;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.ds-guide p:last-child{text-align:right}.ds-guide span{font-family:var(--font-body);font-size:12px;color:#4f483c;font-variant-numeric:tabular-nums}"
+    },
+    {
+      "name": "Entry Row",
       "kind": "card",
-      "refersTo": "record-sheet",
-      "description": "Safelight-ruled sheet; each disagreeing value prints its own hatch angle and a cross-hatched strip sits between them.",
-      "html": "<div class=\"ds-conflict\"><div class=\"ds-conflict-head\"><span class=\"ds-xh\"></span><span class=\"ds-legend\">Possible conflict</span><b>· Road status</b></div><div class=\"ds-conflict-body\"><div class=\"ds-val\"><div class=\"ds-strip\" style=\"--a:45deg\"></div><div class=\"ds-val-text\">Blocked</div><button class=\"ds-src\">Source 1 <span>· voice · 2h ago</span></button></div><div class=\"ds-cross\"></div><div class=\"ds-val\"><div class=\"ds-strip\" style=\"--a:-45deg\"></div><div class=\"ds-val-text\">Partially open</div><button class=\"ds-src\">Source 2 <span>· text · 1h ago</span></button></div></div></div>",
-      "css": ".ds-conflict { width: 520px; background: #f5f7f6; border: 1px solid #c0392b; font-family: var(--font-geist-sans, Geist), sans-serif; color: #0c1110; } .ds-conflict-head { display: flex; align-items: center; gap: 8px; padding: 10px 16px; border-bottom: 1px solid #c0392b; font-size: 13px; } .ds-legend { font-family: var(--font-antonio, Antonio), sans-serif; font-weight: 500; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; line-height: 1.2; color: #c0392b; } .ds-xh { width: 14px; height: 14px; border: 1px solid #c0392b; color: #c0392b; box-sizing: border-box; background-image: repeating-linear-gradient(45deg, currentColor 0 1px, transparent 1px 5px), repeating-linear-gradient(-45deg, currentColor 0 1px, transparent 1px 5px); } .ds-conflict-body { display: grid; grid-template-columns: 1fr 28px 1fr; } .ds-val { padding: 16px; } .ds-strip { height: 8px; border: 1px solid #3b4341; color: #3b4341; background-image: repeating-linear-gradient(var(--a), currentColor 0 1px, transparent 1px 5px); } .ds-val-text { margin-top: 12px; font-family: var(--font-antonio, Antonio), sans-serif; font-size: 26px; font-weight: 600; text-transform: uppercase; line-height: 1; letter-spacing: 0.02em; } .ds-src { margin-top: 12px; padding: 4px 8px; font-size: 12px; font-weight: 500; background: #f5f7f6; color: #0c1110; border: 1px solid #0c1110; border-radius: 2px; cursor: pointer; } .ds-src span { font-family: var(--font-geist-mono, 'Geist Mono'), monospace; font-size: 11px; opacity: 0.7; } .ds-src:hover { background: #0c1110; color: #f5f7f6; } .ds-cross { border-left: 1px solid #c3c9c6; border-right: 1px solid #c3c9c6; color: rgb(192 57 43 / 0.7); background-image: repeating-linear-gradient(45deg, currentColor 0 1px, transparent 1px 5px), repeating-linear-gradient(-45deg, currentColor 0 1px, transparent 1px 5px); }"
+      "refersTo": "entry-row-selected",
+      "description": "An incident entry in the list; selected state draws an inner black rule.",
+      "html": "<div class=\"ds-entry\" tabindex=\"0\"><span class=\"ds-entry__ink\"></span><div><div class=\"ds-entry__top\"><span class=\"ds-entry__head\">Flooded road at Pallathuruthy</span><span class=\"ds-entry__time\">12m</span></div><div class=\"ds-entry__meta\">3 reports, Alappuzha North</div></div></div>",
+      "css": ".ds-entry{display:grid;grid-template-columns:20px minmax(0,1fr);gap:0 12px;padding:16px;background:#f7f3ea;border-bottom:1px solid #d6cdba;cursor:pointer;transition:background-color 200ms}.ds-entry:hover{background:#efe9dc}.ds-entry:focus-visible{outline:2px solid #24428f;outline-offset:-2px;background:#efe9dc;box-shadow:inset 0 0 0 1px #1a1712}.ds-entry__ink{width:20px;height:20px;margin-top:4px;background:#2a4d8f}.ds-entry__top{display:flex;align-items:baseline;justify-content:space-between;gap:12px}.ds-entry__head{font-family:var(--font-heading,\"Instrument Serif\",Georgia,serif);font-size:19px;line-height:1.25;color:#1a1712;word-spacing:0.14em}.ds-entry__time{font-size:11px;color:#665e50;font-variant-numeric:tabular-nums}.ds-entry__meta{margin-top:4px;font-family:var(--font-body);font-size:13px;color:#4f483c}"
     },
     {
-      "name": "Segmented Status Tabs",
+      "name": "Plate",
+      "kind": "card",
+      "refersTo": "plate",
+      "description": "Bordered frame that holds all colour: map, screenshots; serif plate number caption.",
+      "html": "<figure class=\"ds-plate\"><div class=\"ds-plate__frame\"></div><figcaption><span>Plate I.</span> The incident board, showing synthetic demo data.</figcaption></figure>",
+      "css": ".ds-plate{margin:0;max-width:320px}.ds-plate__frame{height:180px;margin:5px;background:#efe9dc;border:1px solid #1a1712;outline:1px solid #1a1712;outline-offset:4px}.ds-plate figcaption{margin-top:16px;font-family:var(--font-body);font-size:14px;color:#665e50}.ds-plate figcaption span{font-family:var(--font-heading,\"Instrument Serif\",Georgia,serif);font-size:18px;color:#1a1712}"
+    },
+    {
+      "name": "Masthead",
       "kind": "nav",
-      "refersTo": "segmented-tab-selected",
-      "description": "One ruled strip; the selected segment inverts to zone 0 with mono counts.",
-      "html": "<div class=\"ds-seg\" role=\"tablist\"><button class=\"is-on\">Open <span>07</span></button><button>All <span>09</span></button><button>Needs verification <span>03</span></button><button>Verified <span>02</span></button></div>",
-      "css": ".ds-seg { display: inline-flex; border: 1px solid #0c1110; background: #f5f7f6; font-family: var(--font-geist-sans, Geist), sans-serif; } .ds-seg button { display: flex; align-items: center; gap: 6px; height: 28px; padding: 0 10px; font-size: 12px; font-weight: 500; color: #4f5856; background: transparent; border: 0; border-left: 1px solid #0c1110; cursor: pointer; transition: background-color 150ms, color 150ms; } .ds-seg button:first-child { border-left: 0; } .ds-seg button:hover { background: #dde2df; color: #0c1110; } .ds-seg button span { font-family: var(--font-geist-mono, 'Geist Mono'), monospace; font-size: 11px; color: #5d6663; } .ds-seg button.is-on { background: #0c1110; color: #f5f7f6; } .ds-seg button.is-on span { color: #a4aba8; }"
+      "refersTo": "button-primary",
+      "description": "Sticky 64px masthead closed by a double rule; current link underlined in black.",
+      "html": "<header class=\"ds-mast\"><span class=\"ds-mast__word\">Backwater Trace</span><nav><a href=\"#\" aria-current=\"page\">Incident board</a></nav><button class=\"ds-mast__btn\">Report incident</button></header>",
+      "css": ".ds-mast{display:flex;align-items:center;gap:16px;height:64px;padding:0 16px;background:#f7f3ea;border-bottom:3px double #1a1712}.ds-mast__word{font-family:var(--font-heading,\"Instrument Serif\",Georgia,serif);font-size:22px;line-height:1;color:#1a1712}.ds-mast nav a{display:flex;align-items:center;height:36px;padding:0 12px;font-family:var(--font-body);font-size:14px;font-weight:500;color:#4f483c;text-decoration:none;text-underline-offset:6px}.ds-mast nav a:hover{color:#1a1712;text-decoration:underline;text-decoration-color:#b3a993}.ds-mast nav a[aria-current]{color:#1a1712;text-decoration:underline 2px #1a1712}.ds-mast__btn{margin-left:auto;height:36px;padding:0 14px;font-family:var(--font-body);font-size:13px;font-weight:600;color:#f7f3ea;background:#24428f;border:1px solid #1b3374;border-radius:0;box-shadow:inset 0 0 0 2px #24428f,inset 0 0 0 3px #f7f3ea;cursor:pointer}.ds-mast__btn:hover{background:#2d52a8;box-shadow:inset 0 0 0 2px #2d52a8,inset 0 0 0 3px #f7f3ea}"
     }
   ],
   "narrative": {
-    "northStar": "The Exposure Record",
-    "overview": "**Creative North Star: \"The Exposure Record\"**\n\nEvery incident is a stack of source sheets on a printer's light table. The interface is a cool, backlit neutral ground built from one eleven-step zone ramp, from zone 0 ink to zone X paper, with each sheet edged in a hairline ink rule and cut with square corners. Labels are condensed, tracked capitals, the way a darkroom log is lettered. Times, counts and coordinates are set in tabular mono because they are readings, not prose.\n\nDisagreement is drawn, never colored alone. Each source value carries its own hatch angle; where two sources disagree their hatches cross at ninety degrees, and that crossing is printed in safelight red. Selection inverts a sheet to the deepest zone, the way a negative reads. A single glowing accent, Canal Teal, is reserved for the action that moves the work forward and for live state. Everything else is ink on paper.\n\nThe world replaced an earlier dark \"Night\" operations look. It refuses the dark neon ops dashboard and the grey SaaS board: density comes from ruled ledgers and hairlines, not from cards, glows or gradients.",
+    "northStar": "Lexicon and Plate",
+    "overview": "Backwater Trace is set as a reference book about Alappuzha's incidents. Each incident is an entry with a serif headword, its source reports are numbered citations, and a disagreement between sources is a variant reading, marked in vermilion and engraver's cross-hatch. The page is engraving black on uncoated stock paper, divided by hairlines and 3px double rules, with square corners everywhere a reader's eye lands. Colour does not wash across the page. It lives inside bordered plates: the map, product screens reproduced on the landing page, and the small category ink squares.\n\nDensity follows a working reference book rather than a dashboard. The board is three ruled columns (entry list, map plate, record column) under a double-ruled masthead. The landing page is a book spread: a shoulder index of incident kinds, a display headline over a double rule with a drawn fleuron, and numbered plates with captions and keyed callouts. Instrument Serif carries every head, entry title and guide word at weight 400 only; Geist carries the working text; Chilanka is a first-class face, not a fallback.\n\nThe signature move is the dashboard's live guide words. As in a printed dictionary, the head of the entry list shows the first and last entry in view, and they are recomputed on every scroll frame. The logo is the drop-and-canal mark from `docs/brand/final/`, used as supplied.",
     "keyCharacteristics": [
-      "One zone ramp (z0 to z10, tinted toward Deep Canal) supplies every neutral.",
-      "Hairline ink rules (1px zone 0) bound sheets; inner divisions use the lighter hairline (zone 8).",
-      "Square sheets; controls take a barely-there 2px corner.",
-      "Antonio condensed caps for headings and legends, Geist for reading, Geist Mono tabular for readings.",
-      "Canal Teal is the only glowing color; safelight red is the only alarm color, and it always travels with the cross-hatch.",
-      "Selected means inverted to zone 0."
+      "Engraving black (#1a1712) on stock paper (#f7f3ea); no dark theme.",
+      "Hairline rules for division, 3px double rules for frames and section heads.",
+      "Square corners; the only circles are map pins and source dots.",
+      "Colour only inside bordered plates and category ink squares.",
+      "Ultramarine is the single action colour; vermilion plus 90-degree cross-hatch means possible conflict only.",
+      "Instrument Serif at weight 400 for heads, entries and guide words; Geist for working text; tabular figures for readings.",
+      "Live guide words at the head of the entry list."
     ],
     "rules": [
       {
-        "name": "The Safelight Rule",
-        "body": "Safelight red means \"possible conflict\" and nothing else, and it never appears without the 90° cross-hatch beside or inside it. A conflict must read in grayscale.",
+        "name": "The Plate Rule",
+        "body": "Colour is printed only inside a frame: the map plate, a reproduced screen, a category ink square. The page itself stays black on stock.",
         "section": "colors"
       },
       {
-        "name": "The One Glow Rule",
-        "body": "Canal Teal appears only on the primary action and on live or highlighted state. If two teal fills compete in one viewport, one of them is wrong.",
+        "name": "The One Action Rule",
+        "body": "Ultramarine marks what can be done. Nothing decorative is ultramarine; the Flood ink is a category, not an action.",
         "section": "colors"
       },
       {
-        "name": "The Zone Ramp Rule",
-        "body": "Every neutral comes from the eleven-step ramp. New greys are not invented; pick the nearest zone.",
+        "name": "The Variant Reading Rule",
+        "body": "Vermilion appears only with cross-hatch, and only for a possible conflict between sources. Errors use Danger (#8f1d1d), never vermilion.",
         "section": "colors"
       },
       {
-        "name": "The Legend Rule",
-        "body": "Labels that name a field, a section or a nav destination are Antonio caps with wide tracking. Sentences are never set in legend caps.",
+        "name": "The No Faux Bold Rule",
+        "body": "Instrument Serif is set at weight 400 only, with `font-synthesis: none`. Emphasis in the serif comes from size or italic, never weight.",
         "section": "typography"
       },
       {
-        "name": "The Reading Rule",
-        "body": "Anything that is a measurement (time, count, coordinate, score) is Geist Mono with tabular figures.",
+        "name": "The Part of Speech Rule",
+        "body": "A category name is set italic, lowercase, in the serif, directly after its ink square, as a dictionary marks a word class.",
         "section": "typography"
       },
       {
-        "name": "The Flat Ledger Rule",
-        "body": "Panels, rows and cards in the working views carry no shadow. Lift is earned only by paper floating over something: a stacked sheet, a map overlay, a popup.",
+        "name": "The Tabular Reading Rule",
+        "body": "Any figure a coordinator compares (counts, times, sources, citation numbers) uses tabular numerals.",
+        "section": "typography"
+      },
+      {
+        "name": "The Engraved Frame Rule",
+        "body": "Where another system would raise a card, this one draws a second rule around it. No surface uses a drop shadow to claim importance.",
         "section": "elevation"
       }
     ],
     "dos": [
-      "Do take every neutral from the zone ramp (z0 to z10) and keep sheets as zone 10 paper on the backlit ground.",
-      "Do pair every use of safelight red with the 90° cross-hatch (`hatch-cross`), so a conflict reads without color.",
-      "Do show selection by inverting to zone 0 with paper text and zone 7 metadata.",
-      "Do set field names, section headings and nav in Antonio caps at 12px with 0.12em tracking, and every time, count and coordinate in Geist Mono tabular.",
-      "Do draw source counts as stop cells and disagreements as hatch angles rather than adding new badges.",
-      "Do keep sheets square with a 1px rule; give controls the 2px corner.",
-      "Do honour reduced motion by dropping the settle animation and pin transitions."
+      "Do set every head, entry title and guide word in Instrument Serif at weight 400.",
+      "Do frame colour: put map, screenshots and category inks inside a 1px black border with an offset second rule.",
+      "Do close sheets, mastheads and major sections with a 3px double rule (`border-bottom: 3px double`), and divide items with 1px hairlines (#d6cdba).",
+      "Do give every button the inner double-rule frame, and keep ultramarine for actions only.",
+      "Do pair vermilion with the 90-degree cross-hatch every time it appears.",
+      "Do write category names italic and lowercase after their ink square.",
+      "Do use tabular figures for counts, times and source totals.",
+      "Do use the logo masters from `docs/brand/final/` exactly as supplied, on a solid container."
     ],
     "donts": [
-      "Don't use safelight red for errors, destructive actions or recording; that is fault red's job.",
-      "Don't put Canal Teal on anything but the primary action and live or highlighted state.",
-      "Don't return to the dark neon ops dashboard or the grey SaaS board this world replaced: no dark page ground, no glowing panels, no soft rounded cards.",
-      "Don't add drop shadows to panels, rows or cards in working views.",
-      "Don't set sentences in legend caps, or put decorative eyebrow labels above headlines; the only caps line above a page title is a back link, which is navigation.",
-      "Don't recolor or redraw the Canal B logo; its master artwork lives in `docs/brand/`."
+      "Don't bold, synthesize or uppercase-track Instrument Serif.",
+      "Don't round corners; circles are reserved for map pins and source dots.",
+      "Don't lift surfaces with drop shadows; draw a rule instead.",
+      "Don't use vermilion for errors, emphasis or decoration; errors use Danger (#8f1d1d).",
+      "Don't flood a page or panel with a category ink or ultramarine background.",
+      "Don't recolour, redraw or retype the logo.",
+      "Don't add a dark theme; the world is printed stock."
     ]
   }
 }

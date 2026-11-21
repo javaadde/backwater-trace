@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="public/brand/backwater-trace-icon.png" alt="Backwater Trace icon" width="160" />
+  <img src="public/brand/backwater-trace-mark.png" alt="Backwater Trace logo: a stone-coloured water drop with a location pin over a winding canal, on an ultramarine tile" width="160" />
 </p>
 
 <h1 align="center">Backwater Trace</h1>

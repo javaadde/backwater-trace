@@ -23,12 +23,12 @@ export function DistrictBoundary() {
       <Polygon
         positions={[OUTER, ALAPPUZHA_BOUNDARY]}
         interactive={false}
-        pathOptions={{ stroke: false, fillColor: "#0c1110", fillOpacity: 0.22 }}
+        pathOptions={{ stroke: false, fillColor: "#1a1712", fillOpacity: 0.22 }}
       />
       <Polyline
         positions={RING}
         interactive={false}
-        pathOptions={{ color: "#0c1110", weight: 1.6, opacity: 0.9, lineJoin: "round", dashArray: "6 5" }}
+        pathOptions={{ color: "#1a1712", weight: 1.6, opacity: 0.9, lineJoin: "round", dashArray: "6 5" }}
       />
     </>
   );

@@ -1,9 +1,13 @@
 import type { Metadata } from "next";
-import { Geist, Noto_Sans_Malayalam } from "next/font/google";
+import { Geist, Instrument_Serif } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
-const malayalam = Noto_Sans_Malayalam({ variable: "--font-malayalam", subsets: ["malayalam"], weight: ["400", "500", "600"] });
+// Instrument Serif sets headings, entry titles and guide words.
+const instrument = Instrument_Serif({ variable: "--font-instrument", subsets: ["latin"], weight: "400", style: ["normal", "italic"] });
+// Chilanka (SMC, SIL OFL; licence beside the file) sets every Malayalam line. Self-hosted, one weight.
+const malayalam = localFont({ src: "./fonts/chilanka/Chilanka-Regular.ttf", variable: "--font-malayalam", weight: "400", display: "swap", adjustFontFallback: false });
 
 export const metadata: Metadata = {
   title: "Backwater Trace — Alappuzha incident reports",
@@ -13,7 +17,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${geistSans.variable} ${malayalam.variable} h-full antialiased`}>
+    <html lang="en" className={`${geistSans.variable} ${instrument.variable} ${malayalam.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col">{children}</body>
     </html>
   );
