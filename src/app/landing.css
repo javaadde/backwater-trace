@@ -86,7 +86,13 @@
 .lx-lead { font-size: var(--lx-lead); line-height: 1.45; color: var(--color-ink-2); max-width: 36ch; }
 .lx-hero__text .lx-actions { margin-top: var(--space-xs); }
 .lx-plate--hero { max-width: 460px; justify-self: end; width: 100%; }
-.lx-plate--hero .lx-plate__frame { aspect-ratio: 1240 / 1860; }
+.lx-plate--hero .lx-plate__frame { height: min(680px, 78svh); min-height: 520px; }
+.lx-board { display: flex; flex-direction: column; height: 100%; background: var(--color-paper-2); }
+.lx-board__head { display: flex; justify-content: space-between; align-items: baseline; gap: var(--space-sm); padding: 8px 10px 6px; font-size: 15px; line-height: 1; }
+.lx-board__head span:last-child { font-family: var(--font-sans, sans-serif); font-size: 11px; color: var(--color-muted); }
+.lx-board__map { position: relative; flex: 0 0 52%; min-height: 0; margin: 0 8px; }
+.lx-board__list { flex: 1; min-height: 0; overflow-y: auto; margin-top: 8px; border-top: 3px double var(--color-ink); background: var(--color-paper); }
+.lx-board__empty { padding: var(--space-lg); font-size: 14px; color: var(--color-muted); }
 .lx-callout { position: absolute; z-index: 2; display: grid; place-items: center; width: 24px; height: 24px; transform: translate(-50%, -50%); background: var(--color-ink); color: var(--color-paper); font-family: var(--font-heading); font-size: 16px; line-height: 1; outline: 2px solid var(--color-paper); }
 .lx-plate__key { list-style: decimal; margin: var(--space-sm) 0 0; padding-left: 1.4em; display: grid; gap: 2px; font-size: 14px; color: var(--color-ink-2); }
 .lx-plate__key li::marker { font-family: var(--font-heading); color: var(--color-ink); }
