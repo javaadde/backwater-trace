@@ -1,6 +1,7 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Instrument_Serif } from "next/font/google";
 import localFont from "next/font/local";
+import { SITE, siteUrl } from "@/lib/site";
 import "./globals.css";
 
 const geistSans = Geist({ variable: "--font-geist-sans", subsets: ["latin"] });
@@ -10,10 +11,35 @@ const instrument = Instrument_Serif({ variable: "--font-instrument", subsets: ["
 const malayalam = localFont({ src: "./fonts/chilanka/Chilanka-Regular.ttf", variable: "--font-malayalam", weight: "400", display: "swap", adjustFontFallback: false });
 
 export const metadata: Metadata = {
-  title: "Backwater Trace — Alappuzha incident reports",
-  description:
-    "Multilingual incident reporting and verification for Alappuzha. Group related reports, see possible conflicts, trace every claim to its source.",
+  metadataBase: new URL(siteUrl()),
+  title: {
+    default: "Backwater Trace — Alappuzha incident reports, traced to every source",
+    template: "%s | Backwater Trace",
+  },
+  description: SITE.description,
+  applicationName: SITE.name,
+  keywords: [...SITE.keywords],
+  authors: [{ name: "Backwater Trace", url: SITE.repo }],
+  creator: "Backwater Trace",
+  alternates: { canonical: "/" },
+  openGraph: {
+    type: "website",
+    siteName: SITE.name,
+    locale: SITE.locale,
+    url: "/",
+    title: "Backwater Trace — Alappuzha, on the record",
+    description: SITE.short,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Backwater Trace — Alappuzha, on the record",
+    description: SITE.short,
+  },
+  robots: { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large", "max-snippet": -1 } },
+  category: "civic technology",
 };
+
+export const viewport: Viewport = { themeColor: "#24428F" };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (

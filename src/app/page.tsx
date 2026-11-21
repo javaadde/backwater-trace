@@ -5,6 +5,8 @@ import { HeroBoard } from "@/components/landing/hero-board";
 import { Logo } from "@/components/ui/logo";
 import { CategoryIcon } from "@/components/ui/category-icon";
 import { CATEGORY_LABEL } from "@/lib/labels";
+import { JsonLd } from "@/components/seo/json-ld";
+import { SITE, siteUrl } from "@/lib/site";
 import type { Category } from "@/types/domain";
 import "./landing.css";
 
@@ -69,8 +71,37 @@ function Kind({ category }: { category: Category }) {
 }
 
 export default function Home() {
+  const base = siteUrl();
   return (
     <div className="lx">
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@graph": [
+            { "@type": "WebSite", "@id": `${base}/#website`, url: base, name: SITE.name, description: SITE.short, inLanguage: ["en", "ml"] },
+            {
+              "@type": "WebApplication",
+              "@id": `${base}/#app`,
+              name: SITE.name,
+              url: base,
+              description: SITE.description,
+              applicationCategory: "UtilitiesApplication",
+              operatingSystem: "Any (web browser)",
+              inLanguage: ["en", "ml"],
+              areaServed: { "@type": "AdministrativeArea", name: "Alappuzha, Kerala, India" },
+              isAccessibleForFree: true,
+              offers: { "@type": "Offer", price: "0", priceCurrency: "INR" },
+              codeRepository: SITE.repo,
+              featureList: [
+                "Malayalam voice reporting transcribed by Sarvam AI",
+                "Rule-based grouping of reports about the same incident",
+                "Possible-conflict detection between sources",
+                "Evidence graph linking every claim to its original report",
+              ],
+            },
+          ],
+        }}
+      />
       <a className="lx-skip" href="#main">Skip to content</a>
 
       <header className="lx-mast">
@@ -237,6 +268,7 @@ export default function Home() {
           <nav aria-label="Footer" className="lx-footer__links">
             <Link href="/dashboard" className="lx-link">Incident board</Link>
             <Link href="/report" className="lx-link">Report an incident</Link>
+            <Link href="/about" className="lx-link">About and stack</Link>
             <a href="#how-it-works" className="lx-link">How an entry is made</a>
             <a href="#field-records" className="lx-link">From the lexicon</a>
           </nav>
