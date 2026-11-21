@@ -1,28 +1,54 @@
 @import "tailwindcss";
 
+/*
+ * Exposure Record world.
+ * Tones come from one eleven-step zone ramp (z0 ink → z10 white, tinted a
+ * touch toward Deep Canal). Canal Teal is the single glowing accent: primary
+ * action and live state. Safelight red marks a possible conflict and is always
+ * paired with the 90° cross-hatch, so it never relies on colour alone.
+ */
 :root {
-  --bg: #0a0e13;
-  --panel: #10151c;
-  --panel-2: #151b24;
-  --panel-3: #1b2330;
-  --line: #222b37;
-  --line-strong: #2e3a4a;
-  --fg: #e7ecf3;
-  --fg-muted: #93a0b3;
-  --fg-faint: #5f6b7d;
-  --accent: #2fc5a8;
-  --accent-ink: #04241e;
-  --danger: #f05252;
-  --warn: #f5a524;
-  --ok: #34c77b;
-  --info: #4c9df5;
+  --z0: #0c1110;
+  --z1: #1a201f;
+  --z2: #29302e;
+  --z3: #3b4341;
+  --z4: #4f5856;
+  --z5: #666f6c;
+  --z6: #848c89;
+  --z7: #a4aba8;
+  --z8: #c3c9c6;
+  --z9: #dde2df;
+  --z10: #f5f7f6;
 
-  --cat-flood: #4c9df5;
-  --cat-waterlogging: #22c3d6;
-  --cat-blocked_canal: #2fc5a8;
-  --cat-waste_dumping: #f08a3c;
-  --cat-damaged_infrastructure: #e8597a;
-  --cat-other: #9aa6b8;
+  --bg: #e7ebe9;
+  --panel: var(--z10);
+  --panel-2: #eef1ef;
+  --panel-3: var(--z9);
+  --line: var(--z8);
+  --line-strong: var(--z6);
+  --fg: var(--z0);
+  --fg-muted: var(--z4);
+  --fg-faint: #5d6663;
+
+  --accent: #2fc5a8;
+  --accent-ink: #0b3b35;
+  --accent-text: #0b7563;
+  --deep-canal: #0b3b35;
+
+  --conflict: #c0392b;
+  --danger: #b4231a;
+  --warn: #8f5508;
+  --ok: #1d7a4c;
+  --info: #285f93;
+
+  --cat-flood: #285f93;
+  --cat-waterlogging: #2b7f86;
+  --cat-blocked_canal: #4a7434;
+  --cat-waste_dumping: #94650f;
+  --cat-damaged_infrastructure: #6a4f8c;
+  --cat-other: #5d6663;
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 @theme inline {
@@ -37,17 +63,34 @@
   --color-fg-faint: var(--fg-faint);
   --color-accent: var(--accent);
   --color-accent-ink: var(--accent-ink);
+  --color-accent-text: var(--accent-text);
+  --color-deep-canal: var(--deep-canal);
+  --color-conflict: var(--conflict);
   --color-danger: var(--danger);
   --color-warn: var(--warn);
   --color-ok: var(--ok);
   --color-info: var(--info);
+  --color-z0: var(--z0);
+  --color-z1: var(--z1);
+  --color-z2: var(--z2);
+  --color-z3: var(--z3);
+  --color-z5: var(--z5);
+  --color-z7: var(--z7);
+  --color-z9: var(--z9);
+  --color-z10: var(--z10);
   --font-sans: var(--font-geist-sans), var(--font-malayalam), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --font-display: var(--font-antonio), var(--font-geist-sans), sans-serif;
   --font-ml: var(--font-malayalam), var(--font-geist-sans), sans-serif;
+  --radius-sm: 2px;
+  --radius-md: 3px;
+  --radius-lg: 4px;
+  --radius-xl: 4px;
+  --radius-2xl: 6px;
 }
 
 html {
-  color-scheme: dark;
+  color-scheme: light;
 }
 
 body {
@@ -55,52 +98,126 @@ body {
   color: var(--fg);
   font-family: var(--font-sans);
   font-feature-settings: "ss01", "cv11";
+  caret-color: var(--accent-text);
 }
 
 ::selection {
-  background: color-mix(in oklab, var(--accent) 35%, transparent);
+  background: var(--z0);
+  color: var(--z10);
 }
 
-/* Thin, quiet scrollbars for dense panels */
+:focus-visible {
+  outline: 2px solid var(--z0);
+  outline-offset: 2px;
+}
+
+a {
+  text-underline-offset: 3px;
+}
+
 .scroll-thin {
   scrollbar-width: thin;
-  scrollbar-color: var(--line-strong) transparent;
+  scrollbar-color: var(--z7) transparent;
 }
 
 .tabular {
   font-variant-numeric: tabular-nums;
 }
 
-/* ---------- Leaflet dark skin ---------- */
-.bt-dark-tiles {
-  filter: invert(1) hue-rotate(185deg) brightness(0.92) contrast(0.88) saturate(0.45);
+/* Condensed, tracked legend caps: the record's labelling voice. */
+.legend {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+/* ---------- Hatch layer ---------- */
+.hatch {
+  background-image: repeating-linear-gradient(45deg, currentColor 0 1px, transparent 1px 5px);
+}
+.hatch-dense {
+  background-image: repeating-linear-gradient(45deg, currentColor 0 1px, transparent 1px 3px);
+}
+/* Two hatches at ninety degrees: a possible conflict. */
+.hatch-cross {
+  background-image:
+    repeating-linear-gradient(45deg, currentColor 0 1px, transparent 1px 5px),
+    repeating-linear-gradient(-45deg, currentColor 0 1px, transparent 1px 5px);
+}
+
+/* Source-count ramp: one cell per independent source, like stop increments. */
+.stops {
+  display: inline-flex;
+  gap: 2px;
+}
+.stops > i {
+  display: block;
+  width: 5px;
+  height: 12px;
+  border: 1px solid var(--z3);
+}
+.stops > i[data-on="true"] {
+  background: var(--z1);
+  border-color: var(--z1);
+}
+.stops[data-inverted="true"] > i {
+  border-color: var(--z5);
+}
+.stops[data-inverted="true"] > i[data-on="true"] {
+  background: var(--z10);
+  border-color: var(--z10);
+}
+
+/* Native selects, themed from the ramp. */
+.select {
+  appearance: none;
+  border-radius: 2px;
+  border: 1px solid var(--z0);
+  background-color: var(--z10);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%230c1110' stroke-width='1.5'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  padding-left: 8px;
+  padding-right: 28px;
+  color: var(--z0);
+}
+.select:hover {
+  background-color: var(--z9);
+}
+
+/* ---------- Leaflet skin: monochrome print of the map ---------- */
+.bt-zone-tiles {
+  filter: grayscale(1) contrast(0.92) brightness(1.04);
 }
 .leaflet-container {
-  background: #0d131a;
+  background: var(--z9);
   font-family: var(--font-sans);
 }
 .leaflet-control-zoom a,
 .leaflet-control-layers {
-  background: var(--panel-2) !important;
-  color: var(--fg) !important;
-  border-color: var(--line-strong) !important;
+  background: var(--z10) !important;
+  color: var(--z0) !important;
+  border-color: var(--z0) !important;
 }
 .leaflet-control-zoom a:hover {
-  background: var(--panel-3) !important;
+  background: var(--z9) !important;
 }
 .leaflet-bar,
 .leaflet-control-layers {
-  border: 1px solid var(--line-strong) !important;
-  border-radius: 10px !important;
+  border: 1px solid var(--z0) !important;
+  border-radius: 2px !important;
   overflow: hidden;
-  box-shadow: 0 8px 24px rgb(0 0 0 / 0.35) !important;
+  box-shadow: 0 2px 6px rgb(12 17 16 / 0.12) !important;
 }
 .leaflet-control-layers-expanded {
   padding: 8px 12px !important;
   font-size: 13px;
 }
 .leaflet-control-attribution {
-  background: rgb(10 14 19 / 0.75) !important;
+  background: rgb(245 247 246 / 0.85) !important;
   color: var(--fg-faint) !important;
   font-size: 10px !important;
 }
@@ -109,13 +226,13 @@ body {
 }
 .leaflet-popup-content-wrapper,
 .leaflet-popup-tip {
-  background: var(--panel-2);
-  color: var(--fg);
-  border: 1px solid var(--line-strong);
-  box-shadow: 0 12px 32px rgb(0 0 0 / 0.5);
+  background: var(--z10);
+  color: var(--z0);
+  border: 1px solid var(--z0);
+  box-shadow: 0 8px 20px rgb(12 17 16 / 0.18);
 }
 .leaflet-popup-content-wrapper {
-  border-radius: 12px;
+  border-radius: 3px;
 }
 .leaflet-popup-content {
   margin: 12px 14px;
@@ -130,61 +247,64 @@ body {
   background: transparent;
   border: 0;
 }
+/* Pin size follows the source ramp (--s set inline), category fills the core. */
 .bt-pin {
+  --s: 26px;
   position: relative;
   display: grid;
   place-items: center;
-  width: 30px;
-  height: 30px;
+  width: var(--s);
+  height: var(--s);
   border-radius: 9999px;
   background: var(--pin);
-  color: #061018;
-  font: 700 12px/1 var(--font-geist-sans);
-  box-shadow: 0 0 0 3px rgb(10 14 19 / 0.85), 0 6px 16px rgb(0 0 0 / 0.5);
-  transition: transform 160ms ease;
+  color: #fff;
+  font: 600 11px/1 var(--font-geist-sans);
+  box-shadow: 0 0 0 2px var(--z10), 0 0 0 3px var(--z0), 0 3px 8px rgb(12 17 16 / 0.3);
+  transition: transform 220ms var(--ease-out), opacity 220ms var(--ease-out);
 }
 .bt-pin[data-selected="true"] {
-  transform: scale(1.22);
-  box-shadow: 0 0 0 3px #fff, 0 6px 18px rgb(0 0 0 / 0.6);
+  transform: scale(1.18);
+  box-shadow: 0 0 0 2px var(--z10), 0 0 0 5px var(--z0), 0 4px 12px rgb(12 17 16 / 0.35);
+}
+.bt-pin[data-dim="true"] {
+  opacity: 0.45;
 }
 .bt-pin[data-resolved="true"] {
-  opacity: 0.55;
+  background: var(--z10);
+  color: var(--z4);
 }
-.bt-pin[data-conflict="true"]::after {
+/* Crossed hatch ring: possible conflict. */
+.bt-pin[data-conflict="true"]::before {
   content: "";
   position: absolute;
-  inset: -7px;
+  inset: -9px;
+  z-index: -1;
   border-radius: 9999px;
-  border: 2px solid var(--warn);
-  animation: bt-pulse 1.8s ease-out infinite;
+  color: var(--conflict);
+  background-image:
+    repeating-linear-gradient(45deg, currentColor 0 1.2px, transparent 1.2px 4px),
+    repeating-linear-gradient(-45deg, currentColor 0 1.2px, transparent 1.2px 4px);
+  mask: radial-gradient(circle, transparent 55%, #000 56%);
 }
 .bt-pin .bt-count {
   position: absolute;
-  top: -6px;
-  right: -8px;
+  top: -7px;
+  right: -9px;
   min-width: 17px;
   height: 17px;
   padding: 0 4px;
-  border-radius: 9999px;
-  background: var(--fg);
-  color: var(--bg);
-  font-size: 10px;
-  display: grid;
-  place-items: center;
-}
-@keyframes bt-pulse {
-  0% { transform: scale(0.85); opacity: 0.9; }
-  100% { transform: scale(1.35); opacity: 0; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .bt-pin[data-conflict="true"]::after { animation: none; }
+  border-radius: 2px;
+  background: var(--z0);
+  color: var(--z10);
+  font: 600 10px/17px var(--font-geist-mono);
+  text-align: center;
 }
 
-/* ---------- React Flow dark skin ---------- */
+/* ---------- React Flow skin ---------- */
 .react-flow__controls-button {
-  background: var(--panel-2) !important;
-  border-color: var(--line) !important;
-  fill: var(--fg) !important;
+  background: var(--z10) !important;
+  border-color: var(--z8) !important;
+  fill: var(--z0) !important;
 }
 .react-flow__attribution {
   background: transparent !important;
@@ -193,5 +313,27 @@ body {
   color: var(--fg-faint) !important;
 }
 .react-flow__edge-textbg {
-  fill: var(--panel) !important;
+  fill: var(--z10) !important;
+}
+
+/* ---------- Motion: sheets settle into place ---------- */
+@keyframes bt-settle {
+  /* Content is visible from the first frame; sheets only slide into place. */
+  from {
+    transform: translateY(8px) rotate(var(--tilt, 0deg));
+  }
+  to {
+    transform: translateY(0) rotate(var(--tilt, 0deg));
+  }
+}
+.settle {
+  animation: bt-settle 520ms var(--ease-out) both;
+}
+@media (prefers-reduced-motion: reduce) {
+  .settle {
+    animation: none;
+  }
+  .bt-pin {
+    transition: none;
+  }
 }

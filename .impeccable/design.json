@@ -1,0 +1,765 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-21T16:46:19+00:00",
+  "title": "Design System: Backwater Trace",
+  "extensions": {
+    "colorMeta": {
+      "zone-0-ink": {
+        "role": "neutral",
+        "displayName": "Zone 0 Ink",
+        "tonalRamp": [
+          "#0c1110",
+          "#1a201f",
+          "#3b4341",
+          "#4f5856",
+          "#848c89",
+          "#a4aba8",
+          "#dde2df",
+          "#f5f7f6"
+        ]
+      },
+      "zone-1": {
+        "role": "neutral",
+        "displayName": "Zone 1",
+        "tonalRamp": [
+          "#0c1110",
+          "#1a201f",
+          "#3b4341",
+          "#4f5856",
+          "#848c89",
+          "#a4aba8",
+          "#dde2df",
+          "#f5f7f6"
+        ]
+      },
+      "zone-2": {
+        "role": "neutral",
+        "displayName": "Zone 2",
+        "tonalRamp": [
+          "#0c1110",
+          "#1a201f",
+          "#3b4341",
+          "#4f5856",
+          "#848c89",
+          "#a4aba8",
+          "#dde2df",
+          "#f5f7f6"
+        ]
+      },
+      "zone-3": {
+        "role": "neutral",
+        "displayName": "Zone 3",
+        "tonalRamp": [
+          "#0c1110",
+          "#1a201f",
+          "#3b4341",
+          "#4f5856",
+          "#848c89",
+          "#a4aba8",
+          "#dde2df",
+          "#f5f7f6"
+        ]
+      },
+      "zone-4-muted-ink": {
+        "role": "neutral",
+        "displayName": "Zone 4 Muted Ink",
+        "tonalRamp": [
+          "#0c1110",
+          "#1a201f",
+          "#3b4341",
+          "#4f5856",
+          "#848c89",
+          "#a4aba8",
+          "#dde2df",
+          "#f5f7f6"
+        ]
+      },
+      "zone-5": {
+        "role": "neutral",
+        "displayName": "Zone 5",
+        "tonalRamp": [
+          "#0c1110",
+          "#1a201f",
+          "#3b4341",
+          "#4f5856",
+          "#848c89",
+          "#a4aba8",
+          "#dde2df",
+          "#f5f7f6"
+        ]
+      },
+      "zone-6-strong-rule": {
+        "role": "neutral",
+        "displayName": "Zone 6 Strong Rule",
+        "tonalRamp": [
+          "#0c1110",
+          "#1a201f",
+          "#3b4341",
+          "#4f5856",
+          "#848c89",
+          "#a4aba8",
+          "#dde2df",
+          "#f5f7f6"
+        ]
+      },
+      "zone-7": {
+        "role": "neutral",
+        "displayName": "Zone 7",
+        "tonalRamp": [
+          "#0c1110",
+          "#1a201f",
+          "#3b4341",
+          "#4f5856",
+          "#848c89",
+          "#a4aba8",
+          "#dde2df",
+          "#f5f7f6"
+        ]
+      },
+      "zone-8-hairline": {
+        "role": "neutral",
+        "displayName": "Zone 8 Hairline",
+        "tonalRamp": [
+          "#0c1110",
+          "#1a201f",
+          "#3b4341",
+          "#4f5856",
+          "#848c89",
+          "#a4aba8",
+          "#dde2df",
+          "#f5f7f6"
+        ]
+      },
+      "zone-9-sunk-paper": {
+        "role": "neutral",
+        "displayName": "Zone 9 Sunk Paper",
+        "tonalRamp": [
+          "#0c1110",
+          "#1a201f",
+          "#3b4341",
+          "#4f5856",
+          "#848c89",
+          "#a4aba8",
+          "#dde2df",
+          "#f5f7f6"
+        ]
+      },
+      "zone-10-paper": {
+        "role": "neutral",
+        "displayName": "Zone 10 Paper",
+        "tonalRamp": [
+          "#0c1110",
+          "#1a201f",
+          "#3b4341",
+          "#4f5856",
+          "#848c89",
+          "#a4aba8",
+          "#dde2df",
+          "#f5f7f6"
+        ]
+      },
+      "backlit-ground": {
+        "role": "neutral",
+        "displayName": "Backlit Ground",
+        "tonalRamp": [
+          "#0c1110",
+          "#1a201f",
+          "#3b4341",
+          "#4f5856",
+          "#848c89",
+          "#a4aba8",
+          "#dde2df",
+          "#f5f7f6"
+        ],
+        "canonical": "oklch(93.6% 0.005 165)"
+      },
+      "paper-2": {
+        "role": "neutral",
+        "displayName": "Paper 2",
+        "tonalRamp": [
+          "#0c1110",
+          "#1a201f",
+          "#3b4341",
+          "#4f5856",
+          "#848c89",
+          "#a4aba8",
+          "#dde2df",
+          "#f5f7f6"
+        ],
+        "canonical": "oklch(95.5% 0.004 157)"
+      },
+      "faint-ink": {
+        "role": "neutral",
+        "displayName": "Faint Ink",
+        "tonalRamp": [
+          "#0c1110",
+          "#1a201f",
+          "#3b4341",
+          "#4f5856",
+          "#848c89",
+          "#a4aba8",
+          "#dde2df",
+          "#f5f7f6"
+        ],
+        "canonical": "oklch(50.2% 0.012 174)"
+      },
+      "canal-teal": {
+        "role": "primary",
+        "displayName": "Canal Teal",
+        "tonalRamp": [
+          "#00110a",
+          "#003325",
+          "#005743",
+          "#007c63",
+          "#00a186",
+          "#56c4ab",
+          "#98e3cf",
+          "#cefaed"
+        ],
+        "canonical": "oklch(74.1% 0.128 176)"
+      },
+      "canal-teal-hover": {
+        "role": "primary",
+        "displayName": "Canal Teal (hover)",
+        "tonalRamp": [
+          "#00110a",
+          "#003325",
+          "#005743",
+          "#007c63",
+          "#00a186",
+          "#56c4ab",
+          "#98e3cf",
+          "#cefaed"
+        ]
+      },
+      "canal-teal-press": {
+        "role": "primary",
+        "displayName": "Canal Teal (press)",
+        "tonalRamp": [
+          "#00110a",
+          "#003325",
+          "#005743",
+          "#007c63",
+          "#00a186",
+          "#56c4ab",
+          "#98e3cf",
+          "#cefaed"
+        ]
+      },
+      "deep-canal": {
+        "role": "primary",
+        "displayName": "Deep Canal",
+        "tonalRamp": [
+          "#030e0c",
+          "#102c28",
+          "#264d47",
+          "#447069",
+          "#67938c",
+          "#91b7b0",
+          "#bbd8d3",
+          "#e2f3ef"
+        ],
+        "canonical": "oklch(31.9% 0.051 183)"
+      },
+      "canal-text": {
+        "role": "primary",
+        "displayName": "Canal Text",
+        "tonalRamp": [
+          "#00100b",
+          "#003026",
+          "#005344",
+          "#117765",
+          "#449b88",
+          "#77bead",
+          "#aaded0",
+          "#d8f6ee"
+        ],
+        "canonical": "oklch(50.4% 0.091 177)"
+      },
+      "safelight": {
+        "role": "secondary",
+        "displayName": "Safelight",
+        "tonalRamp": [
+          "#200000",
+          "#520000",
+          "#850601",
+          "#b42e21",
+          "#dd5847",
+          "#fd8776",
+          "#ffb6a7",
+          "#ffdfd6"
+        ],
+        "canonical": "oklch(54.3% 0.174 30)"
+      },
+      "safelight-on-ink": {
+        "role": "secondary",
+        "displayName": "Safelight on Ink",
+        "tonalRamp": [
+          "#1d0201",
+          "#4c0705",
+          "#7c1e16",
+          "#a93d32",
+          "#d16355",
+          "#f18f81",
+          "#ffbbaf",
+          "#ffe2da"
+        ],
+        "canonical": "oklch(75.8% 0.145 29)"
+      },
+      "fault-red": {
+        "role": "tertiary",
+        "displayName": "Fault Red",
+        "tonalRamp": [
+          "#200000",
+          "#540000",
+          "#870000",
+          "#b7281e",
+          "#e05445",
+          "#ff8474",
+          "#ffb5a6",
+          "#ffded5"
+        ],
+        "canonical": "oklch(50.0% 0.182 29)"
+      },
+      "amber-check": {
+        "role": "tertiary",
+        "displayName": "Amber Check",
+        "tonalRamp": [
+          "#160700",
+          "#3f1c00",
+          "#683700",
+          "#90570d",
+          "#b67a3c",
+          "#d7a26e",
+          "#f1c8a2",
+          "#ffead3"
+        ],
+        "canonical": "oklch(50.5% 0.110 65)"
+      },
+      "amber-check-tint": {
+        "role": "tertiary",
+        "displayName": "Amber Check Tint",
+        "tonalRamp": [
+          "#160700",
+          "#3f1c00",
+          "#683700",
+          "#90570d",
+          "#b67a3c",
+          "#d7a26e",
+          "#f1c8a2",
+          "#ffead3"
+        ]
+      },
+      "verified-green": {
+        "role": "tertiary",
+        "displayName": "Verified Green",
+        "tonalRamp": [
+          "#001005",
+          "#003116",
+          "#00542e",
+          "#1c784b",
+          "#499d6e",
+          "#7ac096",
+          "#acdfbf",
+          "#d9f7e3"
+        ],
+        "canonical": "oklch(51.5% 0.112 157)"
+      },
+      "verified-green-tint": {
+        "role": "tertiary",
+        "displayName": "Verified Green Tint",
+        "tonalRamp": [
+          "#001005",
+          "#003116",
+          "#00542e",
+          "#1c784b",
+          "#499d6e",
+          "#7ac096",
+          "#acdfbf",
+          "#d9f7e3"
+        ]
+      },
+      "survey-blue": {
+        "role": "tertiary",
+        "displayName": "Survey Blue",
+        "tonalRamp": [
+          "#010c1a",
+          "#042847",
+          "#164774",
+          "#33699e",
+          "#588dc3",
+          "#84b3e3",
+          "#b2d5fa",
+          "#dcf1ff"
+        ],
+        "canonical": "oklch(47.5% 0.102 250)"
+      },
+      "cat-flood": {
+        "role": "tertiary",
+        "displayName": "Category: Flood",
+        "tonalRamp": [
+          "#010c1a",
+          "#042847",
+          "#164774",
+          "#33699e",
+          "#588dc3",
+          "#84b3e3",
+          "#b2d5fa",
+          "#dcf1ff"
+        ]
+      },
+      "cat-waterlogging": {
+        "role": "tertiary",
+        "displayName": "Category: Waterlogging",
+        "tonalRamp": [
+          "#000f11",
+          "#002e32",
+          "#005056",
+          "#1c737a",
+          "#49979e",
+          "#7abbc1",
+          "#acdbdf",
+          "#d9f5f7"
+        ],
+        "canonical": "oklch(55.0% 0.079 203)"
+      },
+      "cat-blocked-canal": {
+        "role": "tertiary",
+        "displayName": "Category: Blocked canal",
+        "tonalRamp": [
+          "#040f01",
+          "#142e05",
+          "#2c5017",
+          "#4a7334",
+          "#6d9758",
+          "#95bb83",
+          "#bedbb1",
+          "#e3f5db"
+        ],
+        "canonical": "oklch(51.2% 0.105 136)"
+      },
+      "cat-waste-dumping": {
+        "role": "tertiary",
+        "displayName": "Category: Waste dumping",
+        "tonalRamp": [
+          "#150800",
+          "#3b1f00",
+          "#633b00",
+          "#8a5b00",
+          "#ae7f36",
+          "#d0a66a",
+          "#ebcba0",
+          "#ffebd1"
+        ],
+        "canonical": "oklch(54.3% 0.110 75)"
+      },
+      "cat-damaged-infrastructure": {
+        "role": "tertiary",
+        "displayName": "Category: Damaged infrastructure",
+        "tonalRamp": [
+          "#0e0718",
+          "#2e1d41",
+          "#4f386c",
+          "#725794",
+          "#957ab9",
+          "#b9a1da",
+          "#d9c8f3",
+          "#f3e9ff"
+        ],
+        "canonical": "oklch(48.2% 0.099 303)"
+      },
+      "cat-other": {
+        "role": "tertiary",
+        "displayName": "Category: Other",
+        "tonalRamp": [
+          "#090c0b",
+          "#222826",
+          "#3f4744",
+          "#5f6865",
+          "#828c88",
+          "#a8b0ad",
+          "#ccd3d0",
+          "#ecefee"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Landing statement only; 56px / 84px / 96px by breakpoint, uppercase."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Page titles (incident title, report form), 40px to 48px, uppercase."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Sheet titles and disputed values, 22px to 28px, uppercase."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Summaries and source quotes, 60 to 68ch."
+      },
+      "body-dense": {
+        "displayName": "Body dense",
+        "purpose": "Row titles, list items, chips."
+      },
+      "label": {
+        "displayName": "Legend",
+        "purpose": "Section headings, field names, nav, stepper; drops to 10.5px to 11px for tags and field names."
+      },
+      "data": {
+        "displayName": "Data",
+        "purpose": "Times, counts, coordinates, scores; tabular figures."
+      },
+      "malayalam": {
+        "displayName": "Malayalam",
+        "purpose": "Malayalam source quotes, one step larger than English body."
+      }
+    },
+    "shadows": [
+      {
+        "name": "sheet-lift",
+        "value": "0 10px 30px rgb(12 17 16 / 0.12)",
+        "purpose": "Lead record sheet on the landing page."
+      },
+      {
+        "name": "source-sheet-lift",
+        "value": "0 6px 18px rgb(12 17 16 / 0.14)",
+        "purpose": "Tilted source sheets stacked under the record."
+      },
+      {
+        "name": "map-overlay",
+        "value": "0 2px 6px rgb(12 17 16 / 0.12)",
+        "purpose": "Map controls and legend floating over tiles."
+      },
+      {
+        "name": "map-popup",
+        "value": "0 8px 20px rgb(12 17 16 / 0.18)",
+        "purpose": "Leaflet popups."
+      },
+      {
+        "name": "graph-root",
+        "value": "0 4px 12px rgb(12 17 16 / 0.25)",
+        "purpose": "Inked incident node in the evidence graph."
+      },
+      {
+        "name": "pin-ring",
+        "value": "0 0 0 2px #f5f7f6, 0 0 0 3px #0c1110, 0 3px 8px rgb(12 17 16 / 0.3)",
+        "purpose": "Paper and ink ring on map pins."
+      },
+      {
+        "name": "pin-ring-selected",
+        "value": "0 0 0 2px #f5f7f6, 0 0 0 5px #0c1110, 0 4px 12px rgb(12 17 16 / 0.35)",
+        "purpose": "Selected map pin."
+      },
+      {
+        "name": "highlight-ring",
+        "value": "0 0 0 3px #2fc5a8",
+        "purpose": "Source card jumped to from the evidence graph."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-out",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "The single easing curve for settles and pins."
+      },
+      {
+        "name": "settle",
+        "value": "520ms translateY(8px) to 0, keeps --tilt rotation, staggered animation-delay",
+        "purpose": "Sheets settle into place; content visible from the first frame. Removed under reduced motion."
+      },
+      {
+        "name": "pin",
+        "value": "220ms transform and opacity",
+        "purpose": "Pin scale on selection and dimming. Removed under reduced motion."
+      },
+      {
+        "name": "control",
+        "value": "150ms background-color, color",
+        "purpose": "Buttons, tabs, links."
+      },
+      {
+        "name": "row",
+        "value": "200ms background-color, opacity",
+        "purpose": "Incident row selection and dimming."
+      },
+      {
+        "name": "highlight",
+        "value": "300ms border-color, box-shadow",
+        "purpose": "Source card highlight ring."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      },
+      {
+        "name": "xl",
+        "value": "1280px"
+      }
+    ],
+    "hatches": [
+      {
+        "name": "hatch",
+        "value": "repeating-linear-gradient(45deg, currentColor 0 1px, transparent 1px 5px)",
+        "purpose": "One source; completed steps; empty states."
+      },
+      {
+        "name": "hatch-dense",
+        "value": "repeating-linear-gradient(45deg, currentColor 0 1px, transparent 1px 3px)",
+        "purpose": "Stacked reports."
+      },
+      {
+        "name": "hatch-cross",
+        "value": "45deg and -45deg hatches layered, 1px line, 5px pitch",
+        "purpose": "Possible conflict; always paired with safelight red."
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The one forward action per view: Canal Teal with Deep Canal ink.",
+      "html": "<button class=\"ds-btn-primary\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" aria-hidden=\"true\"><path d=\"M12 5v14M5 12h14\"/></svg> Report incident</button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; gap: 8px; height: 36px; padding: 0 14px; font-family: var(--font-geist-sans, Geist), sans-serif; font-size: 14px; border-radius: 2px; cursor: pointer; transition: background-color 150ms, color 150ms; background: var(--accent, #2fc5a8); color: var(--accent-ink, #0b3b35); border: 1px solid var(--deep-canal, #0b3b35); font-weight: 600; } .ds-btn-primary:hover { background: #45d3b8; } .ds-btn-primary:active { background: #27b096; } .ds-btn-primary:focus-visible { outline: 2px solid var(--z0, #0c1110); outline-offset: 2px; }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Paper with a 1px ink rule; the default button.",
+      "html": "<button class=\"ds-btn-secondary\">Report incident</button>",
+      "css": ".ds-btn-secondary { display: inline-flex; align-items: center; gap: 8px; height: 36px; padding: 0 14px; font-family: var(--font-geist-sans, Geist), sans-serif; font-size: 14px; border-radius: 2px; cursor: pointer; transition: background-color 150ms, color 150ms; background: var(--z10, #f5f7f6); color: var(--z0, #0c1110); border: 1px solid var(--z0, #0c1110); font-weight: 500; } .ds-btn-secondary:hover { background: var(--z9, #dde2df); } .ds-btn-secondary:focus-visible { outline: 2px solid var(--z0, #0c1110); outline-offset: 2px; }"
+    },
+    {
+      "name": "Ink Button",
+      "kind": "button",
+      "refersTo": "button-ink",
+      "description": "Inverted zone 0 button for strong secondary actions.",
+      "html": "<button class=\"ds-btn-ink\">Open record</button>",
+      "css": ".ds-btn-ink { display: inline-flex; align-items: center; gap: 8px; height: 36px; padding: 0 14px; font-family: var(--font-geist-sans, Geist), sans-serif; font-size: 14px; border-radius: 2px; cursor: pointer; transition: background-color 150ms, color 150ms; background: var(--z0, #0c1110); color: var(--z10, #f5f7f6); border: 1px solid var(--z0, #0c1110); font-weight: 500; } .ds-btn-ink:hover { background: var(--z2, #29302e); } .ds-btn-ink:focus-visible { outline: 2px solid var(--z0, #0c1110); outline-offset: 2px; }"
+    },
+    {
+      "name": "Text Field",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Paper field with an ink rule and a 2px corner.",
+      "html": "<input class=\"ds-input\" placeholder=\"Search incidents, places…\" />",
+      "css": ".ds-input { height: 40px; width: 260px; padding: 0 12px; background: var(--z10, #f5f7f6); color: var(--z0, #0c1110); border: 1px solid var(--z0, #0c1110); border-radius: 2px; font-size: 14px; caret-color: var(--accent-text, #0b7563); } .ds-input::placeholder { color: var(--fg-faint, #5d6663); } .ds-input:focus-visible { outline: 2px solid var(--z0, #0c1110); outline-offset: 2px; }"
+    },
+    {
+      "name": "Top Bar",
+      "kind": "nav",
+      "refersTo": "top-bar",
+      "description": "56px ink bar: logo, legend-caps nav with an inset active cell, mono clock, teal action.",
+      "html": "<header class=\"ds-topbar\"><span class=\"ds-topbar-mark\"></span><strong class=\"ds-topbar-name\">Backwater Trace</strong><nav class=\"ds-topbar-nav\"><a class=\"ds-topbar-link is-active\" href=\"#\">Incident board</a></nav><span class=\"ds-topbar-clock\">14:32:08 IST</span><button class=\"ds-topbar-cta\"><svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" aria-hidden=\"true\"><path d=\"M12 5v14M5 12h14\"/></svg> Report incident</button></header>",
+      "css": ".ds-topbar { display: flex; align-items: stretch; gap: 16px; height: 56px; padding: 0 16px; background: var(--z0, #0c1110); color: var(--z10, #f5f7f6); } .ds-topbar-mark { align-self: center; width: 32px; height: 32px; border-radius: 7px; background: #2fc5a8; } .ds-topbar-name { align-self: center; font-size: 15px; font-weight: 600; } .ds-topbar-nav { display: flex; margin-left: 16px; } .ds-topbar-link { font-family: var(--font-antonio, Antonio), sans-serif; font-weight: 500; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; line-height: 1.2; display: flex; align-items: center; padding: 0 14px; color: var(--z7, #a4aba8); text-decoration: none; border-left: 1px solid transparent; border-right: 1px solid transparent; } .ds-topbar-link:hover { color: var(--z10, #f5f7f6); } .ds-topbar-link.is-active { background: var(--z1, #1a201f); color: var(--z10, #f5f7f6); border-color: var(--z3, #3b4341); } .ds-topbar-clock { align-self: center; margin-left: auto; font-family: var(--font-geist-mono, 'Geist Mono'), monospace; font-variant-numeric: tabular-nums; font-size: 12px; color: var(--z7, #a4aba8); } .ds-topbar-cta { align-self: center; display: inline-flex; align-items: center; gap: 6px; height: 32px; padding: 0 12px; font-size: 13px; font-weight: 600; background: #2fc5a8; color: #0b3b35; border: 1px solid #0b3b35; border-radius: 2px; cursor: pointer; } .ds-topbar-cta:hover { background: #45d3b8; }"
+    },
+    {
+      "name": "Status Tags",
+      "kind": "chip",
+      "refersTo": "status-tag-needs-verification",
+      "description": "Legend-caps tags; status reads by its words, with color as a second cue.",
+      "html": "<span class=\"ds-tag ds-tag-new\">New</span> <span class=\"ds-tag ds-tag-warn\">Needs verification</span> <span class=\"ds-tag ds-tag-ok\">Verified</span> <span class=\"ds-tag ds-tag-done\">Resolved</span>",
+      "css": ".ds-tag { font-family: var(--font-antonio, Antonio), sans-serif; font-weight: 500; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; line-height: 1.2; display: inline-flex; align-items: center; height: 20px; padding: 0 6px; font-size: 11px; letter-spacing: 0.08em; border: 1px solid; border-radius: 2px; } .ds-tag-new { border-color: #0c1110; background: #f5f7f6; color: #0c1110; } .ds-tag-warn { border-color: #8f5508; background: #f6ead6; color: #8f5508; } .ds-tag-ok { border-color: #1d7a4c; background: #e1efe6; color: #1d7a4c; } .ds-tag-done { border-color: #848c89; background: #dde2df; color: #4f5856; }"
+    },
+    {
+      "name": "Incident Row",
+      "kind": "custom",
+      "refersTo": "incident-row-selected",
+      "description": "Ruled ledger row with category tile, source stops and the cross-hatch conflict mark; selection inverts to zone 0.",
+      "html": "<ul class=\"ds-rows\"><li class=\"ds-row\"><span class=\"ds-cat\" style=\"background:#285f93\"></span><div><div class=\"ds-row-head\"><b>AC Road flooding at Pallathuruthy</b><time>12m ago</time></div><div class=\"ds-row-sub\">Flood · Pallathuruthy</div><div class=\"ds-row-meta\"><span class=\"ds-stops\"><i class=\"on\"></i><i class=\"on\"></i><i></i><i></i><i></i></span><span class=\"ds-mono\">2 sources</span><span class=\"ds-conf\"><span class=\"ds-xh\"></span>1 possible conflict</span></div></div></li><li class=\"ds-row is-selected\"><span class=\"ds-cat\" style=\"background:#4a7434\"></span><div><div class=\"ds-row-head\"><b>Canal blocked near Kainakary</b><time>40m ago</time></div><div class=\"ds-row-sub\">Blocked canal · Kainakary</div><div class=\"ds-row-meta\"><span class=\"ds-stops\"><i class=\"on\"></i><i class=\"on\"></i><i class=\"on\"></i><i></i><i></i></span><span class=\"ds-mono\">3 sources</span><span class=\"ds-conf\"><span class=\"ds-xh\"></span>2 possible conflicts</span></div><button class=\"ds-row-open\">Open sources and evidence →</button></div></li></ul>",
+      "css": ".ds-rows { list-style: none; margin: 0; padding: 0; width: 360px; background: #f5f7f6; border: 1px solid #0c1110; font-family: var(--font-geist-sans, Geist), sans-serif; } .ds-row { display: grid; grid-template-columns: 20px 1fr; gap: 0 12px; padding: 14px 16px; border-top: 1px solid #c3c9c6; cursor: pointer; transition: background-color 200ms; } .ds-row:first-child { border-top: 0; } .ds-row:hover { background: #dde2df; } .ds-cat { width: 20px; height: 20px; border-radius: 2px; margin-top: 2px; } .ds-row-head { display: flex; justify-content: space-between; gap: 12px; font-size: 14px; } .ds-row-head time, .ds-mono { font-family: var(--font-geist-mono, 'Geist Mono'), monospace; font-variant-numeric: tabular-nums; font-size: 11px; color: #5d6663; } .ds-row-sub { margin-top: 2px; font-size: 12px; color: #4f5856; } .ds-row-meta { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; margin-top: 10px; } .ds-stops { display: inline-flex; gap: 2px; } .ds-stops i { width: 5px; height: 12px; border: 1px solid #3b4341; box-sizing: border-box; } .ds-stops i.on { background: #1a201f; border-color: #1a201f; } .ds-conf { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 500; color: #c0392b; } .ds-xh { width: 14px; height: 14px; border: 1px solid currentColor; box-sizing: border-box; background-image: repeating-linear-gradient(45deg, currentColor 0 1px, transparent 1px 5px), repeating-linear-gradient(-45deg, currentColor 0 1px, transparent 1px 5px); } .ds-row.is-selected { background: #0c1110; color: #f5f7f6; } .ds-row.is-selected .ds-row-sub, .ds-row.is-selected time, .ds-row.is-selected .ds-mono { color: #a4aba8; } .ds-row.is-selected .ds-stops i { border-color: #666f6c; } .ds-row.is-selected .ds-stops i.on { background: #f5f7f6; border-color: #f5f7f6; } .ds-row.is-selected .ds-conf { color: #ff8a7a; } .ds-row-open { display: flex; justify-content: space-between; align-items: center; width: 100%; height: 32px; margin-top: 12px; padding: 0 12px; border: 0; border-radius: 2px; background: #2fc5a8; color: #0b3b35; font-size: 13px; font-weight: 600; cursor: pointer; } .ds-row-open:hover { background: #45d3b8; }"
+    },
+    {
+      "name": "Conflict Card",
+      "kind": "card",
+      "refersTo": "record-sheet",
+      "description": "Safelight-ruled sheet; each disagreeing value prints its own hatch angle and a cross-hatched strip sits between them.",
+      "html": "<div class=\"ds-conflict\"><div class=\"ds-conflict-head\"><span class=\"ds-xh\"></span><span class=\"ds-legend\">Possible conflict</span><b>· Road status</b></div><div class=\"ds-conflict-body\"><div class=\"ds-val\"><div class=\"ds-strip\" style=\"--a:45deg\"></div><div class=\"ds-val-text\">Blocked</div><button class=\"ds-src\">Source 1 <span>· voice · 2h ago</span></button></div><div class=\"ds-cross\"></div><div class=\"ds-val\"><div class=\"ds-strip\" style=\"--a:-45deg\"></div><div class=\"ds-val-text\">Partially open</div><button class=\"ds-src\">Source 2 <span>· text · 1h ago</span></button></div></div></div>",
+      "css": ".ds-conflict { width: 520px; background: #f5f7f6; border: 1px solid #c0392b; font-family: var(--font-geist-sans, Geist), sans-serif; color: #0c1110; } .ds-conflict-head { display: flex; align-items: center; gap: 8px; padding: 10px 16px; border-bottom: 1px solid #c0392b; font-size: 13px; } .ds-legend { font-family: var(--font-antonio, Antonio), sans-serif; font-weight: 500; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; line-height: 1.2; color: #c0392b; } .ds-xh { width: 14px; height: 14px; border: 1px solid #c0392b; color: #c0392b; box-sizing: border-box; background-image: repeating-linear-gradient(45deg, currentColor 0 1px, transparent 1px 5px), repeating-linear-gradient(-45deg, currentColor 0 1px, transparent 1px 5px); } .ds-conflict-body { display: grid; grid-template-columns: 1fr 28px 1fr; } .ds-val { padding: 16px; } .ds-strip { height: 8px; border: 1px solid #3b4341; color: #3b4341; background-image: repeating-linear-gradient(var(--a), currentColor 0 1px, transparent 1px 5px); } .ds-val-text { margin-top: 12px; font-family: var(--font-antonio, Antonio), sans-serif; font-size: 26px; font-weight: 600; text-transform: uppercase; line-height: 1; letter-spacing: 0.02em; } .ds-src { margin-top: 12px; padding: 4px 8px; font-size: 12px; font-weight: 500; background: #f5f7f6; color: #0c1110; border: 1px solid #0c1110; border-radius: 2px; cursor: pointer; } .ds-src span { font-family: var(--font-geist-mono, 'Geist Mono'), monospace; font-size: 11px; opacity: 0.7; } .ds-src:hover { background: #0c1110; color: #f5f7f6; } .ds-cross { border-left: 1px solid #c3c9c6; border-right: 1px solid #c3c9c6; color: rgb(192 57 43 / 0.7); background-image: repeating-linear-gradient(45deg, currentColor 0 1px, transparent 1px 5px), repeating-linear-gradient(-45deg, currentColor 0 1px, transparent 1px 5px); }"
+    },
+    {
+      "name": "Segmented Status Tabs",
+      "kind": "nav",
+      "refersTo": "segmented-tab-selected",
+      "description": "One ruled strip; the selected segment inverts to zone 0 with mono counts.",
+      "html": "<div class=\"ds-seg\" role=\"tablist\"><button class=\"is-on\">Open <span>07</span></button><button>All <span>09</span></button><button>Needs verification <span>03</span></button><button>Verified <span>02</span></button></div>",
+      "css": ".ds-seg { display: inline-flex; border: 1px solid #0c1110; background: #f5f7f6; font-family: var(--font-geist-sans, Geist), sans-serif; } .ds-seg button { display: flex; align-items: center; gap: 6px; height: 28px; padding: 0 10px; font-size: 12px; font-weight: 500; color: #4f5856; background: transparent; border: 0; border-left: 1px solid #0c1110; cursor: pointer; transition: background-color 150ms, color 150ms; } .ds-seg button:first-child { border-left: 0; } .ds-seg button:hover { background: #dde2df; color: #0c1110; } .ds-seg button span { font-family: var(--font-geist-mono, 'Geist Mono'), monospace; font-size: 11px; color: #5d6663; } .ds-seg button.is-on { background: #0c1110; color: #f5f7f6; } .ds-seg button.is-on span { color: #a4aba8; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Exposure Record",
+    "overview": "**Creative North Star: \"The Exposure Record\"**\n\nEvery incident is a stack of source sheets on a printer's light table. The interface is a cool, backlit neutral ground built from one eleven-step zone ramp, from zone 0 ink to zone X paper, with each sheet edged in a hairline ink rule and cut with square corners. Labels are condensed, tracked capitals, the way a darkroom log is lettered. Times, counts and coordinates are set in tabular mono because they are readings, not prose.\n\nDisagreement is drawn, never colored alone. Each source value carries its own hatch angle; where two sources disagree their hatches cross at ninety degrees, and that crossing is printed in safelight red. Selection inverts a sheet to the deepest zone, the way a negative reads. A single glowing accent, Canal Teal, is reserved for the action that moves the work forward and for live state. Everything else is ink on paper.\n\nThe world replaced an earlier dark \"Night\" operations look. It refuses the dark neon ops dashboard and the grey SaaS board: density comes from ruled ledgers and hairlines, not from cards, glows or gradients.",
+    "keyCharacteristics": [
+      "One zone ramp (z0 to z10, tinted toward Deep Canal) supplies every neutral.",
+      "Hairline ink rules (1px zone 0) bound sheets; inner divisions use the lighter hairline (zone 8).",
+      "Square sheets; controls take a barely-there 2px corner.",
+      "Antonio condensed caps for headings and legends, Geist for reading, Geist Mono tabular for readings.",
+      "Canal Teal is the only glowing color; safelight red is the only alarm color, and it always travels with the cross-hatch.",
+      "Selected means inverted to zone 0."
+    ],
+    "rules": [
+      {
+        "name": "The Safelight Rule",
+        "body": "Safelight red means \"possible conflict\" and nothing else, and it never appears without the 90° cross-hatch beside or inside it. A conflict must read in grayscale.",
+        "section": "colors"
+      },
+      {
+        "name": "The One Glow Rule",
+        "body": "Canal Teal appears only on the primary action and on live or highlighted state. If two teal fills compete in one viewport, one of them is wrong.",
+        "section": "colors"
+      },
+      {
+        "name": "The Zone Ramp Rule",
+        "body": "Every neutral comes from the eleven-step ramp. New greys are not invented; pick the nearest zone.",
+        "section": "colors"
+      },
+      {
+        "name": "The Legend Rule",
+        "body": "Labels that name a field, a section or a nav destination are Antonio caps with wide tracking. Sentences are never set in legend caps.",
+        "section": "typography"
+      },
+      {
+        "name": "The Reading Rule",
+        "body": "Anything that is a measurement (time, count, coordinate, score) is Geist Mono with tabular figures.",
+        "section": "typography"
+      },
+      {
+        "name": "The Flat Ledger Rule",
+        "body": "Panels, rows and cards in the working views carry no shadow. Lift is earned only by paper floating over something: a stacked sheet, a map overlay, a popup.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do take every neutral from the zone ramp (z0 to z10) and keep sheets as zone 10 paper on the backlit ground.",
+      "Do pair every use of safelight red with the 90° cross-hatch (`hatch-cross`), so a conflict reads without color.",
+      "Do show selection by inverting to zone 0 with paper text and zone 7 metadata.",
+      "Do set field names, section headings and nav in Antonio caps at 12px with 0.12em tracking, and every time, count and coordinate in Geist Mono tabular.",
+      "Do draw source counts as stop cells and disagreements as hatch angles rather than adding new badges.",
+      "Do keep sheets square with a 1px rule; give controls the 2px corner.",
+      "Do honour reduced motion by dropping the settle animation and pin transitions."
+    ],
+    "donts": [
+      "Don't use safelight red for errors, destructive actions or recording; that is fault red's job.",
+      "Don't put Canal Teal on anything but the primary action and live or highlighted state.",
+      "Don't return to the dark neon ops dashboard or the grey SaaS board this world replaced: no dark page ground, no glowing panels, no soft rounded cards.",
+      "Don't add drop shadows to panels, rows or cards in working views.",
+      "Don't set sentences in legend caps, or put decorative eyebrow labels above headlines; the only caps line above a page title is a back link, which is navigation.",
+      "Don't recolor or redraw the Canal B logo; its master artwork lives in `docs/brand/`."
+    ]
+  }
+}

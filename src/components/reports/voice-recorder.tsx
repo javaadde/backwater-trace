@@ -118,7 +118,7 @@ export function VoiceRecorder({
 
   const recording = state === "recording";
   return (
-    <div className="rounded-2xl border border-line bg-panel-2 p-4">
+    <div className="border border-z0 bg-panel p-4">
       <div className="flex items-center gap-4">
         <button
           type="button"
@@ -126,11 +126,11 @@ export function VoiceRecorder({
           disabled={state === "transcribing"}
           aria-label={recording ? "Stop recording" : "Start recording"}
           className={cn(
-            "relative grid size-16 shrink-0 place-items-center rounded-full transition-all outline-none focus-visible:ring-4 focus-visible:ring-accent/40 disabled:opacity-60",
-            recording ? "bg-danger text-white" : "bg-accent text-accent-ink hover:brightness-110",
+            "relative grid size-16 shrink-0 place-items-center rounded-full border transition-colors disabled:opacity-60",
+            recording ? "border-danger bg-danger text-white" : "border-deep-canal bg-accent text-accent-ink hover:bg-[#45d3b8]",
           )}
         >
-          {recording && <span className="absolute inset-0 animate-ping rounded-full bg-danger/40" />}
+          {recording && <span className="absolute inset-0 animate-ping rounded-full bg-danger/40 motion-reduce:animate-none" />}
           {state === "transcribing" ? (
             <LoaderCircle className="size-6 animate-spin" />
           ) : recording ? (
@@ -156,12 +156,12 @@ export function VoiceRecorder({
             )}
             {state === "transcribing" && <span className="font-sans">This usually takes a few seconds.</span>}
             {state === "done" && <span className="font-sans">You can edit any word before submitting.</span>}
-            {state === "error" && <span className="font-sans text-warn">{error}</span>}
+            {state === "error" && <span className="font-sans text-danger">{error}</span>}
           </div>
           {recording && (
             <div className="mt-2 flex h-6 items-end gap-[3px]" aria-hidden>
               {level.map((v, i) => (
-                <span key={i} className="w-1 rounded-full bg-danger/80" style={{ height: `${v * 100}%` }} />
+                <span key={i} className="w-1 bg-danger/80" style={{ height: `${v * 100}%` }} />
               ))}
             </div>
           )}

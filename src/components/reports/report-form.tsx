@@ -156,34 +156,37 @@ export function ReportForm() {
 
   return (
     <div className="mx-auto w-full max-w-3xl px-4 py-8">
-      <Link href="/dashboard" className="inline-flex items-center gap-1 text-xs text-fg-muted hover:text-fg">
+      <Link href="/dashboard" className="legend inline-flex items-center gap-1 text-fg-muted hover:text-fg">
         <ArrowLeft className="size-3.5" /> Incident board
       </Link>
-      <h1 className="mt-3 text-2xl font-semibold tracking-tight">Report an incident</h1>
-      <p className="mt-1 text-sm text-fg-muted">
+      <h1 className="mt-3 font-display text-[40px] leading-none font-semibold uppercase tracking-[0.01em]">Report an incident</h1>
+      <p className="mt-2 max-w-[60ch] text-[15px] leading-relaxed text-fg-muted">
         Flooded roads, waterlogging, blocked canals, waste dumping or damaged infrastructure in Alappuzha. Speak in Malayalam or type in any language.
       </p>
 
       {/* Stepper */}
-      <ol className="mt-6 grid grid-cols-4 gap-2">
+      <ol className="mt-6 grid grid-cols-4 border border-z0">
         {STEPS.map((s, i) => (
           <li key={s}>
             <button
               type="button"
               onClick={() => i < step && setStep(i)}
               disabled={i > step}
-              className="w-full text-left disabled:cursor-default"
+              aria-current={i === step ? "step" : undefined}
+              className={cn(
+                "flex h-10 w-full items-center gap-2 border-l border-z0 px-3 text-left disabled:cursor-default",
+                i === 0 && "border-l-0",
+                i === step ? "bg-z0 text-z10" : i < step ? "hatch bg-panel text-fg [color:var(--z8)] hover:bg-panel-3" : "bg-panel text-fg-faint",
+              )}
             >
-              <div className={cn("h-1 rounded-full", i <= step ? "bg-accent" : "bg-line")} />
-              <div className={cn("mt-2 text-xs font-medium", i === step ? "text-fg" : i < step ? "text-fg-muted" : "text-fg-faint")}>
-                {i + 1}. {s}
-              </div>
+              <span className={cn("tabular font-mono text-[11px]", i === step ? "text-accent" : i < step ? "text-fg" : "")}>{String(i + 1).padStart(2, "0")}</span>
+              <span className={cn("legend", i < step && "text-fg")}>{s}</span>
             </button>
           </li>
         ))}
       </ol>
 
-      <div className="mt-6 rounded-2xl border border-line bg-panel p-5">
+      <div className="border-x border-b border-z0 bg-panel p-5">
         {step === 0 && (
           <div className="space-y-4">
             <VoiceRecorder
@@ -204,7 +207,7 @@ export function ReportForm() {
                   {transcript ? "Transcript — edit anything that's wrong" : "Or type what you see"}
                 </label>
                 {transcript && (
-                  <span className="text-[11px] text-accent">{mocked ? "Demo transcript (mock mode)" : "Transcribed by Sarvam AI"}</span>
+                  <span className="text-[11px] text-accent-text">{mocked ? "Demo transcript (mock mode)" : "Transcribed by Sarvam AI"}</span>
                 )}
               </div>
               <textarea
@@ -213,7 +216,7 @@ export function ReportForm() {
                 onChange={(e) => setDescription(e.target.value)}
                 rows={4}
                 placeholder="e.g. Knee-deep water near KSRTC bus stand, vehicles struggling to pass."
-                className="mt-2 w-full resize-y rounded-xl border border-line bg-panel-2 px-3.5 py-3 text-[15px] leading-relaxed text-fg placeholder:text-fg-faint outline-none focus:border-accent/60"
+                className="mt-2 w-full resize-y rounded-sm border border-z0 bg-panel px-3.5 py-3 text-[16px] leading-relaxed text-fg placeholder:text-fg-faint"
               />
               {!transcript && (
                 <div className="mt-2 flex flex-wrap items-center gap-1.5 text-[11px] text-fg-faint">
@@ -223,7 +226,7 @@ export function ReportForm() {
                       key={s.label}
                       type="button"
                       onClick={() => setDescription(s.text)}
-                      className="rounded-md border border-line px-2 py-0.5 text-fg-muted hover:border-line-strong hover:text-fg"
+                      className="rounded-sm border border-line-strong bg-panel px-2 py-0.5 text-fg-muted hover:border-z0 hover:text-fg"
                     >
                       {s.label}
                     </button>
@@ -250,8 +253,8 @@ export function ReportForm() {
               />
             </div>
             {analysis?.landmark && (
-              <div className="flex items-center gap-2 rounded-lg border border-accent/30 bg-accent/5 px-3 py-2 text-xs text-fg-muted">
-                <Sparkles className="size-3.5 text-accent" /> Detected <b className="text-fg">{analysis.landmark.name}</b> in your report and placed the pin there. Adjust if needed.
+              <div className="flex items-center gap-2 border border-deep-canal bg-[#dff4ef] px-3 py-2 text-[13px] text-fg-muted">
+                <Sparkles className="size-3.5 text-accent-text" /> Detected <b className="text-fg">{analysis.landmark.name}</b> in your report and placed the pin there. Adjust if needed.
               </div>
             )}
             <div className="flex flex-wrap gap-1.5">
@@ -265,15 +268,15 @@ export function ReportForm() {
                     setLocationText(l.name);
                   }}
                   className={cn(
-                    "rounded-full border px-2.5 py-1 text-xs transition-colors",
-                    locationText === l.name ? "border-accent/60 bg-accent/10 text-fg" : "border-line text-fg-muted hover:border-line-strong hover:text-fg",
+                    "rounded-sm border px-2.5 py-1 text-[13px] transition-colors",
+                    locationText === l.name ? "border-z0 bg-z0 text-z10" : "border-line-strong bg-panel text-fg-muted hover:border-z0 hover:text-fg",
                   )}
                 >
                   {l.name}
                 </button>
               ))}
             </div>
-            <div className="h-80 overflow-hidden rounded-xl border border-line">
+            <div className="h-80 overflow-hidden border border-z0">
               <LocationPicker
                 value={location}
                 onChange={(p) => {
@@ -287,9 +290,9 @@ export function ReportForm() {
                 value={locationText}
                 onChange={(e) => setLocationText(e.target.value)}
                 placeholder="Place name or landmark (optional)"
-                className="h-10 rounded-lg border border-line bg-panel-2 px-3 text-sm outline-none focus:border-accent/60"
+                className="h-10 rounded-sm border border-z0 bg-panel px-3 text-sm"
               />
-              <div className="tabular flex h-10 items-center gap-1.5 rounded-lg border border-line bg-panel-2 px-3 font-mono text-xs text-fg-muted">
+              <div className="tabular flex h-10 items-center gap-1.5 rounded-sm border border-z0 bg-panel px-3 font-mono text-xs text-fg-muted">
                 <MapPin className="size-3.5" />
                 {location ? `${location.latitude.toFixed(5)}, ${location.longitude.toFixed(5)}` : "No point selected"}
               </div>
@@ -306,7 +309,7 @@ export function ReportForm() {
               <h2 className="font-semibold">Add a photo (optional)</h2>
               <p className="text-sm text-fg-muted">Photos are stored privately and only shown through short-lived links. Avoid faces and number plates.</p>
               {photoUrl ? (
-                <div className="relative mt-3 overflow-hidden rounded-xl border border-line">
+                <div className="relative mt-3 overflow-hidden border border-z0">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img src={photoUrl} alt="Selected evidence" className="max-h-72 w-full object-cover" />
                   <button
@@ -319,7 +322,7 @@ export function ReportForm() {
                   </button>
                 </div>
               ) : (
-                <label className="mt-3 flex cursor-pointer flex-col items-center justify-center gap-2 rounded-xl border border-dashed border-line-strong bg-panel-2 px-4 py-10 text-sm text-fg-muted hover:border-accent/50 hover:text-fg">
+                <label className="mt-3 flex cursor-pointer flex-col items-center justify-center gap-2 border border-dashed border-z5 bg-panel px-4 py-10 text-sm text-fg-muted hover:border-z0 hover:text-fg">
                   <Camera className="size-6" />
                   Choose or take a photo
                   <span className="text-[11px] text-fg-faint">JPEG, PNG or WebP · up to 8 MB</span>
@@ -352,7 +355,7 @@ export function ReportForm() {
                 onChange={(e) => setReporterName(e.target.value)}
                 maxLength={80}
                 placeholder="e.g. Ward volunteer"
-                className="mt-2 h-10 w-full rounded-lg border border-line bg-panel-2 px-3 text-sm outline-none focus:border-accent/60"
+                className="mt-2 h-10 w-full rounded-sm border border-z0 bg-panel px-3 text-sm"
               />
             </div>
           </div>
@@ -366,8 +369,8 @@ export function ReportForm() {
                 These details were suggested from your words. Change anything that&apos;s wrong — they help group your report with others.
               </p>
             </div>
-            <div className="rounded-xl border border-line bg-panel-2 p-4">
-              <div className="text-[11px] font-medium uppercase tracking-wider text-fg-faint">
+            <div className="border border-line-strong bg-panel p-4">
+              <div className="legend text-fg-muted">
                 {audio && transcript ? "Voice report · transcript" : "Written report"}
               </div>
               <p className="mt-1 text-[15px] leading-relaxed">{description}</p>
@@ -389,8 +392,8 @@ export function ReportForm() {
                     type="button"
                     onClick={() => setField("category", c)}
                     className={cn(
-                      "flex items-center gap-2 rounded-lg border px-3 py-2 text-left text-sm transition-colors",
-                      fields.category === c ? "border-accent/60 bg-accent/10" : "border-line hover:border-line-strong",
+                      "flex items-center gap-2 rounded-sm border px-3 py-2 text-left text-sm transition-colors",
+                      fields.category === c ? "border-z0 bg-z0 text-z10 [&_.font-ml]:text-z7" : "border-line-strong bg-panel hover:border-z0",
                     )}
                   >
                     <span style={{ color: `var(--cat-${c})` }}>
@@ -418,7 +421,7 @@ export function ReportForm() {
         )}
 
         {error && (
-          <div className="mt-4 flex items-start gap-2 rounded-lg border border-danger/30 bg-danger/10 px-3 py-2 text-sm text-danger">
+          <div className="mt-4 flex items-start gap-2 border border-danger bg-[#f7e3e0] px-3 py-2 text-sm text-danger">
             <TriangleExclamationPoint className="mt-0.5 size-4 shrink-0" /> {error}
           </div>
         )}
@@ -449,17 +452,17 @@ function Suggestions({ analysis, analyzing, fields }: { analysis: ExtractedDetai
   if (fields.category) chips.push(CATEGORY_LABEL[fields.category]);
   if (fields.waterLevel) chips.push(WATER_LABEL[fields.waterLevel]);
   if (fields.roadStatus) chips.push(`Road: ${ROAD_LABEL[fields.roadStatus].toLowerCase()}`);
-  if (analysis?.landmark) chips.push(`📍 ${analysis.landmark.name}`);
-  else if (analysis?.locationText) chips.push(`📍 ${analysis.locationText}`);
+  if (analysis?.landmark) chips.push(`Near ${analysis.landmark.name}`);
+  else if (analysis?.locationText) chips.push(`Near ${analysis.locationText}`);
   return (
     <div className="flex flex-wrap items-center gap-1.5 text-xs">
       <span className="flex items-center gap-1 text-fg-faint">
-        {analyzing ? <LoaderCircle className="size-3.5 animate-spin" /> : <Sparkles className="size-3.5 text-accent" />}
+        {analyzing ? <LoaderCircle className="size-3.5 animate-spin" /> : <Sparkles className="size-3.5 text-accent-text" />}
         Detected
       </span>
       {chips.length === 0 && !analyzing && <span className="text-fg-faint">nothing yet — add where and what you see</span>}
       {chips.map((c) => (
-        <span key={c} className="rounded-md bg-panel-3 px-2 py-0.5 text-fg-muted">
+        <span key={c} className="border border-line-strong bg-panel px-2 py-0.5 text-fg">
           {c}
         </span>
       ))}
@@ -486,7 +489,7 @@ function FieldSelect<T extends string>({
       <select
         value={value ?? ""}
         onChange={(e) => onChange((e.target.value || null) as T | null)}
-        className="mt-1.5 h-10 w-full rounded-lg border border-line bg-panel-2 px-2.5 text-sm outline-none focus:border-accent/60"
+        className="select mt-1.5 h-10 w-full text-sm"
       >
         <option value="">Not mentioned</option>
         {options.map((o) => (
@@ -538,19 +541,19 @@ function SubmitSuccess({ result, onAnother }: { result: SubmitResult; onAnother:
   const { incident, match, newContradictions, warnings } = result;
   return (
     <div className="mx-auto w-full max-w-2xl px-4 py-10">
-      <div className="rounded-2xl border border-line bg-panel p-6">
+      <div className="settle border border-z0 bg-panel p-6">
         <div className="flex items-center gap-3">
-          <span className="grid size-10 place-items-center rounded-full bg-ok/15 text-ok">
+          <span className="grid size-10 place-items-center border border-ok text-ok">
             <Check className="size-5" />
           </span>
           <div>
-            <h1 className="text-xl font-semibold tracking-tight">Report submitted</h1>
+            <h1 className="font-display text-[28px] leading-none font-semibold uppercase">Report submitted</h1>
             <p className="text-sm text-fg-muted">Thank you. It is now visible on the incident board as an unverified report.</p>
           </div>
         </div>
 
-        <div className="mt-6 rounded-xl border border-line bg-panel-2 p-4">
-          <div className="text-[11px] font-medium uppercase tracking-wider text-fg-faint">
+        <div className="mt-6 border border-line-strong bg-panel p-4">
+          <div className="legend text-fg-muted">
             {match ? "Grouped with an existing incident" : "New incident created"}
           </div>
           <div className="mt-1 flex flex-wrap items-center gap-2">
@@ -559,7 +562,7 @@ function SubmitSuccess({ result, onAnother }: { result: SubmitResult; onAnother:
           </div>
           {match && (
             <div className="mt-2 flex flex-wrap gap-1.5 text-xs">
-              <span className="rounded-md bg-accent/10 px-2 py-0.5 font-medium text-accent">Match score {match.score}</span>
+              <span className="border border-deep-canal bg-accent px-2 py-0.5 font-mono font-medium text-accent-ink">Match score {match.score}</span>
               {match.reasons.map((r) => (
                 <span key={r} className="rounded-md bg-panel-3 px-2 py-0.5 text-fg-muted">
                   {r}
@@ -570,9 +573,9 @@ function SubmitSuccess({ result, onAnother }: { result: SubmitResult; onAnother:
         </div>
 
         {newContradictions.length > 0 && (
-          <div className="mt-3 rounded-xl border border-warn/30 bg-warn/5 p-4">
-            <div className="flex items-center gap-1.5 text-sm font-semibold text-warn">
-              <TriangleExclamationPoint className="size-4" /> Your report differs from earlier reports
+          <div className="mt-3 border border-conflict bg-panel p-4">
+            <div className="flex items-center gap-2 text-sm font-semibold text-conflict">
+              <span aria-hidden className="hatch-cross size-4 border border-conflict" /> Your report differs from earlier reports
             </div>
             <ul className="mt-2 space-y-1 text-sm text-fg-muted">
               {[...new Map(newContradictions.map((c) => [`${c.field}:${c.value_a}`, c])).values()].map((c) => (

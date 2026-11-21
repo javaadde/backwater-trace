@@ -2,12 +2,12 @@
 
 import Link from "next/link";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { ArrowLeft, LoaderCircle, MapPin, Network, Plus } from "lucide-react";
+import { ArrowLeft, LoaderCircle, MapPin, Network } from "lucide-react";
 import type { IncidentDetail, IncidentStatus } from "@/types/domain";
 import { INCIDENT_STATUSES } from "@/types/domain";
 import { STATUS_LABEL } from "@/lib/labels";
 import { IncidentMap } from "@/components/map";
-import { CategoryChip, ConflictBadge, StatusBadge } from "@/components/ui/badges";
+import { CategoryChip, ConflictBadge, SourceStops, StatusBadge } from "@/components/ui/badges";
 import { buttonClass } from "@/components/ui/button";
 import { EvidenceGraphView } from "@/components/graph/evidence-graph";
 import { formatTime, timeAgo } from "@/lib/utils";
@@ -92,25 +92,22 @@ export function IncidentDetailView({ id }: { id: string }) {
 
   return (
     <div className="mx-auto w-full max-w-[1400px] px-4 py-6">
-      <Link href="/dashboard" className="inline-flex items-center gap-1 text-xs text-fg-muted hover:text-fg">
+      <Link href="/dashboard" className="legend inline-flex items-center gap-1 text-fg-muted hover:text-fg">
         <ArrowLeft className="size-3.5" /> Incident board
       </Link>
 
       {/* Header */}
       <div className="mt-3 flex flex-wrap items-start gap-4">
-        <div className="min-w-0 flex-1">
-          <CategoryChip category={incident.category} />
-          <h1 className="mt-1.5 text-2xl font-semibold tracking-tight text-balance">{incident.title}</h1>
-          <div className="mt-2 flex flex-wrap items-center gap-2 text-xs text-fg-muted">
+        <div className="min-w-0 basis-full sm:basis-0 sm:flex-1">
+          <h1 className="font-display text-[40px] leading-[1.02] font-semibold tracking-[0.01em] text-balance uppercase sm:text-[48px]">{incident.title}</h1>
+          <div className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-2 text-[12.5px] text-fg-muted">
+            <CategoryChip category={incident.category} />
             <StatusBadge status={incident.status} />
             <ConflictBadge count={incident.contradiction_count} />
-            <span>
-              {incident.report_count} source report{incident.report_count > 1 ? "s" : ""}
-            </span>
-            <span>·</span>
-            <span className="tabular">First reported {formatTime(incident.created_at)}</span>
-            <span>·</span>
-            <span className="tabular">Updated {timeAgo(incident.last_reported_at)}</span>
+            <SourceStops count={incident.report_count} />
+            <span className="tabular font-mono text-[12px]">First {formatTime(incident.created_at)}</span>
+            <span className="tabular font-mono text-[12px]">Updated {timeAgo(incident.last_reported_at)}</span>
+            <span className="border border-line-strong px-1.5 py-0.5 text-[11px] text-fg-muted">Synthetic demo data</span>
           </div>
         </div>
         <div className="flex items-center gap-2">
@@ -120,7 +117,7 @@ export function IncidentDetailView({ id }: { id: string }) {
               value={incident.status}
               disabled={savingStatus}
               onChange={(e) => changeStatus(e.target.value as IncidentStatus)}
-              className="h-9 rounded-lg border border-line-strong bg-panel-2 px-2 text-[13px] text-fg outline-none focus:border-accent/60"
+              className="select h-9 text-[13px]"
             >
               {INCIDENT_STATUSES.map((s) => (
                 <option key={s} value={s}>
@@ -129,22 +126,19 @@ export function IncidentDetailView({ id }: { id: string }) {
               ))}
             </select>
           </label>
-          <Link href="/report" className={buttonClass("primary", "md")}>
-            <Plus /> Add report
-          </Link>
         </div>
       </div>
 
       <div className="mt-6 grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)]">
         {/* Left: summary, conflicts, sources */}
         <div className="space-y-6">
-          <section className="rounded-2xl border border-line bg-panel p-4">
-            <h2 className="text-[13px] font-semibold tracking-tight">Summary</h2>
-            <p className="mt-1.5 text-[14.5px] leading-relaxed text-fg">{incident.summary}</p>
-            <p className="mt-2 text-[11px] text-fg-faint">
+          <section className="border border-z0 bg-panel p-4">
+            <h2 className="legend text-fg">Summary</h2>
+            <p className="mt-2 max-w-[68ch] text-[15px] leading-relaxed text-fg">{incident.summary}</p>
+            <p className="mt-2 text-[12px] text-fg-muted">
               Generated from the source reports below. Treat as a starting point, not a verified account.
             </p>
-            <div className="mt-4 h-48 overflow-hidden rounded-xl border border-line">
+            <div className="mt-4 h-52 overflow-hidden border border-line-strong">
               <IncidentMap
                 incidents={[incident]}
                 selectedId={incident.id}
@@ -154,7 +148,7 @@ export function IncidentDetailView({ id }: { id: string }) {
                 interactive={false}
               />
             </div>
-            <div className="mt-2 flex items-center gap-1 text-[11px] text-fg-faint">
+            <div className="mt-2 flex items-center gap-1 text-[12px] text-fg-muted">
               <MapPin className="size-3" /> {incident.location_text ?? "Pinned area"} ·{" "}
               <span className="tabular font-mono">
                 {incident.latitude.toFixed(4)}, {incident.longitude.toFixed(4)}
@@ -163,12 +157,12 @@ export function IncidentDetailView({ id }: { id: string }) {
           </section>
 
           <section>
-            <h2 className="mb-3 text-[13px] font-semibold tracking-tight">Possible conflicts</h2>
+            <h2 className="legend mb-3 text-fg">Where sources differ</h2>
             <ConflictCards contradictions={contradictions} reports={reports} onOpenReport={openReport} />
           </section>
 
           <section>
-            <h2 className="mb-3 text-[13px] font-semibold tracking-tight">Original source reports</h2>
+            <h2 className="legend mb-3 text-fg">Original source reports</h2>
             <div className="space-y-3">
               {reports.map((r, i) => (
                 <ReportCard
@@ -189,14 +183,14 @@ export function IncidentDetailView({ id }: { id: string }) {
 
         {/* Right: evidence graph */}
         <section className="lg:sticky lg:top-20 lg:self-start">
-          <div className="overflow-hidden rounded-2xl border border-line bg-panel">
-            <div className="flex items-center justify-between border-b border-line px-4 py-3">
-              <h2 className="flex items-center gap-1.5 text-[13px] font-semibold tracking-tight">
-                <Network className="size-4 text-accent" /> Evidence graph
+          <div className="overflow-hidden border border-z0 bg-panel">
+            <div className="flex items-center justify-between border-b border-z0 px-4 py-2.5">
+              <h2 className="legend flex items-center gap-2 text-fg">
+                <Network className="size-4" /> Evidence graph
               </h2>
-              <span className="text-[11px] text-fg-faint">Click a report or source to jump to it</span>
+              <span className="text-[12px] text-fg-muted">Click a report or source to jump to it</span>
             </div>
-            <div className="h-[560px] lg:h-[calc(100dvh-11rem)]">
+            <div className="h-[720px] lg:h-[calc(100dvh-11rem)]">
               <EvidenceGraphView graph={graph} onSelectReport={openReport} />
             </div>
           </div>

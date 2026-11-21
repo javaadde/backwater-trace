@@ -14,7 +14,7 @@ const RING: [number, number][] = [...ALAPPUZHA_BOUNDARY, ALAPPUZHA_BOUNDARY[0]];
 
 /**
  * Marks Alappuzha district: everything outside the official boundary is
- * dimmed and the border gets a soft glowing outline. Purely visual —
+ * shaded and the border is a dashed ink rule. Purely visual —
  * non-interactive so map clicks (e.g. the location picker) pass through.
  */
 export function DistrictBoundary() {
@@ -23,17 +23,12 @@ export function DistrictBoundary() {
       <Polygon
         positions={[OUTER, ALAPPUZHA_BOUNDARY]}
         interactive={false}
-        pathOptions={{ stroke: false, fillColor: "#05080c", fillOpacity: 0.62 }}
+        pathOptions={{ stroke: false, fillColor: "#0c1110", fillOpacity: 0.22 }}
       />
       <Polyline
         positions={RING}
         interactive={false}
-        pathOptions={{ color: "#2fc5a8", weight: 9, opacity: 0.16, lineJoin: "round" }}
-      />
-      <Polyline
-        positions={RING}
-        interactive={false}
-        pathOptions={{ color: "#2fc5a8", weight: 2, opacity: 0.95, lineJoin: "round", dashArray: "6 5" }}
+        pathOptions={{ color: "#0c1110", weight: 1.6, opacity: 0.9, lineJoin: "round", dashArray: "6 5" }}
       />
     </>
   );

@@ -41,15 +41,15 @@ export function LockToAlappuzha() {
 
 const OSM_ATTR = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors';
 
-/** Base layers: dark (OSM tiles with a CSS filter), standard OSM, and satellite imagery. */
-export function BaseLayers({ defaultLayer = "dark" }: { defaultLayer?: "dark" | "streets" | "satellite" }) {
+/** Base layers: monochrome (OSM tiles printed to the zone ramp), standard OSM, and satellite imagery. */
+export function BaseLayers({ defaultLayer = "zone" }: { defaultLayer?: "zone" | "streets" | "satellite" }) {
   return (
     <>
     <LockToAlappuzha />
     <DistrictBoundary />
     <LayersControl position="topright">
-      <LayersControl.BaseLayer checked={defaultLayer === "dark"} name="Dark">
-        <TileLayer attribution={OSM_ATTR} url="https://tile.openstreetmap.org/{z}/{x}/{y}.png" maxZoom={19} className="bt-dark-tiles" bounds={ALAPPUZHA_LATLNG_BOUNDS} />
+      <LayersControl.BaseLayer checked={defaultLayer === "zone"} name="Monochrome">
+        <TileLayer attribution={OSM_ATTR} url="https://tile.openstreetmap.org/{z}/{x}/{y}.png" maxZoom={19} className="bt-zone-tiles" bounds={ALAPPUZHA_LATLNG_BOUNDS} />
       </LayersControl.BaseLayer>
       <LayersControl.BaseLayer checked={defaultLayer === "streets"} name="Streets (OSM)">
         <TileLayer attribution={OSM_ATTR} url="https://tile.openstreetmap.org/{z}/{x}/{y}.png" maxZoom={19} bounds={ALAPPUZHA_LATLNG_BOUNDS} />

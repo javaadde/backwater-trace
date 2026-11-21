@@ -34,7 +34,7 @@ export default function LocationPicker({ value, onChange }: { value: LatLng | nu
   return (
     <MapContainer center={[ALAPPUZHA_CENTER.latitude, ALAPPUZHA_CENTER.longitude]} zoom={14} className="h-full w-full" maxBounds={ALAPPUZHA_LATLNG_BOUNDS} maxBoundsViscosity={1}
       minZoom={ALAPPUZHA_MIN_ZOOM}>
-      <BaseLayers defaultLayer="streets" />
+      <BaseLayers defaultLayer="zone" />
       <ClickHandler onChange={onChange} />
       <Recenter value={value} />
       {value && (

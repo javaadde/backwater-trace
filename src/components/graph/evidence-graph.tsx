@@ -1,7 +1,7 @@
 "use client";
 
 import "@xyflow/react/dist/style.css";
-import { useMemo } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import {
   Background,
   BackgroundVariant,
@@ -16,8 +16,9 @@ import {
   type EdgeProps,
   type Node,
   type NodeProps,
+  type ReactFlowInstance,
 } from "@xyflow/react";
-import { FileText, Image as ImageIcon, MapPin, Mic, TriangleExclamationPoint } from "lucide-react";
+import { FileText, Image as ImageIcon, MapPin, Mic } from "lucide-react";
 import type { EvidenceGraph, GraphEdgeKind, GraphNode } from "@/types/domain";
 import { cn } from "@/lib/utils";
 
@@ -37,11 +38,10 @@ function Handles() {
 
 function IncidentNode({ data }: NodeProps<BtNode>) {
   return (
-    <div className="w-56 rounded-2xl border-2 border-accent bg-panel-2 px-4 py-3 text-center shadow-[0_0_0_6px_rgb(47_197_168/0.12)]">
+    <div className="w-56 border border-z0 bg-z0 px-4 py-3 text-center text-z10 shadow-[0_4px_12px_rgb(12_17_16/0.25)]">
       <Handles />
-      <div className="text-[10px] font-semibold uppercase tracking-[0.14em] text-accent">Incident</div>
-      <div className="mt-1 text-[13px] font-semibold leading-snug text-fg">{data.label}</div>
-      {data.sublabel && <div className="mt-0.5 text-[11px] text-fg-muted">{data.sublabel}</div>}
+      <div className="text-[13px] font-semibold leading-snug text-z10">{data.label}</div>
+      {data.sublabel && <div className="mt-0.5 text-[11px] text-z7">{data.sublabel}</div>}
     </div>
   );
 }
@@ -50,17 +50,16 @@ function ReportNode({ data, selected }: NodeProps<BtNode>) {
   return (
     <div
       className={cn(
-        "w-40 cursor-pointer rounded-xl border bg-panel-2 px-3 py-2 transition-shadow",
-        data.flagged ? "border-warn/70" : "border-info/60",
-        selected && "ring-2 ring-fg/60",
+        "relative w-40 cursor-pointer border bg-panel px-3 py-2 transition-shadow",
+        data.flagged ? "border-conflict" : "border-z0",
+        selected && "ring-2 ring-accent",
       )}
     >
       <Handles />
-      <div className="flex items-center justify-between">
-        <span className={cn("text-[10px] font-semibold uppercase tracking-wider", data.flagged ? "text-warn" : "text-info")}>Report</span>
-        {data.flagged && <TriangleExclamationPoint className="size-3.5 text-warn" />}
+      <div className="flex items-center justify-between gap-2">
+        <div className="text-[13px] font-semibold text-fg">{data.label}</div>
+        {data.flagged && <span aria-label="Possible conflict" className="hatch-cross size-3.5 shrink-0 border border-conflict text-conflict" />}
       </div>
-      <div className="text-[13px] font-semibold text-fg">{data.label}</div>
       <div className="text-[11px] text-fg-muted">{data.sublabel}</div>
     </div>
   );
@@ -68,9 +67,9 @@ function ReportNode({ data, selected }: NodeProps<BtNode>) {
 
 function LocationNode({ data }: NodeProps<BtNode>) {
   return (
-    <div className="flex max-w-44 items-center gap-2 rounded-full border border-line-strong bg-panel px-3 py-1.5">
+    <div className="flex max-w-44 items-center gap-2 border border-line-strong bg-panel px-3 py-1.5">
       <Handles />
-      <MapPin className="size-3.5 shrink-0 text-[var(--cat-damaged_infrastructure)]" />
+      <MapPin className="size-3.5 shrink-0 text-fg" />
       <div className="min-w-0">
         <div className="truncate text-[12px] font-medium text-fg">{data.label}</div>
         <div className="tabular truncate font-mono text-[10px] text-fg-faint">{data.sublabel}</div>
@@ -82,9 +81,9 @@ function LocationNode({ data }: NodeProps<BtNode>) {
 function SourceNode({ data }: NodeProps<BtNode>) {
   const Icon = data.label === "Voice note" ? Mic : data.label === "Photo" ? ImageIcon : FileText;
   return (
-    <div className="flex max-w-44 cursor-pointer items-center gap-2 rounded-lg border border-dashed border-line-strong bg-panel px-2.5 py-1.5">
+    <div className="flex max-w-44 cursor-pointer items-center gap-2 border border-dashed border-z5 bg-panel px-2.5 py-1.5">
       <Handles />
-      <span className="grid size-6 shrink-0 place-items-center rounded-md bg-panel-3 text-fg-muted">
+      <span className="grid size-6 shrink-0 place-items-center border border-line-strong text-fg-muted">
         <Icon className="size-3.5" />
       </span>
       <div className="min-w-0">
@@ -112,7 +111,7 @@ function ConflictEdge({ id, sourceX, sourceY, targetX, targetY, label, style }: 
       {label && (
         <EdgeLabelRenderer>
           <div
-            className="nodrag nopan pointer-events-none absolute rounded-md border border-warn/40 bg-panel px-1.5 py-0.5 text-[10.5px] font-semibold whitespace-nowrap text-warn"
+            className="nodrag nopan pointer-events-none absolute flex items-center gap-1 border border-conflict bg-panel px-1.5 py-0.5 text-[11px] font-semibold whitespace-nowrap text-conflict"
             style={{ transform: `translate(-50%, -50%) translate(${mx}px, ${ly}px)`, zIndex: 1000 }}
           >
             {label}
@@ -126,11 +125,14 @@ function ConflictEdge({ id, sourceX, sourceY, targetX, targetY, label, style }: 
 const edgeTypes = { conflict: ConflictEdge };
 
 const EDGE_STYLE: Record<GraphEdgeKind, { stroke: string; dash?: string; width: number }> = {
-  REPORTS: { stroke: "#4c9df5", width: 1.8 },
-  LOCATED_AT: { stroke: "#5f6b7d", width: 1.2, dash: "4 4" },
-  SUPPORTS: { stroke: "#5f6b7d", width: 1.2 },
-  CONFLICTS_WITH: { stroke: "#f5a524", width: 2.2, dash: "6 5" },
+  REPORTS: { stroke: "#0c1110", width: 1.6 },
+  LOCATED_AT: { stroke: "#848c89", width: 1.2, dash: "4 4" },
+  SUPPORTS: { stroke: "#848c89", width: 1.2 },
+  CONFLICTS_WITH: { stroke: "#c0392b", width: 2, dash: "6 5" },
 };
+
+// Pixel padding; never zoom below ~legible size (narrow screens pan instead).
+const FIT = { padding: "24px", minZoom: 0.92 } as const;
 
 /** Approximate node sizes so positions computed for centres line up visually. */
 const HALF: Record<string, [number, number]> = { incident: [112, 40], report: [80, 30], location: [80, 18], source: [80, 18] };
@@ -144,6 +146,12 @@ export function EvidenceGraphView({
   onSelectReport?: (reportId: string) => void;
   className?: string;
 }) {
+  const rfRef = useRef<ReactFlowInstance<BtNode, Edge> | null>(null);
+  useEffect(() => {
+    const refit = () => rfRef.current?.fitView(FIT);
+    window.addEventListener("resize", refit);
+    return () => window.removeEventListener("resize", refit);
+  }, []);
   const nodes: BtNode[] = useMemo(
     () =>
       graph.nodes.map((n) => ({
@@ -174,17 +182,23 @@ export function EvidenceGraphView({
   );
 
   return (
-    <div className={cn("relative h-full w-full", className)}>
+    <div className={cn("flex h-full w-full flex-col", className)}>
+      <div className="relative min-h-0 flex-1">
       <ReactFlow
         nodes={nodes}
         edges={edges}
         nodeTypes={nodeTypes}
         edgeTypes={edgeTypes}
         fitView
-        fitViewOptions={{ padding: 0.12 }}
+        fitViewOptions={FIT}
+        // Refit once nodes and the legend strip have been measured, and on resize.
+        onInit={(rf) => {
+          rfRef.current = rf;
+          setTimeout(() => rf.fitView(FIT), 60);
+        }}
         minZoom={0.3}
         maxZoom={1.8}
-        forceColorMode="dark"
+        forceColorMode="light"
         nodesConnectable={false}
         proOptions={{ hideAttribution: false }}
         onNodeClick={(_, n) => {
@@ -193,14 +207,15 @@ export function EvidenceGraphView({
         }}
         style={{ background: "transparent" }}
       >
-        <Background variant={BackgroundVariant.Dots} gap={22} size={1} color="#253040" />
-        <Controls showInteractive={false} position="bottom-right" />
+        <Background variant={BackgroundVariant.Lines} gap={28} size={1} color="#dde2df" />
+        <Controls showInteractive={false} position="top-right" />
       </ReactFlow>
-      <div className="pointer-events-none absolute bottom-3 left-3 flex flex-wrap gap-x-3 gap-y-1 rounded-lg border border-line bg-panel/90 px-2.5 py-1.5 text-[10.5px] text-fg-muted backdrop-blur">
-        <LegendLine color="#4c9df5" label="Reports" />
-        <LegendLine color="#5f6b7d" dash label="Located at" />
-        <LegendLine color="#5f6b7d" label="Supports" />
-        <LegendLine color="#f5a524" dash label="Possible conflict" />
+      </div>
+      <div className="flex flex-wrap gap-x-4 gap-y-1 border-t border-z0 px-4 py-2 text-[11.5px] text-fg-muted">
+        <LegendLine color="#0c1110" label="Reports" />
+        <LegendLine color="#848c89" dash label="Located at" />
+        <LegendLine color="#848c89" label="Supports" />
+        <LegendLine color="#c0392b" dash label="Possible conflict" />
       </div>
     </div>
   );
