@@ -87,23 +87,23 @@ export default function IncidentMap({
           {showPopups && (
             <Popup>
               <div className="min-w-52">
-                <div className="legend !text-[10.5px] text-fg-muted">
-                  {CATEGORY_LABEL[i.category]} · {STATUS_LABEL[i.status]}
+                <div className="text-[12px] text-fg-muted">
+                  {CATEGORY_LABEL[i.category]}, {STATUS_LABEL[i.status].toLowerCase()}
                 </div>
                 <div className="mt-0.5 text-sm font-semibold text-fg">{i.title}</div>
                 <div className="mt-1 text-xs text-fg-muted">
-                  {i.report_count} report{i.report_count > 1 ? "s" : ""} · last {timeAgo(i.last_reported_at)}
+                  {i.report_count} report{i.report_count > 1 ? "s" : ""}, last {timeAgo(i.last_reported_at)}
                 </div>
                 {i.contradiction_count > 0 && (
                   <div className="mt-1 flex items-center gap-1.5 text-xs font-medium text-conflict">
-                    <span className="hatch-cross inline-block size-3 border border-conflict" />
+                    <span className="hatch-cross inline-block size-3 rounded-[3px] border border-conflict" />
                     {i.contradiction_count} possible conflict{i.contradiction_count > 1 ? "s" : ""}
                   </div>
                 )}
                 {onOpen && (
                   <button
                     onClick={() => onOpen(i.id)}
-                    className="mt-2.5 w-full rounded-sm border border-deep-canal bg-accent px-2 py-1.5 text-xs font-semibold text-accent-ink hover:bg-[#45d3b8]"
+                    className="mt-2.5 w-full rounded-md bg-accent px-2 py-1.5 text-xs font-semibold text-accent-ink hover:bg-accent-hover active:bg-accent-press"
                   >
                     Open incident
                   </button>

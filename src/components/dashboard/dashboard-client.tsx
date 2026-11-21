@@ -74,9 +74,9 @@ export function DashboardClient() {
   return (
     <div className="flex min-h-0 flex-1 flex-col">
       {/* Command row */}
-      <div className="flex flex-wrap items-center gap-x-4 gap-y-2 border-b border-z0 bg-panel px-4 py-2.5">
-        <h1 className="font-display text-[22px] font-semibold uppercase leading-none tracking-[0.04em]">Incident board</h1>
-        <div role="tablist" aria-label="Filter by review status" className="scroll-thin flex max-w-full items-stretch overflow-x-auto border border-z0">
+      <div className="flex flex-wrap items-center gap-x-4 gap-y-2 border-b border-line bg-panel px-4 py-2.5">
+        <h1 className="font-display text-[17px] font-semibold leading-none">Incident board</h1>
+        <div role="tablist" aria-label="Filter by review status" className="scroll-thin flex max-w-full items-stretch gap-0.5 overflow-x-auto rounded-lg bg-panel-2 p-0.5">
           {(["open", "all", ...INCIDENT_STATUSES] as const).map((s) => (
             <button
               key={s}
@@ -84,19 +84,19 @@ export function DashboardClient() {
               aria-selected={status === s}
               onClick={() => setStatus(s)}
               className={cn(
-                "flex h-7 shrink-0 items-center gap-1.5 border-l border-z0 px-2.5 text-[12px] font-medium whitespace-nowrap transition-colors first:border-l-0",
-                status === s ? "bg-z0 text-z10" : "text-fg-muted hover:bg-panel-3 hover:text-fg",
+                "flex h-8 shrink-0 items-center gap-1.5 rounded-md px-2.5 text-[12.5px] font-medium whitespace-nowrap transition-colors",
+                status === s ? "bg-panel text-fg shadow-[0_0_0_1px_var(--line)]" : "text-fg-muted hover:text-fg active:bg-panel-3",
               )}
             >
               {s === "open" ? "Open" : s === "all" ? "All" : STATUS_LABEL[s]}
-              <span className={cn("tabular font-mono text-[11px]", status === s ? "text-z7" : "text-fg-faint")}>{counts[s] ?? 0}</span>
+              <span className={cn("tabular text-[11px]", "text-fg-faint")}>{counts[s] ?? 0}</span>
             </button>
           ))}
         </div>
         <select
           value={category}
           onChange={(e) => setCategory(e.target.value as Category | "all")}
-          className="select h-[30px] text-[12.5px]"
+          className="select h-8 text-[13px]"
           aria-label="Filter by category"
         >
           <option value="all">All categories</option>
@@ -113,12 +113,12 @@ export function DashboardClient() {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Search incidents, places…"
-            className="h-[30px] w-60 rounded-sm border border-z0 bg-panel pr-2 pl-8 text-[13px] text-fg placeholder:text-fg-faint"
+            className="h-8 w-60 rounded-md border border-field bg-panel pr-2 pl-8 text-[13px] text-fg placeholder:text-fg-faint hover:border-z3"
           />
         </label>
         <button
           onClick={load}
-          className="legend flex items-center gap-2 text-accent-text"
+          className="flex h-8 items-center gap-2 rounded-md px-2 text-[13px] font-medium text-accent-text hover:bg-panel-2 active:bg-panel-3"
           title="Refreshes every 15 seconds. Click to refresh now."
         >
           <span className="relative flex size-2">
@@ -130,15 +130,15 @@ export function DashboardClient() {
         </button>
       </div>
 
-      {error && <div className="border-b border-danger bg-[#f7e3e0] px-4 py-1.5 text-xs text-danger">{error}</div>}
+      {error && <div className="border-b border-danger bg-danger-tint px-4 py-1.5 text-xs text-danger">{error}</div>}
 
       {/* Body */}
       <div className="grid min-h-0 flex-1 grid-cols-1 lg:grid-cols-[360px_minmax(0,1fr)] xl:grid-cols-[360px_minmax(0,1fr)_320px]">
-        <aside className="order-2 flex min-h-0 flex-col border-r border-z0 bg-panel lg:order-1">
+        <aside className="order-2 flex min-h-0 flex-col border-r border-line bg-panel lg:order-1">
           <div className="flex items-center justify-between border-b border-line px-4 py-2.5">
             <h2 className="legend text-fg">Incidents</h2>
-            <span className="tabular font-mono text-[12px] text-fg-muted">
-              {filtered.length} shown<span className="xl:hidden"> · synthetic</span>
+            <span className="tabular text-[12px] text-fg-muted">
+              {filtered.length} shown<span className="xl:hidden">, synthetic</span>
             </span>
           </div>
           <div className="scroll-thin min-h-0 flex-1 overflow-y-auto">
@@ -163,7 +163,7 @@ export function DashboardClient() {
           <Legend />
         </section>
 
-        <aside className="order-3 hidden min-h-0 border-l border-z0 bg-panel xl:block">
+        <aside className="order-3 hidden min-h-0 border-l border-line bg-panel xl:block">
           {data && <VerificationPanel incidents={data.incidents} activity={data.activity} selectedId={selectedId} onSelect={setSelectedId} />}
         </aside>
       </div>
@@ -181,7 +181,7 @@ function Legend() {
     return () => clearTimeout(t);
   }, []);
   return (
-    <div className="absolute bottom-6 left-3 z-[500] border border-z0 bg-panel text-[11px] shadow-[0_2px_8px_rgb(12_17_16/0.12)]">
+    <div className="absolute bottom-6 left-3 z-[500] overflow-hidden rounded-lg border border-line bg-panel text-[12px] shadow-overlay">
       {open && (
         <div id="map-key" className="grid grid-cols-2 gap-x-3 gap-y-1 border-b border-line px-2.5 py-2">
           {CATEGORIES.filter((c) => c !== "other").map((c) => (
@@ -203,7 +203,7 @@ function Legend() {
             </span>
             Pin size = sources
             <svg width="16" height="4" aria-hidden className="ml-auto">
-              <line x1="0" y1="2" x2="16" y2="2" stroke="var(--z0)" strokeWidth="2" strokeDasharray="4 3" />
+              <line x1="0" y1="2" x2="16" y2="2" stroke="var(--z3)" strokeWidth="1.5" strokeDasharray="4 3" />
             </svg>
             District border
           </span>
@@ -214,7 +214,7 @@ function Legend() {
         onClick={() => setOpen((o) => !o)}
         aria-expanded={open}
         aria-controls="map-key"
-        className="legend flex w-full items-center justify-between gap-6 px-2.5 py-1.5 !text-[10.5px] text-fg-muted hover:text-fg"
+        className="flex w-full items-center justify-between gap-6 px-2.5 py-1.5 text-[12px] font-medium text-fg-muted hover:bg-panel-2 hover:text-fg"
       >
         Key
         <ChevronUp aria-hidden className={cn("size-3.5 transition-transform duration-200", open && "rotate-180")} />

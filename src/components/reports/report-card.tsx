@@ -23,24 +23,24 @@ export const ReportCard = forwardRef<
       ref={ref}
       id={`report-${r.id}`}
       className={cn(
-        "scroll-mt-24 border bg-panel transition-[border-color,box-shadow] duration-300",
-        highlighted ? "border-z0 shadow-[0_0_0_3px_var(--accent)]" : "border-line-strong",
+        "scroll-mt-24 rounded-lg border bg-panel transition-[border-color,box-shadow] duration-300",
+        highlighted ? "border-accent-text shadow-highlight" : "border-line",
       )}
     >
       <header className="flex flex-wrap items-center gap-2.5 border-b border-line px-4 py-2.5">
-        <span className="grid size-7 place-items-center border border-z0 text-fg [&_svg]:size-3.5">
+        <span className="grid size-7 place-items-center rounded-md bg-panel-3 text-fg-muted [&_svg]:size-3.5">
           {r.source_type === "voice" ? <Mic /> : <FileText />}
         </span>
         <div>
           <div className="text-[13px] font-semibold">
-            Source {index + 1} · {r.source_type === "voice" ? "Voice note" : "Written"} · {LANG[r.original_language]}
+            Source {index + 1}<span className="ml-2 font-normal text-fg-muted">{r.source_type === "voice" ? "Voice note" : "Written"}, {LANG[r.original_language]}</span>
           </div>
-          <div className="tabular font-mono text-[11px] text-fg-muted">
-            {formatTime(r.reported_at)} · {timeAgo(r.reported_at)}
-            {r.reporter_name ? ` · ${r.reporter_name}` : " · Anonymous"}
+          <div className="tabular text-[11px] text-fg-muted">
+            {formatTime(r.reported_at)}, {timeAgo(r.reported_at)}
+            {r.reporter_name ? `, ${r.reporter_name}` : ", anonymous"}
           </div>
         </div>
-        <span className="legend ml-auto border border-line-strong px-1.5 py-0.5 !text-[10.5px] text-fg-muted">Unverified source</span>
+        <span className="ml-auto rounded-full bg-panel-3 px-2 py-0.5 text-[12px] text-fg-muted">Unverified source</span>
       </header>
 
       <blockquote className={cn("px-4 pt-3.5 text-[15px] leading-relaxed text-fg", r.original_language !== "en" && "font-ml text-[16px]")}>
@@ -56,7 +56,7 @@ export const ReportCard = forwardRef<
             <div
               key={f.key}
               className={cn(
-                "flex items-center gap-1.5 border px-2 py-1 text-[12px]",
+                "flex items-center gap-1.5 rounded-md border px-2 py-1 text-[12px]",
                 conflictFields?.has(f.key) ? "border-conflict text-conflict" : "border-line text-fg-muted",
               )}
             >
@@ -82,8 +82,8 @@ export const ReportCard = forwardRef<
 
       <footer className="mt-3.5 flex flex-wrap gap-x-4 gap-y-1 border-t border-line px-4 py-2 text-[11.5px] text-fg-muted">
         <span className="flex items-center gap-1">
-          <MapPin className="size-3" /> {r.location_text ?? "Pinned location"} ·{" "}
-          <span className="tabular font-mono">
+          <MapPin className="size-3" /> {r.location_text ?? "Pinned location"}{" "}
+          <span className="tabular text-fg-faint">
             {r.latitude.toFixed(4)}, {r.longitude.toFixed(4)}
           </span>
         </span>
